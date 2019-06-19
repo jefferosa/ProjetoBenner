@@ -3,3 +3,7 @@
 ################################################################################
 
 /ProjetoBenner/.vs
+/ProjetoBenner/ProjetoBenner/bin
+/ProjetoBenner/ProjetoBenner/obj/Debug
+/ProjetoBenner/ProjetoBenner/Properties
+*.config
