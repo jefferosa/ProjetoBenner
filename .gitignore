@@ -8,3 +8,7 @@
 /ProjetoBenner/ProjetoBenner/bin
 /ProjetoBenner/ProjetoBenner/obj/Debug
 *.config
+/ProjetoSalao/.vs/ProjetoSalaoCabeleireiro/v15
+/ProjetoSalao/packages
+/ProjetoSalao/ProjetoSalaoCabeleireiro/bin
+/ProjetoSalao/ProjetoSalaoCabeleireiro/obj/Debug
