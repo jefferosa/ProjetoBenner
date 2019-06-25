@@ -8,7 +8,7 @@ namespace ProjetoBenner.DAO
 {
     public class ProdutoDAO
     {
-        public void AdicionaProduto(Produto produto)
+        public void AdicionarProduto(Produto produto)
         {
             using (var context = new SalaoContext())
             {
@@ -17,7 +17,7 @@ namespace ProjetoBenner.DAO
             }
         }
 
-        public void RemoveProduto(Produto produto)
+        public void RemoverProduto(Produto produto)
         {
             using(var context = new SalaoContext())
             {
@@ -26,7 +26,7 @@ namespace ProjetoBenner.DAO
             }
         }
 
-        public Produto BuscaProdutoId(int id)
+        public Produto BuscarProdutoId(int id)
         {
             using (var context = new SalaoContext())
             {
@@ -34,7 +34,7 @@ namespace ProjetoBenner.DAO
             }
         }
 
-        public IList<Produto> ListaProdutos()
+        public IList<Produto> ListarProdutos()
         {
             using (var context = new SalaoContext())
             {

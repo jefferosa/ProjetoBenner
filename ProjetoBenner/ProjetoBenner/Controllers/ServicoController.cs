@@ -25,10 +25,10 @@ namespace ProjetoBenner.Controllers
         }
 
         [HttpPost]
-        public ActionResult AdicionaServico(Servico servico)
+        public ActionResult AdicionarServico(Servico servico)
         {
             ServicoDAO dao = new ServicoDAO();
-            dao.AdicionaServico(servico);
+            dao.AdicionarServico(servico);
             return View();
         }
     }

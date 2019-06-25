@@ -7,7 +7,7 @@ namespace ProjetoBenner.DAO
 {
     public class CadastroDAO
     {
-        public void AdicionaCadastro(Cadastro cadastro)
+        public void AdicionarCadastro(Cadastro cadastro)
         {
             using (var context = new SalaoContext())
             {
@@ -16,7 +16,7 @@ namespace ProjetoBenner.DAO
             }
         }
 
-        public IList<Cadastro> ListaCadastros()
+        public IList<Cadastro> ListarCadastros()
         {
             using (var context = new SalaoContext())
             {
@@ -24,7 +24,7 @@ namespace ProjetoBenner.DAO
             }
         }
 
-        public Cadastro BuscaCadastroId(int id)
+        public Cadastro BuscarCadastroId(int id)
         {
             using (var context = new SalaoContext())
             {
@@ -32,7 +32,7 @@ namespace ProjetoBenner.DAO
             }
         }
 
-        public Cadastro BuscaCadastro(string login, string senha)
+        public Cadastro BuscarCadastro(string login, string senha)
         {
             using (var context = new SalaoContext())
             {

@@ -228,9 +228,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AgendaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ServicoController.cs" />
+    <Compile Include="DAO\AgendaDAO.cs" />
     <Compile Include="DAO\CadastroDAO.cs" />
     <Compile Include="DAO\ProdutoDAO.cs" />
     <Compile Include="DAO\SalaoContext.cs" />
@@ -245,6 +247,7 @@
     <Compile Include="Migrations\SalaoContextModelSnapshot.cs" />
     <Compile Include="Models\Agenda.cs" />
     <Compile Include="Models\Cadastro.cs" />
+    <Compile Include="Models\Entradas.cs" />
     <Compile Include="Models\Produto.cs" />
     <Compile Include="Models\Endereco.cs" />
     <Compile Include="Models\Servico.cs" />
@@ -268,6 +271,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Agenda\" />
     <Folder Include="Views\Cadastro\" />
   </ItemGroup>
   <PropertyGroup>

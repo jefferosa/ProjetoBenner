@@ -1,97 +1,97 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
-using ProjetoBenner.DAO;
+﻿//using System;
+//using Microsoft.EntityFrameworkCore;
+//using Microsoft.EntityFrameworkCore.Infrastructure;
+//using Microsoft.EntityFrameworkCore.Metadata;
+//using Microsoft.EntityFrameworkCore.Migrations;
+//using ProjetoBenner.DAL;
 
-namespace ProjetoBenner.Migrations
-{
-    [DbContext(typeof(SalaoContext))]
-    partial class SalaoContextModelSnapshot : ModelSnapshot
-    {
-        protected override void BuildModel(ModelBuilder modelBuilder)
-        {
-            modelBuilder
-                .HasAnnotation("ProductVersion", "1.1.2")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+//namespace ProjetoBenner.Migrations
+//{
+//    [DbContext(typeof(SalaoContext))]
+//    partial class SalaoContextModelSnapshot : ModelSnapshot
+//    {
+//        protected override void BuildModel(ModelBuilder modelBuilder)
+//        {
+//            modelBuilder
+//                .HasAnnotation("ProductVersion", "1.1.2")
+//                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("ProjetoBenner.Cadastro", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+//            modelBuilder.Entity("ProjetoBenner.Cadastro", b =>
+//                {
+//                    b.Property<int>("Id")
+//                        .ValueGeneratedOnAdd();
 
-                    b.Property<int>("CPF");
+//                    b.Property<int>("CPF");
 
-                    b.Property<int?>("EnderecosId");
+//                    b.Property<int?>("EnderecosId");
 
-                    b.Property<string>("Nome");
+//                    b.Property<string>("Nome");
 
-                    b.Property<int>("Telefone");
+//                    b.Property<int>("Telefone");
 
-                    b.HasKey("Id");
+//                    b.HasKey("Id");
 
-                    b.HasIndex("EnderecosId");
+//                    b.HasIndex("EnderecosId");
 
-                    b.ToTable("Cadastros");
-                });
+//                    b.ToTable("Cadastros");
+//                });
 
-            modelBuilder.Entity("ProjetoBenner.Endereco", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+//            modelBuilder.Entity("ProjetoBenner.Endereco", b =>
+//                {
+//                    b.Property<int>("Id")
+//                        .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Bairro");
+//                    b.Property<string>("Bairro");
 
-                    b.Property<string>("Cidade");
+//                    b.Property<string>("Cidade");
 
-                    b.Property<int>("Numero");
+//                    b.Property<int>("Numero");
 
-                    b.Property<string>("Rua");
+//                    b.Property<string>("Rua");
 
-                    b.HasKey("Id");
+//                    b.HasKey("Id");
 
-                    b.ToTable("Endereco");
-                });
+//                    b.ToTable("Endereco");
+//                });
 
-            modelBuilder.Entity("ProjetoBenner.Models.Agenda", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+//            modelBuilder.Entity("ProjetoBenner.Models.Agenda", b =>
+//                {
+//                    b.Property<int>("Id")
+//                        .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("Data");
+//                    b.Property<DateTime>("Data");
 
-                    b.Property<DateTime>("Horario");
+//                    b.Property<DateTime>("Horario");
 
-                    b.HasKey("Id");
+//                    b.HasKey("Id");
 
-                    b.ToTable("Agenda");
-                });
+//                    b.ToTable("Agenda");
+//                });
 
-            modelBuilder.Entity("ProjetoBenner.Models.Servico", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+//            modelBuilder.Entity("ProjetoBenner.Models.Servico", b =>
+//                {
+//                    b.Property<int>("Id")
+//                        .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("Data");
+//                    b.Property<DateTime>("Data");
 
-                    b.Property<string>("Descricao");
+//                    b.Property<string>("Descricao");
 
-                    b.Property<DateTime>("HoraInicio");
+//                    b.Property<DateTime>("HoraInicio");
 
-                    b.Property<DateTime>("HoraTermino");
+//                    b.Property<DateTime>("HoraTermino");
 
-                    b.HasKey("Id");
+//                    b.HasKey("Id");
 
-                    b.ToTable("Servicos");
-                });
+//                    b.ToTable("Servicos");
+//                });
 
-            modelBuilder.Entity("ProjetoBenner.Cadastro", b =>
-                {
-                    b.HasOne("ProjetoBenner.Endereco", "Enderecos")
-                        .WithMany()
-                        .HasForeignKey("EnderecosId");
-                });
-        }
-    }
-}
+//            modelBuilder.Entity("ProjetoBenner.Cadastro", b =>
+//                {
+//                    b.HasOne("ProjetoBenner.Endereco", "Enderecos")
+//                        .WithMany()
+//                        .HasForeignKey("EnderecosId");
+//                });
+//        }
+//    }
+//}

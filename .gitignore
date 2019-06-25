@@ -1,9 +1,10 @@
 ﻿################################################################################
-# Este arquivo .gitignore foi criado automaticamente pelo Microsoft(R) Visual Studio.
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
 /ProjetoBenner/.vs
+/ProjetoBenner/packages/EntityFramework.6.3.0-preview6-19304-03
+/ProjetoBenner/packages
 /ProjetoBenner/ProjetoBenner/bin
 /ProjetoBenner/ProjetoBenner/obj/Debug
-/ProjetoBenner/ProjetoBenner/Properties
 *.config
