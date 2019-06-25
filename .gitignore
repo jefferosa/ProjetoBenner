@@ -1,14 +1,3 @@
 ﻿################################################################################
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
-
-/ProjetoBenner/.vs
-/ProjetoBenner/packages/EntityFramework.6.3.0-preview6-19304-03
-/ProjetoBenner/packages
-/ProjetoBenner/ProjetoBenner/bin
-/ProjetoBenner/ProjetoBenner/obj/Debug
-*.config
-/ProjetoSalao/.vs/ProjetoSalaoCabeleireiro/v15
-/ProjetoSalao/packages
-/ProjetoSalao/ProjetoSalaoCabeleireiro/bin
-/ProjetoSalao/ProjetoSalaoCabeleireiro/obj/Debug
