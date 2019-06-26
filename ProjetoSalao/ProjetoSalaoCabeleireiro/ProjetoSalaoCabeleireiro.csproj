@@ -231,22 +231,27 @@
     <Compile Include="Controllers\AgendaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ProdutoController.cs" />
     <Compile Include="Controllers\ServicoController.cs" />
     <Compile Include="DAO\AgendaDAO.cs" />
-    <Compile Include="DAO\CadastroDAO.cs" />
+    <Compile Include="DAO\UsuarioDAO.cs" />
     <Compile Include="DAO\ProdutoDAO.cs" />
     <Compile Include="DAO\SalaoContext.cs" />
     <Compile Include="DAO\ServicoDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20190618185746_Inicial.cs" />
-    <Compile Include="Migrations\20190618185746_Inicial.designer.cs">
-      <DependentUpon>20190618185746_Inicial.cs</DependentUpon>
+    <Compile Include="Migrations\20190625202252_Inicial.cs" />
+    <Compile Include="Migrations\20190625202252_Inicial.designer.cs">
+      <DependentUpon>20190625202252_Inicial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190626201907_Atualizacao.cs" />
+    <Compile Include="Migrations\20190626201907_Atualizacao.designer.cs">
+      <DependentUpon>20190626201907_Atualizacao.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\SalaoContextModelSnapshot.cs" />
     <Compile Include="Models\Agenda.cs" />
-    <Compile Include="Models\Cadastro.cs" />
+    <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\Entradas.cs" />
     <Compile Include="Models\Produto.cs" />
     <Compile Include="Models\Endereco.cs" />
@@ -262,6 +267,7 @@
     <Content Include="Views\Servico\Index.cshtml" />
     <Content Include="Views\Servico\Formulario.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Produto\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

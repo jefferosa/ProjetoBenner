@@ -6,6 +6,11 @@
     <link rel="stylesheet" href="~/Content/Css/bootstrap.css" />
 </head>
 <body>
+    <div class="header">
+        <ul class="nav nav-pills pull-left">
+            <li>@Html.ActionLink("Página Inicial", "Index", "Home")</li>
+        </ul>
+    </div>
     <div>
         @RenderBody()
     </div>

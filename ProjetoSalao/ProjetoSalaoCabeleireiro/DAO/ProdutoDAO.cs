@@ -17,15 +17,6 @@ namespace ProjetoBenner.DAO
             }
         }
 
-        public void RemoverProduto(Produto produto)
-        {
-            using(var context = new SalaoContext())
-            {
-                context.Produtos.Remove(produto);
-                context.SaveChanges();
-            }
-        }
-
         public Produto BuscarProdutoId(int id)
         {
             using (var context = new SalaoContext())

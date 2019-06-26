@@ -1,1 +1,12 @@
-﻿
+﻿<form action="/Servico/AdicionarServico" method="post">
+    <label for="tipo">Tipo do Serviço:</label>
+    <input name="servico.Tipo" id="tipo" value="@ViewBag.Servico.Tipo" class="form-control" />
+
+    <label for="valor">Valor do Serviço:</label>
+    <input name="servico.Valor" id="valor" value="@ViewBag.Servico.Valor" class="form-control" />
+
+    <label for="tempo">Tempo de duração do Serviço:</label>
+    <input name="servico.Tempo" id="tempo" value="@ViewBag.Servico.Tempo" class="form-control" />
+
+    <input type="submit" value="Cadastrar" />
+</form>

@@ -8,9 +8,8 @@ namespace ProjetoBenner.Models
     public class Servico
     {
         public int Id { get; set; }
-        public string Descricao { get; set; }
-        public DateTime HoraInicio { get; set; }
-        public DateTime HoraTermino { get; set; }
-        public DateTime Data { get; set; }
+        public string Tipo { get; set; }
+        public double Valor { get; set; }
+        public int Tempo { get; set; }
     }
 }

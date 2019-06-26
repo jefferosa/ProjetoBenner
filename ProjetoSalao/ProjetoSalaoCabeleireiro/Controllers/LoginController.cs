@@ -18,11 +18,11 @@ namespace ProjetoBenner.Controllers
 
         public ActionResult AutenticaLogin(string login, string senha)
         {
-            CadastroDAO dao = new CadastroDAO();
-            Cadastro cadastro = dao.BuscaCadastro(login, senha);
-            if (cadastro != null)
+            UsuarioDAO dao = new UsuarioDAO();
+            Usuario usuario = dao.BuscarUsuario(login, senha);
+            if (usuario != null)
             {
-                Session["usuarioLogado"] = cadastro;
+                Session["usuarioLogado"] = usuario;
                 return RedirectToAction("Index", "Home");
             }
             else

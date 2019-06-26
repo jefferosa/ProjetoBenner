@@ -14,13 +14,13 @@ namespace ProjetoBenner.Controllers
         public ActionResult Index()
         {
             ServicoDAO dao = new ServicoDAO();
-            IList<Servico> servicos = dao.ListaServicos();
-            ViewBag.Sevicos = servicos;
-            return View();
+            var servicos = dao.ListaServicos();
+            return View(servicos);
         }
 
         public ActionResult Formulario()
         {
+            ViewBag.Servico = new Servico();
             return View();
         }
 
@@ -29,7 +29,7 @@ namespace ProjetoBenner.Controllers
         {
             ServicoDAO dao = new ServicoDAO();
             dao.AdicionarServico(servico);
-            return View();
+            return RedirectToAction("Index");
         }
     }
 }
