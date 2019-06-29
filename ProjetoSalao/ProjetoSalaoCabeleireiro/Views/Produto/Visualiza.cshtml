@@ -1,0 +1,10 @@
+﻿
+<ul class="list-group">
+    <li class="list-group-item">Id: @ViewBag.Produto.Id</li>
+    <li class="list-group-item">Nome: @ViewBag.Produto.Nome</li>
+    <li class="list-group-item">Quantidade: @ViewBag.Produto.Quantidade</li>
+    <li class="list-group-item">Preço: @ViewBag.Produto.Preco</li>
+    <li class="list-group-item">Descricao: @ViewBag.Produto.Descricao</li>
+
+    @Html.RouteLink("Voltar para a lista", "ListaProdutos")
+</ul>

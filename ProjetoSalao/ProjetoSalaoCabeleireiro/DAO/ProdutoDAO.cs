@@ -1,6 +1,7 @@
 ﻿using ProjetoBenner.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -17,19 +18,21 @@ namespace ProjetoBenner.DAO
             }
         }
 
-        public Produto BuscarProdutoId(int id)
-        {
-            using (var context = new SalaoContext())
-            {
-                return context.Produtos.Find(id);
-            }
-        }
-
         public IList<Produto> ListarProdutos()
         {
             using (var context = new SalaoContext())
             {
                 return context.Produtos.ToList();
+            }
+        }
+
+        public Produto BuscarProdutoId(int id)
+        {
+            using (var context = new SalaoContext())
+            {
+                return context.Produtos
+                    .Where(p => p.Id == id)
+                    .FirstOrDefault();
             }
         }
 

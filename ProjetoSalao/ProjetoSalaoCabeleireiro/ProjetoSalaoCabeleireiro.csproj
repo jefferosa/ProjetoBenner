@@ -225,6 +225,7 @@
     <Content Include="Content\css\Estilo.css" />
     <Content Include="Content\css\reset.css" />
     <Content Include="Content\css\sb-admin-2.min.css" />
+    <Content Include="Content\imagens\background.jpg" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -251,6 +252,10 @@
     <Compile Include="Migrations\20190626201907_Atualizacao.designer.cs">
       <DependentUpon>20190626201907_Atualizacao.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190629180611_Atualiza.cs" />
+    <Compile Include="Migrations\20190629180611_Atualiza.designer.cs">
+      <DependentUpon>20190629180611_Atualiza.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\SalaoContextModelSnapshot.cs" />
     <Compile Include="Models\Agenda.cs" />
     <Compile Include="Models\Usuario.cs" />
@@ -271,6 +276,7 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Produto\Index.cshtml" />
     <Content Include="Views\Produto\Formulario.cshtml" />
+    <Content Include="Views\Produto\Visualiza.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

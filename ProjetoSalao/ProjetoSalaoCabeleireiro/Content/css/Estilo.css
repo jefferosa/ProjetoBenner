@@ -12,7 +12,7 @@ a:visited {
 a:hover {
     color: #ffffff;
     text-decoration: none;
-    font-size: 22px;
+    font-size: 115%;
 }
 
 a:active {
@@ -22,7 +22,7 @@ a:active {
 
 li {
     text-align: center;
-    font-size: 20px;
+    font-size: 110%;
 }
 
 .botao{
@@ -31,19 +31,34 @@ li {
 }
 
 .form {
-    width: 300px;
+    width: 50%;
+    max-width: 50%;
+    min-width: 50%;
+    min-height: 40%;
+    height: 50%;
     margin: auto;
     margin-top: 10px;
     margin-bottom: 10px;
+    color: white;
 }
 
 .formulario {
     border: 5px solid black;
     width: 30%;
     position: absolute;
-    top: 30%;
+    top: 20%;
     left: 40%;
-    max-height: 400px;
+    max-height: 70%;
+    min-height: 10%;
     border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    max-width: 40%;
+    min-width: 40%;
 }
 
+#page-top {
+    background-image: url(/Content/imagens/background.jpg);
+    position: fixed;
+    max-width: 100%;
+    min-width: 100%;
+}

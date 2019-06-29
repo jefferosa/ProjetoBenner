@@ -1,16 +1,16 @@
 ﻿<div class="formulario">
     <form action="/Produto/AdicionarProduto" method="post" class="navbar-search form">
         <label for="nome">Nome:</label>
-        <input name="produto.Nome" id="tipo" value="@ViewBag.Produto.Nome" class="form-control" />
-
-        <label for="preco">Preço:</label>
-        <input name="produto.Preco" id="preco" value="@ViewBag.Produto.Preco" class="form-control" />
-
-        <label for="descricao">Descrição:</label>
-        <input name="produto.Descricao" id="descricao" value="@ViewBag.Produto.Descricao" class="form-control" />
+        <input id="nome" name="produto.Nome" value="@ViewBag.Produto.Nome" class="form-control" />
 
         <label for="quantidade">Quantidade:</label>
-        <input name="produto.Quantidade" id="quantidade" value="@ViewBag.Produto.Quantidade" class="form-control" />
+        <input id="quantidade" name="produto.Quantidade" value="@ViewBag.Produto.Quantidade" class="form-control" />
+
+        <label for="descricao">Descrição:</label>
+        <input id="descricao" name="produto.Descricao" value="@ViewBag.Produto.Descricao" class="form-control" />
+
+        <label for="preco">Preço:</label>
+        <input id="preco" name="produto.Preco" value="@ViewBag.Produto.Preco" class="form-control" />
 
         <div class="input-group">
             <div class="input-group-append">
