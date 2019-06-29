@@ -32,5 +32,14 @@ namespace ProjetoBenner.DAO
                 return context.Produtos.ToList();
             }
         }
+
+        public void AtualizarProdutos(Produto produto)
+        {
+            using (var context = new SalaoContext())
+            {
+                context.Produtos.Update(produto);
+                context.SaveChanges();
+            }
+        }
     }
 }

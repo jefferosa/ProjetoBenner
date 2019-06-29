@@ -222,7 +222,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\Estilo.css" />
     <Content Include="Content\css\reset.css" />
+    <Content Include="Content\css\sb-admin-2.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -252,7 +254,7 @@
     <Compile Include="Migrations\SalaoContextModelSnapshot.cs" />
     <Compile Include="Models\Agenda.cs" />
     <Compile Include="Models\Usuario.cs" />
-    <Compile Include="Models\Entradas.cs" />
+    <Compile Include="Models\ControleFinanceiro.cs" />
     <Compile Include="Models\Produto.cs" />
     <Compile Include="Models\Endereco.cs" />
     <Compile Include="Models\Servico.cs" />
@@ -268,6 +270,7 @@
     <Content Include="Views\Servico\Formulario.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Produto\Index.cshtml" />
+    <Content Include="Views\Produto\Formulario.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

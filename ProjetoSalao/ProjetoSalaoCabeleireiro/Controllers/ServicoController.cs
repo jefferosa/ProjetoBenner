@@ -27,9 +27,22 @@ namespace ProjetoBenner.Controllers
         [HttpPost]
         public ActionResult AdicionarServico(Servico servico)
         {
-            ServicoDAO dao = new ServicoDAO();
-            dao.AdicionarServico(servico);
-            return RedirectToAction("Index");
+            if (servico.Tipo == null || servico.Tempo == 0 || servico.Valor == 0)
+            {
+                ModelState.AddModelError("servico.CadastroComValorNulo", "Não pode cadastrar um serviço nulo");
+            }
+            if (ModelState.IsValid)
+            {
+                ServicoDAO dao = new ServicoDAO();
+                dao.AdicionarServico(servico);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ViewBag.Servico = servico;
+                return View("Formulario");
+            }
+            
         }
     }
 }

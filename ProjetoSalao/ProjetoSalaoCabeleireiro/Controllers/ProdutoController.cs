@@ -27,9 +27,21 @@ namespace ProjetoBenner.Controllers
         [HttpPost]
         public ActionResult AdicionarProduto(Produto produto)
         {
-            ProdutoDAO dao = new ProdutoDAO();
-            dao.AdicionarProduto(produto);
-            return RedirectToAction("Index");
+            if (produto.Nome == null || produto.Preco == 0 || produto.Quantidade == 0 || produto.Descricao == null)
+            {
+                ModelState.AddModelError("produto.CadastroEmBranco", "Não pode cadastrar um produto em branco");
+            }
+            if (ModelState.IsValid)
+            {
+                ProdutoDAO dao = new ProdutoDAO();
+                dao.AdicionarProduto(produto);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ViewBag.Produto = produto;
+                return View("Formulario");
+            }
         }
 
         public ActionResult DecrementarQtd(int id)
@@ -37,7 +49,7 @@ namespace ProjetoBenner.Controllers
             ProdutoDAO dao = new ProdutoDAO();
             Produto produto = dao.BuscarProdutoId(id);
             produto.Quantidade--;
-            dao.Atualiza(produto);
+            dao.AtualizarProdutos(produto);
             return Json(produto);
         }
     }
