@@ -8,7 +8,7 @@ using ProjetoBenner.DAO;
 namespace ProjetoBenner.Migrations
 {
     [DbContext(typeof(SalaoContext))]
-    [Migration("20190629180611_Atualiza")]
+    [Migration("20190701180630_Atualiza")]
     partial class Atualiza
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

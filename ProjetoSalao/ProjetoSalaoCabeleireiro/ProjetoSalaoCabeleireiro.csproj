@@ -252,9 +252,13 @@
     <Compile Include="Migrations\20190626201907_Atualizacao.designer.cs">
       <DependentUpon>20190626201907_Atualizacao.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20190629180611_Atualiza.cs" />
-    <Compile Include="Migrations\20190629180611_Atualiza.designer.cs">
-      <DependentUpon>20190629180611_Atualiza.cs</DependentUpon>
+    <Compile Include="Migrations\20190701180630_Atualiza.cs" />
+    <Compile Include="Migrations\20190701180630_Atualiza.designer.cs">
+      <DependentUpon>20190701180630_Atualiza.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190701183811_paraDouble.cs" />
+    <Compile Include="Migrations\20190701183811_paraDouble.designer.cs">
+      <DependentUpon>20190701183811_paraDouble.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\SalaoContextModelSnapshot.cs" />
     <Compile Include="Models\Agenda.cs" />

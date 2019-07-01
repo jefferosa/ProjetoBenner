@@ -62,3 +62,37 @@ li {
     max-width: 100%;
     min-width: 100%;
 }
+
+#tb {
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    border: 3px solid white;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    max-width: 40%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+.tb {
+    color: white;
+    width: 10px;
+}
+
+.tb-td{
+    text-align: left;
+}
+
+td {
+    border: 2px solid white;
+    font-size: 14px;
+    text-align: center;
+    table-layout: fixed;
+    height: 10%;
+    max-width: 20%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

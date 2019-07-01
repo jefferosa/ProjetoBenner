@@ -1,1 +1,24 @@
-﻿
+﻿<div id="tb">
+    <table class="table table-hover tb">
+
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Quantidade</th>
+                <th>Descricao</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var produto in ViewBag.Produto)
+            {
+                <tr>
+                    <td>@produto.Id</td>
+                    <td>@produto.Nome</td>
+                    <td>@produto.Quantidade</td>
+                    <td class="tb-td">@produto.Descricao</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

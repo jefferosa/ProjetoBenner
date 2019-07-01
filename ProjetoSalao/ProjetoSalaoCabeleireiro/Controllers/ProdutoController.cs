@@ -14,8 +14,9 @@ namespace ProjetoBenner.Controllers
         public ActionResult Index()
         {
             ProdutoDAO dao = new ProdutoDAO();
-            var produtos = dao.ListarProdutos();
-            return View(produtos);
+            IList<Produto> produtos = dao.ListarProdutos();
+            ViewBag.Produto = produtos;
+            return View("Index");
         }
 
         public ActionResult Formulario()
@@ -35,7 +36,7 @@ namespace ProjetoBenner.Controllers
             {
                 ProdutoDAO dao = new ProdutoDAO();
                 dao.AdicionarProduto(produto);
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             else
             {
@@ -45,13 +46,10 @@ namespace ProjetoBenner.Controllers
         }
 
         [Route("produtos/{id}", Name = "VisualizaProduto")]
-        public ActionResult Visualiza(int id)
-        {
-            ProdutoDAO dao = new ProdutoDAO();
-            Produto produto = dao.BuscarProdutoId(id);
-            ViewBag.Produto = produto;
-            return View();
-        }
+        //public ActionResult Visualiza()
+        //{
+            
+        //}
 
         public ActionResult DecrementarQtd(int id)
         {

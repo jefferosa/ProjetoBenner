@@ -13,7 +13,7 @@ namespace ProjetoBenner.Models
         [StringLength(20)]
         public String Nome { get; set; }
 
-        public float Preco { get; set; }
+        public double Preco { get; set; }
 
         public String Descricao { get; set; }
 
