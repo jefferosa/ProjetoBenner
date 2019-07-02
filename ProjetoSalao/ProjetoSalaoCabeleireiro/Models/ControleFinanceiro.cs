@@ -7,5 +7,8 @@ namespace ProjetoBenner.Models
 {
     public class ControleFinanceiro
     {
+        public int Id { get; set; }
+        public Entrada Entradas { get; set; }
+        public Saida Saidas { get; set; }
     }
 }

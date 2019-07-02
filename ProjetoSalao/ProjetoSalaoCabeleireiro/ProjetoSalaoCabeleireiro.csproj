@@ -237,6 +237,7 @@
     <Compile Include="Controllers\ProdutoController.cs" />
     <Compile Include="Controllers\ServicoController.cs" />
     <Compile Include="DAO\AgendaDAO.cs" />
+    <Compile Include="DAO\ControleFinanceiroDAO.cs" />
     <Compile Include="DAO\UsuarioDAO.cs" />
     <Compile Include="DAO\ProdutoDAO.cs" />
     <Compile Include="DAO\SalaoContext.cs" />
@@ -262,6 +263,8 @@
     </Compile>
     <Compile Include="Migrations\SalaoContextModelSnapshot.cs" />
     <Compile Include="Models\Agenda.cs" />
+    <Compile Include="Models\Entrada.cs" />
+    <Compile Include="Models\Saida.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\ControleFinanceiro.cs" />
     <Compile Include="Models\Produto.cs" />
