@@ -8,23 +8,26 @@
 
 </head>
 <body id="page-top">
-    <div>
-        <div class="header">
-            <ul class="navbar-nav bg-dark sidebar float-left">
-                <!-- Sidebar - Brand -->
-                <a class="sidebar-brand d-flex align-items-center justify-content-center">
-                    <div class="sidebar-brand-text mx-3 text-white">Menu</div>
-                </a>
+    <div class="cab">
 
-                <li>@Html.ActionLink("Página Inicial", "Index", "Home")</li>
-                <li>@Html.ActionLink("Cadastrar Serviço", "Formulario", "Servico")</li>
-                <li>@Html.ActionLink("Cadastrar Produto", "Formulario", "Produto")</li>
-                <li>@Html.ActionLink("Estoque", "Index", "Produto")</li>
-            </ul>
-        </div>
-        <div>
-            @RenderBody()
-        </div>
     </div>
+    <div class="corp">
+        <ul class="navbar-nav menu">
+            <li class="sidebar-brand d-flex align-items-center justify-content-center">
+                <div class="sidebar-brand-text mx-3 text-white">Menu</div>
+            </li>
+
+            <li>@Html.ActionLink("Página Inicial", "Index", "Home")</li>
+            <li>@Html.ActionLink("Cadastrar Serviço", "Formulario", "Servico")</li>
+            <li>@Html.ActionLink("Cadastrar Produto", "Formulario", "Produto")</li>
+            <li>@Html.ActionLink("Estoque", "Index", "Produto")</li>
+        </ul>
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+    <footer class="rodape">
+        &copy;
+    </footer>
 </body>
 </html>

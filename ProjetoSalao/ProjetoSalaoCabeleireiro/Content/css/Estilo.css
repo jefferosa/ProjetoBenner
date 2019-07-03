@@ -25,7 +25,7 @@ li {
     font-size: 110%;
 }
 
-.botao{
+.botao {
     border: 1px solid;
     border-radius: 50px;
 }
@@ -56,11 +56,29 @@ li {
     min-width: 40%;
 }
 
-#page-top {
+.cab {
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 100%;
+    height: 15%;
+    position: absolute;
+}
+
+.corp {
     background-image: url(/Content/imagens/background.jpg);
-    position: fixed;
-    max-width: 100%;
+    position: absolute;
+    max-width: 60%;
     min-width: 100%;
+    height: 80%;
+    display: inline;
+}
+
+.menu{
+    background-color: rgba(0, 0, 0, 0.8);
+    float: left;
+    width: 10%;
+    max-width: 10%;
+    height: 100%;
+    max-height: 100%;
 }
 
 #tb {
@@ -82,7 +100,7 @@ li {
     width: 10px;
 }
 
-.tb-td{
+.tb-td {
     text-align: left;
 }
 
@@ -96,3 +114,12 @@ td {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.rodape {
+    background-color: rgb(0, 0, 0);
+    width: 100%;
+    height: 5%;
+    position: absolute;
+    bottom: 0;
+}
+
