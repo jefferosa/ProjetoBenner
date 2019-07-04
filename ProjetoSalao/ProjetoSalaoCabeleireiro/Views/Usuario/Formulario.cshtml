@@ -1,0 +1,29 @@
+﻿<div class="formulario">
+    <form action="/Usuario/AdicionarUsuario" method="post" class="navbar-search form">
+        <label for="nome">Nome:</label>
+        <input id="nome" name="usuario.Nome" value="@ViewBag.Usuario.Nome" class="form-control" />
+
+        <label for="email">Email:</label>
+        <input id="email" name="usuario.Email" value="@ViewBag.Usuario.Email" class="form-control" />
+
+        <label for="login">Login:</label>
+        <input id="login" name="usuario.Login" value="@ViewBag.Usuario.Login" class="form-control" />
+
+        <label for="senha">Senha:</label>
+        <input id="senha" name="usuario.Senha" value="@ViewBag.Usuario.Senha" class="form-control" />
+
+        <label for="cpf">CPF:</label>
+        <input id="cpf" name="usuario.CPF" value="@ViewBag.Usuario.CPF" class="form-control" />
+
+        <label for="telefone">Telefone:</label>
+        <input id="telefone" name="usuario.Telefone" value="@ViewBag.Usuario.Telefone" class="form-control" />
+
+        <div class="input-group">
+            <div class="input-group-append">
+                <button class="btn btn-primary botao" type="submit">
+                    <i class="fas fa-search fa-sm">Cadastrar</i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
