@@ -236,6 +236,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
     <Compile Include="Controllers\ServicoController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="DAO\AgendaDAO.cs" />
     <Compile Include="DAO\ControleFinanceiroDAO.cs" />
     <Compile Include="DAO\UsuarioDAO.cs" />
@@ -284,6 +285,8 @@
     <Content Include="Views\Produto\Index.cshtml" />
     <Content Include="Views\Produto\Formulario.cshtml" />
     <Content Include="Views\Produto\Visualiza.cshtml" />
+    <Content Include="Views\Usuario\Formulario.cshtml" />
+    <Content Include="Views\Usuario\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

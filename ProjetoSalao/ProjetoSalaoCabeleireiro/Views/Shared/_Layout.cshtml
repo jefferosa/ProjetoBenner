@@ -7,24 +7,48 @@
     <link href="~/Content/css/Estilo.css" rel="stylesheet">
 
 </head>
-<body id="page-top">
+<body>
     <div class="cab">
 
     </div>
     <div class="corp">
-        <ul class="navbar-nav menu">
-            <li class="sidebar-brand d-flex align-items-center justify-content-center">
-                <div class="sidebar-brand-text mx-3 text-white">Menu</div>
+        @*<ul class="menu">
+
+                <li>@Html.ActionLink("Página Inicial", "Index", "Home")</li>
+                <li>@Html.ActionLink("Cadastrar Serviço", "Formulario", "Servico")</li>
+                <li>@Html.ActionLink("Cadastrar Produto", "Formulario", "Produto")</li>
+                <li>@Html.ActionLink("Estoque", "Index", "Produto")</li>
+            </ul>*@
+
+        <ul class="bg-gradient-primary sidebar menu">
+            <li class="nav-item">
+                <a class="nav-link">
+                    <span>@Html.ActionLink("Página Inicial", "Index", "Home")</span>
+                </a>
             </li>
 
-            <li>@Html.ActionLink("Página Inicial", "Index", "Home")</li>
-            <li>@Html.ActionLink("Cadastrar Serviço", "Formulario", "Servico")</li>
-            <li>@Html.ActionLink("Cadastrar Produto", "Formulario", "Produto")</li>
-            <li>@Html.ActionLink("Estoque", "Index", "Produto")</li>
+            <li class="nav-item">
+                <a class="nav-link">
+                    <span>@Html.ActionLink("Cadastrar Serviço", "Formulario", "Servico")</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link">
+                    <span>@Html.ActionLink("Cadastrar Produto", "Formulario", "Produto")</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link">
+                    <span>@Html.ActionLink("Estoque", "Index", "Produto")</span>
+                </a>
+            </li>
         </ul>
-    </div>
-    <div>
-        @RenderBody()
+
+        <div>
+            @RenderBody()
+        </div>
     </div>
     <footer class="rodape">
         &copy;

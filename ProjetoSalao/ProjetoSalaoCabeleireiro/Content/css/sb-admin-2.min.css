@@ -4401,12 +4401,15 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     flex-direction: column;
     padding-left: 0;
     margin-bottom: 0;
-    list-style: none
+    list-style: none;
+    max-width: 20%;
+    width: 20%
 }
 
     .navbar-nav .nav-link {
         padding-right: 0;
-        padding-left: 0
+        padding-left: 0;
+        width: 20%
     }
 
     .navbar-nav .dropdown-menu {
@@ -10817,14 +10820,12 @@ a:focus {
 }
 
 .bg-gradient-primary {
-    background-color: #4e73df;
-    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(10%,#4e73df),to(#224abe));
-    background-image: linear-gradient(180deg,#4e73df 10%,#224abe 100%);
-    background-size: cover
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 15%
 }
 
 .bg-gradient-secondary {
-    background-color: #858796;
+    background-color: rgba(0, 0, 0, 0.8);
     background-image: -webkit-gradient(linear,left top,left bottom,color-stop(10%,#858796),to(#60616f));
     background-image: linear-gradient(180deg,#858796 10%,#60616f 100%);
     background-size: cover
@@ -11064,14 +11065,14 @@ a:focus {
 }
 
 .sidebar .nav-item.dropdown .dropdown-toggle::after, .topbar .nav-item.dropdown .dropdown-toggle::after {
-    width: 1rem;
+    width: 15%;
     text-align: center;
     float: right;
     vertical-align: 0;
     border: 0;
-    font-weight: 900;
     content: '\f105';
-    font-family: 'Font Awesome 5 Free'
+    font-family: 'Font Awesome 5 Free';
+        height: 100%
 }
 
 .sidebar .nav-item.dropdown.show .dropdown-toggle::after, .topbar .nav-item.dropdown.show .dropdown-toggle::after {
@@ -11083,18 +11084,17 @@ a:focus {
 }
 
     .sidebar .nav-item .nav-link .badge-counter, .topbar .nav-item .nav-link .badge-counter {
-        position: absolute;
         -webkit-transform: scale(.7);
         transform: scale(.7);
         -webkit-transform-origin: top right;
         transform-origin: top right;
-        right: .25rem;
+        height: 100%;
         margin-top: -.25rem
     }
 
     .sidebar .nav-item .nav-link .img-profile, .topbar .nav-item .nav-link .img-profile {
-        height: 2rem;
-        width: 2rem
+        height: 100%;
+        width: 15%
     }
 
 .topbar {
@@ -11102,8 +11102,8 @@ a:focus {
 }
 
     .topbar #sidebarToggleTop {
-        height: 2.5rem;
-        width: 2.5rem
+        height: 100%;
+        width: 15%
     }
 
         .topbar #sidebarToggleTop:hover {
@@ -11244,8 +11244,10 @@ a:focus {
     }
 
 .sidebar {
-    width: 6.5rem;
-    min-height: 100vh
+    width: 10%;
+    max-width: 15%;
+    height: 100%;
+    min-height: 100%
 }
 
     .sidebar .nav-item {
