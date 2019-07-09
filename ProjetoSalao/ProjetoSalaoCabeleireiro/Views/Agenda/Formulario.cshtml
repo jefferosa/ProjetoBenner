@@ -1,0 +1,25 @@
+﻿<div class="formulario">
+    <form action="/Agenda/AgendarHorario" method="post" class="navbar-search form">
+        <label for="data">Data:</label>
+        <input id="data" name="agenda.Data" type="date" value="@ViewBag.Agenda.Data" class="form-control" />
+
+        <label for="horario">Horario:</label>
+        <input id="horario" name="agenda.Horario" type="time" value="@ViewBag.Agenda.Horario" class="form-control" />
+
+        <label for="servico">Serviço:</label>
+        <select id="servico" name="agenda.ServicoId" class="form-control">
+            @foreach(var servico in ViewBag.Servico)
+            {
+                <option value="@servico.Id" selected="@servico.Id.Equals(ViewBag.Agenda.ServicoId)">@servico.Tipo</option>
+            }
+        </select>
+
+        <div class="input-group">
+            <div class="input-group-append">
+                <button class="btn btn-primary botao" type="submit">
+                    <i class="fas fa-search fa-sm">Cadastrar</i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

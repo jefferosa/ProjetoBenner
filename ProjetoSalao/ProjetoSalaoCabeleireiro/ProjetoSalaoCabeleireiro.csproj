@@ -255,6 +255,10 @@
     <Compile Include="Migrations\20190709175537_2.designer.cs">
       <DependentUpon>20190709175537_2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190709194029_3.cs" />
+    <Compile Include="Migrations\20190709194029_3.designer.cs">
+      <DependentUpon>20190709194029_3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\SalaoContextModelSnapshot.cs" />
     <Compile Include="Models\Agenda.cs" />
     <Compile Include="Models\Entrada.cs" />
@@ -279,6 +283,7 @@
     <Content Include="Views\Produto\Visualiza.cshtml" />
     <Content Include="Views\Usuario\Formulario.cshtml" />
     <Content Include="Views\Usuario\Index.cshtml" />
+    <Content Include="Views\Agenda\Formulario.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -288,7 +293,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Agenda\" />
     <Folder Include="Views\Cadastro\" />
     <Folder Include="Views\ControleFinanceiro\" />
   </ItemGroup>

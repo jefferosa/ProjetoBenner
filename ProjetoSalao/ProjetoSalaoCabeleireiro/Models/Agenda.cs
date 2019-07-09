@@ -10,6 +10,7 @@ namespace ProjetoBenner.Models
         public int Id { get; set; }
         public DateTime Data { get; set; }
         public DateTime Horario { get; set; }
-        public Servico Servicos { get; set; }
+        public Servico Servico { get; set; }
+        public int? ServicoId { get; set; }
     }
 }
