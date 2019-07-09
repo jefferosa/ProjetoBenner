@@ -16,24 +16,6 @@ namespace ProjetoBenner.Migrations
                 .HasAnnotation("ProductVersion", "1.1.2")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("ProjetoBenner.Endereco", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Bairro");
-
-                    b.Property<string>("Cidade");
-
-                    b.Property<int>("Numero");
-
-                    b.Property<string>("Rua");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Endereco");
-                });
-
             modelBuilder.Entity("ProjetoBenner.Models.Agenda", b =>
                 {
                     b.Property<int>("Id")
@@ -50,6 +32,22 @@ namespace ProjetoBenner.Migrations
                     b.HasIndex("ServicosId");
 
                     b.ToTable("Agenda");
+                });
+
+            modelBuilder.Entity("ProjetoBenner.Models.Entrada", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("Data");
+
+                    b.Property<string>("Descricao");
+
+                    b.Property<double>("ValorEntrada");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Entradas");
                 });
 
             modelBuilder.Entity("ProjetoBenner.Models.Produto", b =>
@@ -69,6 +67,22 @@ namespace ProjetoBenner.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Produtos");
+                });
+
+            modelBuilder.Entity("ProjetoBenner.Models.Saida", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("Data");
+
+                    b.Property<string>("Descricao");
+
+                    b.Property<double>("ValorSaida");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Saidas");
                 });
 
             modelBuilder.Entity("ProjetoBenner.Models.Servico", b =>
@@ -96,8 +110,6 @@ namespace ProjetoBenner.Migrations
 
                     b.Property<string>("Email");
 
-                    b.Property<int?>("EnderecosId");
-
                     b.Property<string>("Login");
 
                     b.Property<string>("Nome");
@@ -108,8 +120,6 @@ namespace ProjetoBenner.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EnderecosId");
-
                     b.ToTable("Usuarios");
                 });
 
@@ -118,13 +128,6 @@ namespace ProjetoBenner.Migrations
                     b.HasOne("ProjetoBenner.Models.Servico", "Servicos")
                         .WithMany()
                         .HasForeignKey("ServicosId");
-                });
-
-            modelBuilder.Entity("ProjetoBenner.Usuario", b =>
-                {
-                    b.HasOne("ProjetoBenner.Endereco", "Enderecos")
-                        .WithMany()
-                        .HasForeignKey("EnderecosId");
                 });
         }
     }

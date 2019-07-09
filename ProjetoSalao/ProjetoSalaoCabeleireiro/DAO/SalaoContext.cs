@@ -13,7 +13,8 @@ namespace ProjetoBenner.DAO
         public DbSet<Servico> Servicos { get; set; }
         public DbSet<Agenda> Agenda { get; set; }
         public DbSet<Produto> Produtos { get; set; }
-        //public DbSet<ControleFinanceiro> controleFinanceiro { get; set; }
+        public DbSet<Entrada> Entradas { get; set; }
+        public DbSet<Saida> Saidas { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

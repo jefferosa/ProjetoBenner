@@ -32,7 +32,7 @@ namespace ProjetoBenner.Controllers
             {
                 UsuarioDAO dao = new UsuarioDAO();
                 dao.AdicionarUsuario(usuario);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Login");
             }
             else
             {

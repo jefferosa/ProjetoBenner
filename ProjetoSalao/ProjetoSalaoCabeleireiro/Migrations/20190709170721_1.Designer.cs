@@ -8,56 +8,14 @@ using ProjetoBenner.DAO;
 namespace ProjetoBenner.Migrations
 {
     [DbContext(typeof(SalaoContext))]
-    [Migration("20190625202252_Inicial")]
-    partial class Inicial
+    [Migration("20190709170721_1")]
+    partial class _1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("ProjetoBenner.Cadastro", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("CPF");
-
-                    b.Property<int?>("EnderecosId");
-
-                    b.Property<string>("Login");
-
-                    b.Property<string>("Nome");
-
-                    b.Property<string>("Senha");
-
-                    b.Property<int>("Telefone");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EnderecosId");
-
-                    b.ToTable("Cadastros");
-                });
-
-            modelBuilder.Entity("ProjetoBenner.Endereco", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Bairro");
-
-                    b.Property<string>("Cidade");
-
-                    b.Property<int>("Numero");
-
-                    b.Property<string>("Rua");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Endereco");
-                });
 
             modelBuilder.Entity("ProjetoBenner.Models.Agenda", b =>
                 {
@@ -84,7 +42,8 @@ namespace ProjetoBenner.Migrations
 
                     b.Property<string>("Descricao");
 
-                    b.Property<string>("Nome");
+                    b.Property<string>("Nome")
+                        .HasMaxLength(20);
 
                     b.Property<double>("Preco");
 
@@ -100,24 +59,37 @@ namespace ProjetoBenner.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("Data");
+                    b.Property<int>("Tempo");
 
-                    b.Property<string>("Descricao");
+                    b.Property<string>("Tipo");
 
-                    b.Property<DateTime>("HoraInicio");
-
-                    b.Property<DateTime>("HoraTermino");
+                    b.Property<double>("Valor");
 
                     b.HasKey("Id");
 
                     b.ToTable("Servicos");
                 });
 
-            modelBuilder.Entity("ProjetoBenner.Cadastro", b =>
+            modelBuilder.Entity("ProjetoBenner.Usuario", b =>
                 {
-                    b.HasOne("ProjetoBenner.Endereco", "Enderecos")
-                        .WithMany()
-                        .HasForeignKey("EnderecosId");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CPF");
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("Login");
+
+                    b.Property<string>("Nome");
+
+                    b.Property<string>("Senha");
+
+                    b.Property<int>("Telefone");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Usuarios");
                 });
 
             modelBuilder.Entity("ProjetoBenner.Models.Agenda", b =>

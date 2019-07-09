@@ -45,12 +45,6 @@ namespace ProjetoBenner.Controllers
             }
         }
 
-        [Route("produtos/{id}", Name = "VisualizaProduto")]
-        //public ActionResult Visualiza()
-        //{
-            
-        //}
-
         public ActionResult DecrementarQtd(int id)
         {
             ProdutoDAO dao = new ProdutoDAO();
