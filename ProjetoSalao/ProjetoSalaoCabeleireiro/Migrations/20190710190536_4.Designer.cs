@@ -8,9 +8,10 @@ using ProjetoBenner.DAO;
 namespace ProjetoBenner.Migrations
 {
     [DbContext(typeof(SalaoContext))]
-    partial class SalaoContextModelSnapshot : ModelSnapshot
+    [Migration("20190710190536_4")]
+    partial class _4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -124,7 +125,7 @@ namespace ProjetoBenner.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("CPF")
+                    b.Property<int>("CPF")
                         .HasMaxLength(11);
 
                     b.Property<string>("Email");
@@ -135,7 +136,7 @@ namespace ProjetoBenner.Migrations
 
                     b.Property<string>("Senha");
 
-                    b.Property<string>("Telefone")
+                    b.Property<int>("Telefone")
                         .HasMaxLength(12);
 
                     b.HasKey("Id");

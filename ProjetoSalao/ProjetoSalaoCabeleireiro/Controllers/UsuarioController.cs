@@ -24,7 +24,7 @@ namespace ProjetoBenner.Controllers
         [HttpPost]
         public ActionResult AdicionarUsuario(Usuario usuario)
         {
-            if (usuario.Nome == null || usuario.CPF == 0 || usuario.Email == null || usuario.Login == null || usuario.Senha == null)
+            if (usuario.Nome == null || /*usuario.CPF == null*/ /*||*/ /*usuario.Email == null || */usuario.Login == null || usuario.Senha == null)
             {
                 ModelState.AddModelError("usuario.CadastroEmBranco", "Não pode cadastrar um usuario em branco");
             }

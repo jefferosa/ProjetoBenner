@@ -15,6 +15,7 @@ namespace ProjetoBenner.DAO
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Entrada> Entradas { get; set; }
         public DbSet<Saida> Saidas { get; set; }
+        public DbSet<Endereco> Enderecos { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

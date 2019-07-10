@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -8,11 +9,21 @@ namespace ProjetoBenner
     public class Usuario
     {
         public int Id { get; set; }
-        public int CPF { get; set; }
+
+        [MaxLength(11)]
+        public string CPF { get; set; }
+
         public string Nome { get; set; }
-        public int Telefone { get; set; }
+
+        [MaxLength(12)]
+        public string Telefone { get; set; }
+
+        [MinLength(6)]
         public string Senha { get; set; }
+
+        [MinLength(4)]
         public string Login { get; set; }
+
         public string Email { get; set; }
     }
 }
