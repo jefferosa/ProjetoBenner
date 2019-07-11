@@ -16,6 +16,7 @@ namespace ProjetoBenner.DAO
 
         public IList<Servico> ListaServicos()
         {
+            IList<Servico> itens = new List<Servico>();
             using (var context = new SalaoContext())
             {
                 return context.Servicos.ToList();

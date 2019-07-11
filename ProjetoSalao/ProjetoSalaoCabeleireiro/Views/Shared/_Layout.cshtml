@@ -12,36 +12,46 @@
 
     </div>
     <div class="corp">
-        @*<ul class="menu">
-
-                <li>@Html.ActionLink("Página Inicial", "Index", "Home")</li>
-                <li>@Html.ActionLink("Cadastrar Serviço", "Formulario", "Servico")</li>
-                <li>@Html.ActionLink("Cadastrar Produto", "Formulario", "Produto")</li>
-                <li>@Html.ActionLink("Estoque", "Index", "Produto")</li>
-            </ul>*@
-
         <ul class="bg-gradient-primary sidebar menu">
             <li class="nav-item">
                 <a class="nav-link">
-                    <span>@Html.ActionLink("Página Inicial", "Index", "Home")</span>
+                    <span>@Html.ActionLink("Página Inicial", "IndexHome", "Home")</span>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link">
-                    <span>@Html.ActionLink("Cadastrar Serviço", "Formulario", "Servico")</span>
+                    <span>@Html.ActionLink("Cadastrar Serviço", "FormularioServico", "Servico")</span>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link">
-                    <span>@Html.ActionLink("Cadastrar Produto", "Formulario", "Produto")</span>
+                    <span>@Html.ActionLink("Cadastrar Produto", "FormularioProduto", "Produto")</span>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link">
-                    <span>@Html.ActionLink("Estoque", "Index", "Produto")</span>
+                    <span>@Html.ActionLink("Estoque", "IndexProduto", "Produto")</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link">
+                    <span>@Html.ActionLink("Serviços", "IndexServico", "Servico")</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link">
+                    <span>@Html.ActionLink("Criar Conta", "FormularioUsuario", "Usuario")</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link">
+                    <span>@Html.ActionLink("Acessar Conta", "IndexLogin", "Login")</span>
                 </a>
             </li>
         </ul>

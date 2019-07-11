@@ -11,12 +11,12 @@ namespace ProjetoBenner.Controllers
     public class AgendaController : Controller
     {
         // GET: Agenda
-        public ActionResult Index()
+        public ActionResult IndexAgenda()
         {
             return View();
         }
 
-        public ActionResult Formulario()
+        public ActionResult FormularioAgenda()
         {
             ViewBag.Agenda = new Agenda();
             ServicoDAO dao = new ServicoDAO();
@@ -36,14 +36,14 @@ namespace ProjetoBenner.Controllers
             {
                 AgendaDAO dao = new AgendaDAO();
                 dao.AgendarHorario(agenda);
-                return RedirectToAction("Index", "Login");
+                return RedirectToAction("IndexAgenda");
             }
             else
             {
                 ViewBag.Agenda = agenda;
                 ServicoDAO servicoDAO = new ServicoDAO();
                 ViewBag.Servico = servicoDAO.ListaServicos();
-                return View("Formulario");
+                return View("FormularioAgenda");
             }
         }
     }

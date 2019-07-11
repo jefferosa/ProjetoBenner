@@ -1,0 +1,24 @@
+﻿<div id="tb">
+    <table class="table table-hover tb">
+
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Tipo</th>
+                <th>Tempo Estimado</th>
+                <th>Valor</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var servico in ViewBag.Servico)
+            {
+                <tr>
+                    <td>@servico.Id</td>
+                    <td class="tb-td">@servico.Tipo</td>
+                    <td>@servico.Tempo</td>
+                    <td class="tb-td">@servico.Valor</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

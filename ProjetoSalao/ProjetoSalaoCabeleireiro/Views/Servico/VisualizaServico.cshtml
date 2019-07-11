@@ -1,0 +1,8 @@
+﻿<ul class="list-group">
+    <li class="list-group-item">Id: @ViewBag.Servico.Id</li>
+    <li class="list-group-item">Nome: @ViewBag.Servico.Tipo</li>
+    <li class="list-group-item">Quantidade: @ViewBag.Servico.Tempo</li>
+    <li class="list-group-item">Preço: @ViewBag.Servico.Valor</li>
+
+    @Html.RouteLink("Servicos", "Servico/IndexServico")
+</ul>

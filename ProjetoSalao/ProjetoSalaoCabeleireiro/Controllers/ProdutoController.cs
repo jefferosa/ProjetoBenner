@@ -11,15 +11,15 @@ namespace ProjetoBenner.Controllers
     public class ProdutoController : Controller
     {
         // GET: Produto
-        public ActionResult Index()
+        public ActionResult IndexProduto()
         {
             ProdutoDAO dao = new ProdutoDAO();
             IList<Produto> produtos = dao.ListarProdutos();
             ViewBag.Produto = produtos;
-            return View("Index");
+            return View("IndexProduto");
         }
 
-        public ActionResult Formulario()
+        public ActionResult FormularioProduto()
         {
             ViewBag.Produto = new Produto();
             return View();
@@ -36,12 +36,12 @@ namespace ProjetoBenner.Controllers
             {
                 ProdutoDAO dao = new ProdutoDAO();
                 dao.AdicionarProduto(produto);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("IndexProduto");
             }
             else
             {
                 ViewBag.Produto = produto;
-                return View("Formulario");
+                return View("FormularioProduto");
             }
         }
 

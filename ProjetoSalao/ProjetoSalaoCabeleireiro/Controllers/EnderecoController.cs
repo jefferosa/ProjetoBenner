@@ -10,12 +10,12 @@ namespace ProjetoBenner.Controllers
     public class EnderecoController : Controller
     {
         // GET: Endereco
-        public ActionResult Index()
+        public ActionResult IndexEndereco()
         {
             return View();
         }
 
-        public ActionResult Formulario()
+        public ActionResult FormularioEndereco()
         {
             ViewBag.Endereco = new Endereco();
             return View();
@@ -32,12 +32,12 @@ namespace ProjetoBenner.Controllers
             {
                 EnderecoDAO dao = new EnderecoDAO();
                 dao.AdicionarEndereco(endereco);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("IndexHome", "Home");
             }
             else
             {
                 ViewBag.Endereco = endereco;
-                return View("Formulario");
+                return View("FormularioEndereco");
             }
         }
     }

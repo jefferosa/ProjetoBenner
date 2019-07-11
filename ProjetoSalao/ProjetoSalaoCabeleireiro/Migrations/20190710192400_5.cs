@@ -12,7 +12,7 @@ namespace ProjetoBenner.Migrations
                 name: "Telefone",
                 table: "Usuarios",
                 maxLength: 12,
-                nullable: true,
+                nullable: false,
                 oldClrType: typeof(int),
                 oldMaxLength: 12);
 
@@ -20,7 +20,7 @@ namespace ProjetoBenner.Migrations
                 name: "CPF",
                 table: "Usuarios",
                 maxLength: 11,
-                nullable: true,
+                nullable: false,
                 oldClrType: typeof(int),
                 oldMaxLength: 11);
         }

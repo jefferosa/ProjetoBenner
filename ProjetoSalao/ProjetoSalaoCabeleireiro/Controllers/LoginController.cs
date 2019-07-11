@@ -11,7 +11,7 @@ namespace ProjetoBenner.Controllers
     {
 
         // GET: Login
-        public ActionResult Index()
+        public ActionResult IndexLogin()
         {
             return View();
         }
@@ -23,11 +23,11 @@ namespace ProjetoBenner.Controllers
             if (usuario != null)
             {
                 Session["usuarioLogado"] = usuario;
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("IndexHome", "Home");
             }
             else
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("IndexLogin");
             }
         }
     }
