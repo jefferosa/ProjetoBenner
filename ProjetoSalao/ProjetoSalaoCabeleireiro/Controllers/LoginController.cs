@@ -1,4 +1,5 @@
 ﻿using ProjetoBenner.DAO;
+using ProjetoBenner.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,12 +19,21 @@ namespace ProjetoBenner.Controllers
 
         public ActionResult AutenticaLogin(string login, string senha)
         {
-            UsuarioDAO dao = new UsuarioDAO();
-            Usuario usuario = dao.BuscarUsuario(login, senha);
-            if (usuario != null)
+            FuncionarioDAO daoFuncionario = new FuncionarioDAO();
+            Funcionario funcionario = daoFuncionario.BuscarUsuario(login, senha);
+
+            ClienteDAO daoCliente = new ClienteDAO();
+            Cliente cliente = daoCliente.BuscarUsuario(login, senha);
+
+            if (cliente != null)
             {
-                Session["usuarioLogado"] = usuario;
-                return RedirectToAction("IndexHome", "Home");
+                Session["clienteLogado"] = cliente;
+                return RedirectToAction("IndexHomeCliente", "Home");
+            }
+            else if (funcionario != null)
+            {
+                Session["funcionarioLogado"] = funcionario;
+                return RedirectToAction("IndexHomeFuncionario", "Home");
             }
             else
             {

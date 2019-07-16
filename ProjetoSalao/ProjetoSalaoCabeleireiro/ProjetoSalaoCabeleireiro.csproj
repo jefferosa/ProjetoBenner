@@ -229,6 +229,8 @@
     <Content Include="Content\css\reset.css" />
     <Content Include="Content\css\sb-admin-2.min.css" />
     <Content Include="Content\imagens\background.jpg" />
+    <Content Include="Content\imagens\favicon.ico" />
+    <Content Include="Content\imagens\Logo.png" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -243,9 +245,10 @@
     <Compile Include="Controllers\ServicoController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="DAO\AgendaDAO.cs" />
+    <Compile Include="DAO\ClienteDAO.cs" />
     <Compile Include="DAO\ControleFinanceiroDAO.cs" />
     <Compile Include="DAO\EnderecoDAO.cs" />
-    <Compile Include="DAO\UsuarioDAO.cs" />
+    <Compile Include="DAO\FuncionarioDAO.cs" />
     <Compile Include="DAO\ProdutoDAO.cs" />
     <Compile Include="DAO\SalaoContext.cs" />
     <Compile Include="DAO\ServicoDAO.cs" />
@@ -272,9 +275,15 @@
     <Compile Include="Migrations\20190710192400_5.designer.cs">
       <DependentUpon>20190710192400_5.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190716191204_6.cs" />
+    <Compile Include="Migrations\20190716191204_6.designer.cs">
+      <DependentUpon>20190716191204_6.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\SalaoContextModelSnapshot.cs" />
     <Compile Include="Models\Agenda.cs" />
+    <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Entrada.cs" />
+    <Compile Include="Models\Funcionario.cs" />
     <Compile Include="Models\Saida.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\Produto.cs" />
@@ -287,19 +296,21 @@
     <Content Include="Views\web.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\IndexHome.cshtml" />
+    <Content Include="Views\Home\IndexHomeCliente.cshtml" />
     <Content Include="Views\Servico\IndexServico.cshtml" />
     <Content Include="Views\Servico\FormularioServico.cshtml" />
     <Content Include="Views\Login\IndexLogin.cshtml" />
     <Content Include="Views\Produto\IndexProduto.cshtml" />
     <Content Include="Views\Produto\FormularioProduto.cshtml" />
     <Content Include="Views\Produto\Visualiza.cshtml" />
-    <Content Include="Views\Usuario\FormularioUsuario.cshtml" />
+    <Content Include="Views\Usuario\FormularioCliente.cshtml" />
     <Content Include="Views\Usuario\IndexUsuario.cshtml" />
     <Content Include="Views\Agenda\FormularioAgenda.cshtml" />
     <Content Include="Views\Endereco\FormularioEndereco.cshtml" />
     <Content Include="Views\Servico\VisualizaServico.cshtml" />
     <Content Include="Views\Agenda\IndexAgenda.cshtml" />
+    <Content Include="Views\Home\IndexHomeFuncionario.cshtml" />
+    <Content Include="Views\Usuario\FormularioFuncionario.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

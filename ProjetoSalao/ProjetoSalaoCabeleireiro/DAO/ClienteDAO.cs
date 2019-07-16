@@ -5,38 +5,38 @@ using System.Web;
 
 namespace ProjetoBenner.DAO
 {
-    public class UsuarioDAO
+    public class ClienteDAO
     {
-        public void AdicionarUsuario(Usuario usuario)
+        public void AdicionarCliente(Cliente cliente)
         {
             using (var context = new SalaoContext())
             {
-                context.Usuarios.Add(usuario);
+                context.Clientes.Add(cliente);
                 context.SaveChanges();
             }
         }
 
-        public IList<Usuario> ListarUsuarios()
+        public IList<Cliente> ListarClientes()
         {
             using (var context = new SalaoContext())
             {
-                return context.Usuarios.ToList();
+                return context.Clientes.ToList();
             }
         }
 
-        public Usuario BuscarUsuarioId(int id)
+        public Cliente BuscarClienteId(int id)
         {
             using (var context = new SalaoContext())
             {
-                return context.Usuarios.Find(id);
+                return context.Clientes.Find(id);
             }
         }
 
-        public Usuario BuscarUsuario(string login, string senha)
+        public Cliente BuscarUsuario(string login, string senha)
         {
             using (var context = new SalaoContext())
             {
-                return context.Usuarios.FirstOrDefault(u => u.Login == login && u.Senha == senha);
+                return context.Clientes.FirstOrDefault(u => u.Login == login && u.Senha == senha);
             }
         }
     }

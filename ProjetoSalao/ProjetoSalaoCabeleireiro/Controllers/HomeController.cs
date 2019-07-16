@@ -11,7 +11,12 @@ namespace ProjetoBenner.Controllers
     public class HomeController : Controller
     {
         // GET: Home
-        public ActionResult IndexHome()
+        public ActionResult IndexHomeCliente()
+        {
+            return View();
+        }
+
+        public ActionResult IndexHomeFuncionario()
         {
             return View();
         }

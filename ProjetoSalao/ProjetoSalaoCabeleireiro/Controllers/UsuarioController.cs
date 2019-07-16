@@ -1,4 +1,5 @@
 ﻿using ProjetoBenner.DAO;
+using ProjetoBenner.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,34 +11,59 @@ namespace ProjetoBenner.Controllers
     public class UsuarioController : Controller
     {
         // GET: Usuario
-        public ActionResult IndexUsuario()
+        public ActionResult IndexCliente()
         {
             return View();
         }
 
-        public ActionResult FormularioUsuario()
+        public ActionResult FormularioCliente()
         {
-            ViewBag.Usuario = new Usuario();
+            ViewBag.Cliente = new Cliente();
+            return View();
+        }
+
+        public ActionResult FormularioFuncionario()
+        {
+            ViewBag.Cliente = new Cliente();
             return View();
         }
 
         [HttpPost]
-        public ActionResult AdicionarUsuario(Usuario usuario)
+        public ActionResult AdicionarCliente(Cliente cliente)
         {
-            if (usuario.Nome == null || usuario.CPF == null ||usuario.Email == null || usuario.Login == null || usuario.Senha == null)
+            if (cliente.Nome == null || cliente.CPF == null ||cliente.Email == null || cliente.Login == null || cliente.Senha == null)
             {
                 ModelState.AddModelError("usuario.CadastroEmBranco", "Não pode cadastrar um usuario em branco");
             }
             if (ModelState.IsValid)
             {
-                UsuarioDAO dao = new UsuarioDAO();
-                dao.AdicionarUsuario(usuario);
+                ClienteDAO dao = new ClienteDAO();
+                dao.AdicionarCliente(cliente);
                 return RedirectToAction("IndexLogin", "Login");
             }
             else
             {
-                ViewBag.Usuario = usuario;
-                return View("FormularioUsuario");
+                ViewBag.Cliente = cliente;
+                return View("FormularioCliente");
+            }
+        }
+
+        public ActionResult AdicionarFuncionario(Funcionario funcionario)
+        {
+            if (funcionario.Nome == null || funcionario.CPF == null || funcionario.Email == null || funcionario.Login == null || funcionario.Senha == null)
+            {
+                ModelState.AddModelError("usuario.CadastroEmBranco", "Não pode cadastrar um usuario em branco");
+            }
+            if (ModelState.IsValid)
+            {
+                FuncionarioDAO dao = new FuncionarioDAO();
+                dao.AdicionarFuncionario(funcionario);
+                return RedirectToAction("IndexLogin", "Login");
+            }
+            else
+            {
+                ViewBag.Funcionario = funcionario;
+                return View("FormularioFuncionario");
             }
         }
     }

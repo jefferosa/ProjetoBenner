@@ -8,9 +8,10 @@ using ProjetoBenner.DAO;
 namespace ProjetoBenner.Migrations
 {
     [DbContext(typeof(SalaoContext))]
-    partial class SalaoContextModelSnapshot : ModelSnapshot
+    [Migration("20190716191204_6")]
+    partial class _6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
