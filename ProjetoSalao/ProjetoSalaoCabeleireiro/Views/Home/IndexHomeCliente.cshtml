@@ -1,19 +1,29 @@
-﻿<ul class="bg-gradient-primary sidebar menu">
-    <li class="nav-item">
-        <a class="nav-link">
-            <span>@Html.ActionLink("Página Inicial", "IndexHome", "Home")</span>
-        </a>
-    </li>
+﻿<div class="page-header navbar-fixed-top navbar">
 
-    <li class="nav-item">
-        <a class="nav-link">
-            <span>@Html.ActionLink("Criar Conta", "FormularioCliente", "Usuario")</span>
-        </a>
-    </li>
+</div>
+<div class="page-container">
+    <div class="page-content-wrapper">
+        <ul class="bg-gradient-primary sidebar menu">
+            <li class="nav-item">
+                <a class="nav-link">
+                    <span>@Html.ActionLink("Página Inicial", "IndexHome", "Home")</span>
+                </a>
+            </li>
 
-    <li class="nav-item">
-        <a class="nav-link">
-            <span>@Html.ActionLink("Acessar Conta", "IndexLogin", "Login")</span>
-        </a>
-    </li>
-</ul>
+            <li class="nav-item">
+                <a class="nav-link">
+                    <span>@Html.ActionLink("Criar Conta", "FormularioCliente", "Usuario")</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link">
+                    <span>@Html.ActionLink("Acessar Conta", "IndexLogin", "Login")</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<footer class="page-footer-inner">
+    &copy;
+</footer>

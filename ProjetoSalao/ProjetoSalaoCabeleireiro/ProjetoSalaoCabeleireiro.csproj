@@ -224,8 +224,6 @@
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\Estilo.css" />
-    <Content Include="Content\css\freelancer.css" />
-    <Content Include="Content\css\freelancer.min.css" />
     <Content Include="Content\css\reset.css" />
     <Content Include="Content\css\sb-admin-2.min.css" />
     <Content Include="Content\imagens\servicoIMG3.png" />
