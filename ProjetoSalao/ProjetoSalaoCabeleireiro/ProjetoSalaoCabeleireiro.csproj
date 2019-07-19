@@ -240,6 +240,7 @@
     <Compile Include="Controllers\AgendaController.cs" />
     <Compile Include="Controllers\ControleFinanceiroController.cs" />
     <Compile Include="Controllers\EnderecoController.cs" />
+    <Compile Include="Controllers\GaleriaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
@@ -250,6 +251,7 @@
     <Compile Include="DAO\ControleFinanceiroDAO.cs" />
     <Compile Include="DAO\EnderecoDAO.cs" />
     <Compile Include="DAO\FuncionarioDAO.cs" />
+    <Compile Include="DAO\GaleriaDAO.cs" />
     <Compile Include="DAO\ProdutoDAO.cs" />
     <Compile Include="DAO\SalaoContext.cs" />
     <Compile Include="DAO\ServicoDAO.cs" />
@@ -280,11 +282,16 @@
     <Compile Include="Migrations\20190716191204_6.designer.cs">
       <DependentUpon>20190716191204_6.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190718171951_7.cs" />
+    <Compile Include="Migrations\20190718171951_7.designer.cs">
+      <DependentUpon>20190718171951_7.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\SalaoContextModelSnapshot.cs" />
     <Compile Include="Models\Agenda.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Entrada.cs" />
     <Compile Include="Models\Funcionario.cs" />
+    <Compile Include="Models\Galeria.cs" />
     <Compile Include="Models\Saida.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\Produto.cs" />
@@ -312,6 +319,9 @@
     <Content Include="Views\Agenda\IndexAgenda.cshtml" />
     <Content Include="Views\Home\IndexHomeFuncionario.cshtml" />
     <Content Include="Views\Usuario\FormularioFuncionario.cshtml" />
+    <Content Include="Views\Usuario\FormularioPerfilCliente.cshtml" />
+    <Content Include="Views\Usuario\FormularioPerfilFuncionario.cshtml" />
+    <Content Include="Views\Galeria\IndexGaleria.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

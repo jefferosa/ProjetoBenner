@@ -1,0 +1,76 @@
+﻿@using ProjetoBenner.Models;
+
+<div class="page-header navbar-fixed-top navbar">
+    <img class="Logo" src="~/Content/imagens/Logo.png" />
+</div>
+
+<div class="page-container">
+    <div class="page-content-wrapper">
+
+        <ul class="bg-gradient-primary sidebar menu">
+            <li class="nav-item">
+                <a class="nav-link">
+                    <span>@Html.ActionLink("Galeria", "IndexGaleria", "Galeria")</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link">
+                    <span>@Html.ActionLink("Estoque", "IndexProduto", "Produto")</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link">
+                    <span>@Html.ActionLink("Serviços", "IndexServico", "Servico")</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link">
+                    <span>@Html.ActionLink("Perfil", "FormularioPerfilFuncionario", "Usuario")</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="formulario">
+            <form class="navbar-search form">
+
+                @if (Session["FuncionarioLogado"] != null)
+                {
+                    var funcionario = Session["FuncionarioLogado"] as Funcionario;
+
+                    if (funcionario.Endereco != null)
+                    {
+                        <label class="form-control" for="nome">Nome: @funcionario.Nome</label>
+                        <label class="form-control" for="cpf">CPF: @funcionario.CPF</label>
+                        <label class="form-control" for="telefone">Telefone: @funcionario.Telefone</label>
+                        <label class="form-control" for="email">Email: @funcionario.Email</label>
+
+                        <label class="form-control" for="cidade">Cidade: @funcionario.Endereco.Cidade</label>
+                        <label class="form-control" for="bairro">Bairro: @funcionario.Endereco.Bairro</label>
+                        <label class="form-control" for="rua">Rua: @funcionario.Endereco.Rua</label>
+                        <label class="form-control" for="numero">Numero: @funcionario.Endereco.Numero</label>
+                    }
+                    else
+                    {
+                        <label class="form-control" for="nome">Nome: @funcionario.Nome</label>
+                        <label class="form-control" for="cpf">CPF: @funcionario.CPF</label>
+                        <label class="form-control" for="telefone">Telefone: @funcionario.Telefone</label>
+                        <label class="form-control" for="email">Email: @funcionario.Email</label>
+
+                        <label class="form-control" for="cidade">Cidade: </label>
+                        <label class="form-control" for="bairro">Bairro: </label>
+                        <label class="form-control" for="rua">Rua: </label>
+                        <label class="form-control" for="numero">Numero: </label>
+                    }
+                }
+            </form>
+        </div>
+        <span>@Html.ActionLink("Alterar Dados", "FormularioEndereco", "Endereco", new object { }, new { @style = "color: black;" })</span>
+    </div>
+</div>
+
+<footer class="page-footer-inner">
+    &copy;
+</footer>

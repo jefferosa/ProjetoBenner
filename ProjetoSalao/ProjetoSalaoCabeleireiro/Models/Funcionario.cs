@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ProjetoBenner.Models
 {
-    public class Funcionario : ProjetoBenner.Cliente
+    public class Funcionario : Usuario
     {
 
     }

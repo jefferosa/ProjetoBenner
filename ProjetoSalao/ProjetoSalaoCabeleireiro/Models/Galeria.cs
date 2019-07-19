@@ -5,8 +5,8 @@ using System.Web;
 
 namespace ProjetoBenner.Models
 {
-    public class Cliente : Usuario
+    public class Galeria
     {
-
+        public int Id { get; set; }
     }
 }

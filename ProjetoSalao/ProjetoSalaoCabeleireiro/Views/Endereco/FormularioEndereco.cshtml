@@ -1,17 +1,23 @@
-﻿
-@{
-    Layout = null;
-}
+﻿<div class="formulario">
+    <form action="/Endereco/AdicionarEndereco" method="post" class="navbar-search form">
+        <label for="cidade">Cidade:</label>
+        <input id="cidade" name="endereco.Cidade" value="@ViewBag.Endereco.Cidade" class="form-control" />
 
-<!DOCTYPE html>
+        <label for="bairro">Bairro:</label>
+        <input id="bairro" name="endereco.Bairro" value="@ViewBag.Endereco.Bairro" class="form-control" />
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Formulario</title>
-</head>
-<body>
-    <div> 
-    </div>
-</body>
-</html>
+        <label for="rua">Rua:</label>
+        <input id="rua" name="endereco.Rua" value="@ViewBag.Endereco.Rua" class="form-control" />
+
+        <label for="numero">Numero:</label>
+        <input id="numero" name="endereco.Numero" value="@ViewBag.Produto.Preco" class="form-control" />
+
+        <div class="input-group">
+            <div class="input-group-append">
+                <button class="btn btn-primary botao" type="submit">
+                    <i class="fas fa-search fa-sm">Cadastrar</i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

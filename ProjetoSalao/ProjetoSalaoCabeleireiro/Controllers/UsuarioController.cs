@@ -16,6 +16,19 @@ namespace ProjetoBenner.Controllers
             return View();
         }
 
+        public ActionResult FormularioPerfilCliente()
+        {
+            return View("FormularioPerfilCliente");
+        }
+
+        public ActionResult FormularioPerfilFuncionario()
+        {
+            FuncionarioDAO dao = new FuncionarioDAO();
+            IList<Funcionario> funcionarios = dao.ListarFuncionarios();
+            ViewBag.Funcionario = funcionarios;
+            return View("FormularioPerfilFuncionario");
+        }
+
         public ActionResult FormularioCliente()
         {
             ViewBag.Cliente = new Cliente();
@@ -24,14 +37,14 @@ namespace ProjetoBenner.Controllers
 
         public ActionResult FormularioFuncionario()
         {
-            ViewBag.Cliente = new Cliente();
+            ViewBag.Funcionario = new Funcionario();
             return View();
         }
 
         [HttpPost]
         public ActionResult AdicionarCliente(Cliente cliente)
         {
-            if (cliente.Nome == null || cliente.CPF == null ||cliente.Email == null || cliente.Login == null || cliente.Senha == null)
+            if (cliente.Nome == null || cliente.CPF == null || cliente.Email == null || cliente.Login == null || cliente.Senha == null)
             {
                 ModelState.AddModelError("usuario.CadastroEmBranco", "Não pode cadastrar um usuario em branco");
             }

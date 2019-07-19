@@ -7,7 +7,7 @@ using System.Web;
 
 namespace ProjetoBenner
 {
-    public class Cliente
+    public class Usuario
     {
         public int Id { get; set; }
 

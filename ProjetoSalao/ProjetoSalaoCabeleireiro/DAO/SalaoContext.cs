@@ -10,6 +10,7 @@ namespace ProjetoBenner.DAO
     public class SalaoContext : DbContext
     {
         public DbSet<Funcionario> Funcionarios { get; set; }
+        public DbSet<Galeria> Galeria { get; set; }
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Servico> Servicos { get; set; }
         public DbSet<Agenda> Agenda { get; set; }

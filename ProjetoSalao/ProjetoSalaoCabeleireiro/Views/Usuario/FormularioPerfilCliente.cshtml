@@ -1,0 +1,36 @@
+﻿@using ProjetoBenner.Models;
+
+<div class="formulario">
+    <form class="navbar-search form">
+
+        @if (Session["ClienteLogado"] != null)
+        {
+            var cliente = Session["ClienteLogado"] as Cliente;
+
+            if (cliente.Endereco != null)
+            {
+                <label class="form-control" for="nome">Nome: @cliente.Nome</label>
+                <label class="form-control" for="cpf">CPF: @cliente.CPF</label>
+                <label class="form-control" for="telefone">Telefone: @cliente.Telefone</label>
+                <label class="form-control" for="email">Email: @cliente.Email</label>
+
+                <label class="form-control" for="cidade">Cidade: @cliente.Endereco.Cidade</label>
+                <label class="form-control" for="bairro">Bairro: @cliente.Endereco.Bairro</label>
+                <label class="form-control" for="rua">Rua: @cliente.Endereco.Rua</label>
+                <label class="form-control" for="numero">Numero: @cliente.Endereco.Numero</label>
+            }
+            else
+            {
+                <label class="form-control" for="nome">Nome: @cliente.Nome</label>
+                <label class="form-control" for="cpf">CPF: @cliente.CPF</label>
+                <label class="form-control" for="telefone">Telefone: @cliente.Telefone</label>
+                <label class="form-control" for="email">Email: @cliente.Email</label>
+
+                <label class="form-control" for="cidade">Cidade: </label>
+                <label class="form-control" for="bairro">Bairro: </label>
+                <label class="form-control" for="rua">Rua: </label>
+                <label class="form-control" for="numero">Numero: </label>
+            }
+        }
+    </form>
+</div>

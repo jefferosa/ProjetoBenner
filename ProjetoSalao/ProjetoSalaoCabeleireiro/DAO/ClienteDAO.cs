@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjetoBenner.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,6 +19,7 @@ namespace ProjetoBenner.DAO
 
         public IList<Cliente> ListarClientes()
         {
+            IList<Cliente> itens = new List<Cliente>();
             using (var context = new SalaoContext())
             {
                 return context.Clientes.ToList();

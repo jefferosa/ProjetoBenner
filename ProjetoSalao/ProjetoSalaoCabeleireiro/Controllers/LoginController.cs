@@ -19,26 +19,37 @@ namespace ProjetoBenner.Controllers
 
         public ActionResult AutenticaLogin(string login, string senha)
         {
-            FuncionarioDAO daoFuncionario = new FuncionarioDAO();
-            Funcionario funcionario = daoFuncionario.BuscarUsuario(login, senha);
-
             ClienteDAO daoCliente = new ClienteDAO();
             Cliente cliente = daoCliente.BuscarUsuario(login, senha);
 
             if (cliente != null)
             {
-                Session["clienteLogado"] = cliente;
+                Session["ClienteLogado"] = cliente;
                 return RedirectToAction("IndexHomeCliente", "Home");
             }
-            else if (funcionario != null)
+
+            FuncionarioDAO daoFuncionario = new FuncionarioDAO();
+            Funcionario funcionario = daoFuncionario.BuscarUsuario(login, senha);
+
+            if (funcionario != null)
             {
-                Session["funcionarioLogado"] = funcionario;
+                Session["FuncionarioLogado"] = funcionario;
                 return RedirectToAction("IndexHomeFuncionario", "Home");
             }
             else
             {
                 return RedirectToAction("IndexLogin");
             }
+        }
+
+        public void Teste()
+        {
+            //List<Horario> list =  { cliente= 1, horarioinicio: 8 , horariofim: 9}
+            //                      { cliente= 2, horarioinicio: 9:30 , horariofim: 9}
+            //
+
+            //item[i].horariofim == item[i + 1]
+            //else item
         }
     }
 }

@@ -26,13 +26,6 @@ namespace ProjetoBenner.DAO
             {
                 return context.Produtos.ToList();
             }
-            //    foreach (Produto p in context.Produtos)
-            //    {
-                    
-            //        itens.Add(p);
-            //    }
-            //}
-             //   return itens;
         }
 
         public Produto BuscarProdutoId(int id)
