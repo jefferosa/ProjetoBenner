@@ -42,14 +42,10 @@ namespace ProjetoBenner.Controllers
             }
         }
 
-        public void Teste()
+        public ActionResult FazerLogout()
         {
-            //List<Horario> list =  { cliente= 1, horarioinicio: 8 , horariofim: 9}
-            //                      { cliente= 2, horarioinicio: 9:30 , horariofim: 9}
-            //
-
-            //item[i].horariofim == item[i + 1]
-            //else item
+            Session.Clear();
+            return RedirectToAction("IndexLogin");
         }
     }
 }

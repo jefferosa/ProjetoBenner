@@ -286,6 +286,10 @@
     <Compile Include="Migrations\20190718171951_7.designer.cs">
       <DependentUpon>20190718171951_7.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190719201710_8.cs" />
+    <Compile Include="Migrations\20190719201710_8.designer.cs">
+      <DependentUpon>20190719201710_8.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\SalaoContextModelSnapshot.cs" />
     <Compile Include="Models\Agenda.cs" />
     <Compile Include="Models\Cliente.cs" />
@@ -319,8 +323,8 @@
     <Content Include="Views\Agenda\IndexAgenda.cshtml" />
     <Content Include="Views\Home\IndexHomeFuncionario.cshtml" />
     <Content Include="Views\Usuario\FormularioFuncionario.cshtml" />
-    <Content Include="Views\Usuario\FormularioPerfilCliente.cshtml" />
-    <Content Include="Views\Usuario\FormularioPerfilFuncionario.cshtml" />
+    <Content Include="Views\Usuario\PerfilCliente.cshtml" />
+    <Content Include="Views\Usuario\PerfilFuncionario.cshtml" />
     <Content Include="Views\Galeria\IndexGaleria.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

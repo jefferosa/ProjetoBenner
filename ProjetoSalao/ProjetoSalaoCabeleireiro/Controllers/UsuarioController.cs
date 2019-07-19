@@ -16,17 +16,14 @@ namespace ProjetoBenner.Controllers
             return View();
         }
 
-        public ActionResult FormularioPerfilCliente()
+        public ActionResult PerfilCliente()
         {
-            return View("FormularioPerfilCliente");
+            return View("PerfilCliente");
         }
 
-        public ActionResult FormularioPerfilFuncionario()
+        public ActionResult PerfilFuncionario()
         {
-            FuncionarioDAO dao = new FuncionarioDAO();
-            IList<Funcionario> funcionarios = dao.ListarFuncionarios();
-            ViewBag.Funcionario = funcionarios;
-            return View("FormularioPerfilFuncionario");
+            return View("PerfilFuncionario");
         }
 
         public ActionResult FormularioCliente()

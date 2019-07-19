@@ -1,15 +1,10 @@
 ﻿<div class="page-header navbar-fixed-top navbar">
-
+    <img class="Logo" src="~/Content/imagens/Logo.png" />
+    <span>@Html.ActionLink("Logout", "FazerLogout", "Login")</span>
 </div>
 <div class="page-container">
     <div class="page-content-wrapper">
         <ul class="bg-gradient-primary sidebar menu">
-            <li class="nav-item">
-                <a class="nav-link">
-                    <span>@Html.ActionLink("Página Inicial", "IndexHome", "Home")</span>
-                </a>
-            </li>
-
             <li class="nav-item">
                 <a class="nav-link">
                     <span>@Html.ActionLink("Galeria", "IndexGaleria", "Galeria")</span>
@@ -18,7 +13,13 @@
 
             <li class="nav-item">
                 <a class="nav-link">
-                    <span>@Html.ActionLink("Perfil", "FormularioPerfilCliente", "Usuario")</span>
+                    <span>@Html.ActionLink("Perfil", "PerfilCliente", "Usuario")</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link">
+                    <span>@Html.ActionLink("Agendar Horário", "FormularioAgenda", "Agenda")</span>
                 </a>
             </li>
         </ul>

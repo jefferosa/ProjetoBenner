@@ -1,5 +1,6 @@
 ﻿<div class="page-header navbar-fixed-top navbar">
-
+    <img class="Logo" src="~/Content/imagens/Logo.png" />
+    <span>@Html.ActionLink("Logout", "FazerLogout", "Login")</span>
 </div>
 
 <div class="page-container">
@@ -25,7 +26,7 @@
 
             <li class="nav-item">
                 <a class="nav-link">
-                    <span>@Html.ActionLink("Perfil", "FormularioPerfilFuncionario", "Usuario")</span>
+                    <span>@Html.ActionLink("Perfil", "PerfilFuncionario", "Usuario")</span>
                 </a>
             </li>
         </ul>

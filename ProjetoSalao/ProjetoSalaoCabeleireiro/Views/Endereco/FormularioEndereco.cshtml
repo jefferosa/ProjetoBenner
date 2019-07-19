@@ -1,5 +1,8 @@
 ﻿<div class="formulario">
     <form action="/Endereco/AdicionarEndereco" method="post" class="navbar-search form">
+        <label for="cep">CEP:</label>
+        <input id="cep" name="endereco.CEP" value="@ViewBag.Endereco.CEP" class="form-control" />
+
         <label for="cidade">Cidade:</label>
         <input id="cidade" name="endereco.Cidade" value="@ViewBag.Endereco.Cidade" class="form-control" />
 
@@ -10,7 +13,7 @@
         <input id="rua" name="endereco.Rua" value="@ViewBag.Endereco.Rua" class="form-control" />
 
         <label for="numero">Numero:</label>
-        <input id="numero" name="endereco.Numero" value="@ViewBag.Produto.Preco" class="form-control" />
+        <input id="numero" name="endereco.Numero" value="@ViewBag.Endereco.Numero" class="form-control" />
 
         <div class="input-group">
             <div class="input-group-append">

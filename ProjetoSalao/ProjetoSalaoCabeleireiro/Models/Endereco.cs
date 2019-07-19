@@ -10,6 +10,7 @@ namespace ProjetoBenner
     public class Endereco
     {
         public int Id { get; set; }
+        public int CEP { get; set; }
         public int Numero { get; internal set; }
         public string Rua { get; internal set; }
         public string Bairro { get; internal set; }

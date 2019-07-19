@@ -1,0 +1,100 @@
+﻿@using ProjetoBenner.Models;
+
+<div class="page-header navbar-fixed-top navbar">
+    <img class="Logo" src="~/Content/imagens/Logo.png" />
+    <span>@Html.ActionLink("Logout", "FazerLogout", "Login")</span>
+</div>
+
+<div class="page-container">
+    <div class="page-content-wrapper">
+
+        <ul class="bg-gradient-primary sidebar menu">
+            
+            <li class="nav-item">
+                <a class="nav-link">
+                    <span>@Html.ActionLink("Inicio", "IndexHomeFuncionario", "Home")</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link">
+                    <span>@Html.ActionLink("Galeria", "IndexGaleria", "Galeria")</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link">
+                    <span>@Html.ActionLink("Estoque", "IndexProduto", "Produto")</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link">
+                    <span>@Html.ActionLink("Serviços", "IndexServico", "Servico")</span>
+                </a>
+            </li>
+
+        </ul>
+
+        <div class="formulario">
+            <form class="navbar-search form">
+
+                @if (Session["FuncionarioLogado"] != null)
+                {
+                    var funcionario = Session["FuncionarioLogado"] as Funcionario;
+
+                    if (funcionario.Endereco != null)
+                    {
+                        <label for="nome">Nome:</label>
+                        <label class="form-control" for="nome">@funcionario.Nome</label>
+                        <label for="cpf">CPF:</label>
+                        <label class="form-control" for="cpf">@funcionario.CPF</label>
+                        <label for="telefone">Telefone:</label>
+                        <label class="form-control" for="telefone">@funcionario.Telefone</label>
+                        <label for="email">Email:</label>
+                        <label class="form-control" for="email">@funcionario.Email</label>
+
+                        <label for="cep">CEP: </label>
+                        <label class="form-control" for="cep">@funcionario.Endereco.CEP</label>
+                        <label for="cidade">Cidade: </label>
+                        <label class="form-control" for="cidade">@funcionario.Endereco.Cidade</label>
+                        <label for="bairro">Bairro: </label>
+                        <label class="form-control" for="bairro">@funcionario.Endereco.Bairro</label>
+                        <label for="rua">Rua: </label>
+                        <label class="form-control" for="rua">@funcionario.Endereco.Rua</label>
+                        <label for="numero">Numero: </label>
+                        <label class="form-control" for="numero">@funcionario.Endereco.Numero</label>
+                    }
+                    else
+                    {
+                        <label for="nome">Nome:</label>
+                        <label class="form-control" for="nome">@funcionario.Nome</label>
+                        <label for="cpf">CPF:</label>
+                        <label class="form-control" for="cpf">@funcionario.CPF</label>
+                        <label for="telefone">Telefone:</label>
+                        <label class="form-control" for="telefone">@funcionario.Telefone</label>
+                        <label for="email">Email:</label>
+                        <label class="form-control" for="email">@funcionario.Email</label>
+
+                        <label for="cep">CEP: </label>
+                        <label class="form-control" for="cep"></label>
+                        <label for="cidade">Cidade: </label>
+                        <label class="form-control" for="cidade"></label>
+                        <label for="bairro">Bairro: </label>
+                        <label class="form-control" for="bairro"></label>
+                        <label for="rua">Rua: </label>
+                        <label class="form-control" for="rua"></label>
+                        <label for="numero">Numero: </label>
+                        <label class="form-control" for="numero"></label>
+                    }
+                }
+
+                <span>@Html.ActionLink("Alterar Dados", "FormularioEndereco", "Endereco", new object { }, new { @style = "color: white;" })</span>
+            </form>
+        </div>
+    </div>
+</div>
+
+<footer class="page-footer-inner">
+    &copy;
+</footer>
