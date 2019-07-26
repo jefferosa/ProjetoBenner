@@ -15,5 +15,6 @@ namespace ProjetoBenner
         public string Rua { get; internal set; }
         public string Bairro { get; internal set; }
         public string Cidade { get; internal set; }
+        public string UF { get; set; }
     }
 }

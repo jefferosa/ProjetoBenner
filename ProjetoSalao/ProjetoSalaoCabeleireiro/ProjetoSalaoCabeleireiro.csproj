@@ -232,6 +232,7 @@
     <Content Include="Content\imagens\background.jpg" />
     <Content Include="Content\imagens\favicon.ico" />
     <Content Include="Content\imagens\Logo.png" />
+    <Content Include="Content\js\viaCEP.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -286,9 +287,9 @@
     <Compile Include="Migrations\20190718171951_7.designer.cs">
       <DependentUpon>20190718171951_7.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20190719201710_8.cs" />
-    <Compile Include="Migrations\20190719201710_8.designer.cs">
-      <DependentUpon>20190719201710_8.cs</DependentUpon>
+    <Compile Include="Migrations\20190726191921_8.cs" />
+    <Compile Include="Migrations\20190726191921_8.designer.cs">
+      <DependentUpon>20190726191921_8.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\SalaoContextModelSnapshot.cs" />
     <Compile Include="Models\Agenda.cs" />
