@@ -8,36 +8,14 @@ using ProjetoBenner.DAO;
 namespace ProjetoBenner.Migrations
 {
     [DbContext(typeof(SalaoContext))]
-    [Migration("20190726191921_8")]
-    partial class _8
+    [Migration("20190730202359_2")]
+    partial class _2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("ProjetoBenner.Endereco", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Bairro");
-
-                    b.Property<int>("CEP");
-
-                    b.Property<string>("Cidade");
-
-                    b.Property<int>("Numero");
-
-                    b.Property<string>("Rua");
-
-                    b.Property<string>("UF");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Enderecos");
-                });
 
             modelBuilder.Entity("ProjetoBenner.Models.Agenda", b =>
                 {
@@ -64,27 +42,35 @@ namespace ProjetoBenner.Migrations
 
                     b.Property<int?>("AgendaId");
 
+                    b.Property<string>("Bairro");
+
+                    b.Property<int>("CEP");
+
                     b.Property<string>("CPF")
                         .HasMaxLength(11);
 
-                    b.Property<string>("Email");
+                    b.Property<string>("Cidade");
 
-                    b.Property<int?>("EnderecoId");
+                    b.Property<string>("Email");
 
                     b.Property<string>("Login");
 
                     b.Property<string>("Nome");
+
+                    b.Property<int>("Numero");
+
+                    b.Property<string>("Rua");
 
                     b.Property<string>("Senha");
 
                     b.Property<string>("Telefone")
                         .HasMaxLength(12);
 
+                    b.Property<string>("UF");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AgendaId");
-
-                    b.HasIndex("EnderecoId");
 
                     b.ToTable("Clientes");
                 });
@@ -112,27 +98,35 @@ namespace ProjetoBenner.Migrations
 
                     b.Property<int?>("AgendaId");
 
+                    b.Property<string>("Bairro");
+
+                    b.Property<int>("CEP");
+
                     b.Property<string>("CPF")
                         .HasMaxLength(11);
 
-                    b.Property<string>("Email");
+                    b.Property<string>("Cidade");
 
-                    b.Property<int?>("EnderecoId");
+                    b.Property<string>("Email");
 
                     b.Property<string>("Login");
 
                     b.Property<string>("Nome");
+
+                    b.Property<int>("Numero");
+
+                    b.Property<string>("Rua");
 
                     b.Property<string>("Senha");
 
                     b.Property<string>("Telefone")
                         .HasMaxLength(12);
 
+                    b.Property<string>("UF");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AgendaId");
-
-                    b.HasIndex("EnderecoId");
 
                     b.ToTable("Funcionarios");
                 });
@@ -210,10 +204,6 @@ namespace ProjetoBenner.Migrations
                     b.HasOne("ProjetoBenner.Models.Agenda", "Agenda")
                         .WithMany()
                         .HasForeignKey("AgendaId");
-
-                    b.HasOne("ProjetoBenner.Endereco", "Endereco")
-                        .WithMany()
-                        .HasForeignKey("EnderecoId");
                 });
 
             modelBuilder.Entity("ProjetoBenner.Models.Funcionario", b =>
@@ -221,10 +211,6 @@ namespace ProjetoBenner.Migrations
                     b.HasOne("ProjetoBenner.Models.Agenda", "Agenda")
                         .WithMany()
                         .HasForeignKey("AgendaId");
-
-                    b.HasOne("ProjetoBenner.Endereco", "Endereco")
-                        .WithMany()
-                        .HasForeignKey("EnderecoId");
                 });
         }
     }

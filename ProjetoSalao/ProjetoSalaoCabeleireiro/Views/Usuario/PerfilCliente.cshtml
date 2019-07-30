@@ -2,7 +2,7 @@
 
 <div class="page-header navbar-fixed-top navbar">
     <img class="Logo" src="~/Content/imagens/Logo.png" />
-    <span>@Html.ActionLink("Logout", "FazerLogout", "Login")</span>
+    <span class="logout">@Html.ActionLink("Logout", "FazerLogout", "Login", new object { }, new { @class = "logout" })</span>
 </div>
 <div class="page-container">
     <div class="page-content-wrapper">
@@ -34,94 +34,48 @@
                 @if (Session["ClienteLogado"] != null)
                 {
                     var cliente = Session["ClienteLogado"] as Cliente;
-
-                    if (cliente.Endereco != null)
-                    {
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="nome">Nome:</label>
-                                <label class="form-control" for="nome">@cliente.Nome</label>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="cpf">CPF:</label>
-                                <label class="form-control" for="cpf">@cliente.CPF</label>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="telefone">Telefone:</label>
-                                <label class="form-control" for="telefone">@cliente.Telefone</label>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="email">Email:</label>
-                                <label class="form-control" for="email">@cliente.Email</label>
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label for="cep">CEP: </label>
-                                <label class="form-control" for="cep">@cliente.Endereco.CEP</label>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="cidade">Cidade: </label>
-                                <label class="form-control" for="cidade">@cliente.Endereco.Cidade</label>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="bairro">Bairro: </label>
-                                <label class="form-control" for="bairro">@cliente.Endereco.Bairro</label>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="rua">Rua: </label>
-                                <label class="form-control" for="rua">@cliente.Endereco.Rua</label>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="numero">Numero: </label>
-                                <label class="form-control" for="numero">@cliente.Endereco.Numero</label>
-                            </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="nome">Nome:</label>
+                            <label class="form-control" for="nome">@cliente.Nome</label>
                         </div>
-                    }
-                    else
-                    {
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="nome">Nome:</label>
-                                <label class="form-control" for="nome">@cliente.Nome</label>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="cpf">CPF:</label>
-                                <label class="form-control" for="cpf">@cliente.CPF</label>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="telefone">Telefone:</label>
-                                <label class="form-control" for="telefone">@cliente.Telefone</label>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="email">Email:</label>
-                                <label class="form-control" for="email">@cliente.Email</label>
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label for="cep">CEP: </label>
-                                <label class="form-control" for="cep"></label>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="cidade">Cidade: </label>
-                                <label class="form-control" for="cidade"></label>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="bairro">Bairro: </label>
-                                <label class="form-control" for="bairro"></label>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="rua">Rua: </label>
-                                <label class="form-control" for="rua"></label>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="numero">Numero: </label>
-                                <label class="form-control" for="numero"></label>
-                            </div>
+                        <div class="form-group col-md-6">
+                            <label for="cpf">CPF:</label>
+                            <label class="form-control" for="cpf">@cliente.CPF</label>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="telefone">Telefone:</label>
+                            <label class="form-control" for="telefone">@cliente.Telefone</label>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="email">Email:</label>
+                            <label class="form-control" for="email">@cliente.Email</label>
                         </div>
 
-                    }
+                        <div class="form-group col-md-6">
+                            <label for="cep">CEP: </label>
+                            <label class="form-control" for="cep">@cliente.CEP</label>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="cidade">Cidade: </label>
+                            <label class="form-control" for="cidade">@cliente.Cidade</label>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="bairro">Bairro: </label>
+                            <label class="form-control" for="bairro">@cliente.Bairro</label>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="rua">Rua: </label>
+                            <label class="form-control" for="rua">@cliente.Rua</label>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="numero">Numero: </label>
+                            <label class="form-control" for="numero">@cliente.Numero</label>
+                        </div>
+                    </div>
                 }
                 <span>@Html.ActionLink("Alterar Dados", "FormularioEndereco", "Endereco", new object { }, new { @style = "color: white;" })</span>
+
             </form>
         </div>
     </div>

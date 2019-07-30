@@ -1521,6 +1521,7 @@ pre code {
 .table td {
   padding: 0.75rem;
   vertical-align: top;
+  border-top: 1px solid #dee2e6;
 }
 
 .table thead th {
@@ -1529,6 +1530,7 @@ pre code {
 }
 
 .table tbody + tbody {
+  border-top: 2px solid #dee2e6;
 }
 
 .table-sm th,
@@ -4622,8 +4624,6 @@ input[type="button"].btn-block {
   padding: 0.75rem 1.25rem;
   background-color: rgba(0, 0, 0, 0.03);
   border-top: 1px solid rgba(0, 0, 0, 0.125);
-  position: absolute;
-  bottom: 0;
 }
 
 .card-footer:last-child {
@@ -10032,12 +10032,7 @@ a.text-dark:hover, a.text-dark:focus {
   }
   .table .thead-dark th {
     color: inherit;
-    /*border-color: #dee2e6;*/
-  }
-
-  .table {
-      border: 3px solid white;
-      border-radius: 3px
+    border-color: #dee2e6;
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */

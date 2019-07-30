@@ -8,8 +8,8 @@ using ProjetoBenner.DAO;
 namespace ProjetoBenner.Migrations
 {
     [DbContext(typeof(SalaoContext))]
-    [Migration("20190718171951_7")]
-    partial class _7
+    [Migration("20190730192850_1")]
+    partial class _1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,11 +24,15 @@ namespace ProjetoBenner.Migrations
 
                     b.Property<string>("Bairro");
 
+                    b.Property<int>("CEP");
+
                     b.Property<string>("Cidade");
 
                     b.Property<int>("Numero");
 
                     b.Property<string>("Rua");
+
+                    b.Property<string>("UF");
 
                     b.HasKey("Id");
 
@@ -131,6 +135,16 @@ namespace ProjetoBenner.Migrations
                     b.HasIndex("EnderecoId");
 
                     b.ToTable("Funcionarios");
+                });
+
+            modelBuilder.Entity("ProjetoBenner.Models.Galeria", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Galeria");
                 });
 
             modelBuilder.Entity("ProjetoBenner.Models.Produto", b =>

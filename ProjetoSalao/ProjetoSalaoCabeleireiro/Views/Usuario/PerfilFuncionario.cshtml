@@ -2,7 +2,12 @@
 
 <div class="page-header navbar-fixed-top navbar">
     <img class="Logo" src="~/Content/imagens/Logo.png" />
-    <span>@Html.ActionLink("Logout", "FazerLogout", "Login")</span>
+    @if (Session["FuncionarioLogado"] != null)
+    {
+    <span>@((Session["FuncionarioLogado"] as Funcionario).Nome)</span>
+
+    }
+    <span class="logout">@Html.ActionLink("Logout", "FazerLogout", "Login", new object { }, new { @class = "logout" })</span>
 </div>
 
 <div class="page-container">
@@ -42,9 +47,6 @@
                 @if (Session["FuncionarioLogado"] != null)
                 {
                     var funcionario = Session["FuncionarioLogado"] as Funcionario;
-
-                    if (funcionario.Endereco != null)
-                    {
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="nome">Nome:</label>
@@ -65,68 +67,25 @@
 
                             <div class="form-group col-md-6">
                                 <label for="cep">CEP: </label>
-                                <label class="form-control" for="cep">@funcionario.Endereco.CEP</label>
+                                <label class="form-control" for="cep">@funcionario.CEP</label>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="cidade">Cidade: </label>
-                                <label class="form-control" for="cidade">@funcionario.Endereco.Cidade</label>
+                                <label class="form-control" for="cidade">@funcionario.Cidade</label>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="bairro">Bairro: </label>
-                                <label class="form-control" for="bairro">@funcionario.Endereco.Bairro</label>
+                                <label class="form-control" for="bairro">@funcionario.Bairro</label>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="rua">Rua: </label>
-                                <label class="form-control" for="rua">@funcionario.Endereco.Rua</label>
+                                <label class="form-control" for="rua">@funcionario.Rua</label>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="numero">Numero: </label>
-                                <label class="form-control" for="numero">@funcionario.Endereco.Numero</label>
+                                <label class="form-control" for="numero">@funcionario.Numero</label>
                             </div>
                         </div>
-                    }
-                    else
-                    {
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="nome">Nome:</label>
-                                <label class="form-control" for="nome">@funcionario.Nome</label>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="cpf">CPF:</label>
-                                <label class="form-control" for="cpf">@funcionario.CPF</label>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="telefone">Telefone:</label>
-                                <label class="form-control" for="telefone">@funcionario.Telefone</label>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="email">Email:</label>
-                                <label class="form-control" for="email">@funcionario.Email</label>
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label for="cep">CEP: </label>
-                                <label class="form-control" for="cep"></label>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="cidade">Cidade: </label>
-                                <label class="form-control" for="cidade"></label>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="bairro">Bairro: </label>
-                                <label class="form-control" for="bairro"></label>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="rua">Rua: </label>
-                                <label class="form-control" for="rua"></label>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="numero">Numero: </label>
-                                <label class="form-control" for="numero"></label>
-                            </div>
-                        </div>
-                    }
                 }
 
                 <span>@Html.ActionLink("Alterar Dados", "FormularioEndereco", "Endereco", new object { }, new { @style = "color: white;" })</span>

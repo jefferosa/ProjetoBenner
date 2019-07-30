@@ -221,6 +221,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\bootstrap-grid.css" />
+    <Content Include="Content\css\bootstrap-grid.min.css" />
+    <Content Include="Content\css\bootstrap-reboot.css" />
+    <Content Include="Content\css\bootstrap-reboot.min.css" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\Estilo.css" />
@@ -232,6 +236,11 @@
     <Content Include="Content\imagens\background.jpg" />
     <Content Include="Content\imagens\favicon.ico" />
     <Content Include="Content\imagens\Logo.png" />
+    <Content Include="Content\js\bootstrap.bundle.js" />
+    <Content Include="Content\js\bootstrap.bundle.min.js" />
+    <Content Include="Content\js\bootstrap.js" />
+    <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\js\jquery-3.4.1.js" />
     <Content Include="Content\js\viaCEP.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
@@ -240,7 +249,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AgendaController.cs" />
     <Compile Include="Controllers\ControleFinanceiroController.cs" />
-    <Compile Include="Controllers\EnderecoController.cs" />
     <Compile Include="Controllers\GaleriaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -250,7 +258,6 @@
     <Compile Include="DAO\AgendaDAO.cs" />
     <Compile Include="DAO\ClienteDAO.cs" />
     <Compile Include="DAO\ControleFinanceiroDAO.cs" />
-    <Compile Include="DAO\EnderecoDAO.cs" />
     <Compile Include="DAO\FuncionarioDAO.cs" />
     <Compile Include="DAO\GaleriaDAO.cs" />
     <Compile Include="DAO\ProdutoDAO.cs" />
@@ -259,37 +266,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20190709170721_1.cs" />
-    <Compile Include="Migrations\20190709170721_1.designer.cs">
-      <DependentUpon>20190709170721_1.cs</DependentUpon>
+    <Compile Include="Migrations\20190730192850_1.cs" />
+    <Compile Include="Migrations\20190730192850_1.designer.cs">
+      <DependentUpon>20190730192850_1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20190709175537_2.cs" />
-    <Compile Include="Migrations\20190709175537_2.designer.cs">
-      <DependentUpon>20190709175537_2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190709194029_3.cs" />
-    <Compile Include="Migrations\20190709194029_3.designer.cs">
-      <DependentUpon>20190709194029_3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190710190536_4.cs" />
-    <Compile Include="Migrations\20190710190536_4.designer.cs">
-      <DependentUpon>20190710190536_4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190710192400_5.cs" />
-    <Compile Include="Migrations\20190710192400_5.designer.cs">
-      <DependentUpon>20190710192400_5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190716191204_6.cs" />
-    <Compile Include="Migrations\20190716191204_6.designer.cs">
-      <DependentUpon>20190716191204_6.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190718171951_7.cs" />
-    <Compile Include="Migrations\20190718171951_7.designer.cs">
-      <DependentUpon>20190718171951_7.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190726191921_8.cs" />
-    <Compile Include="Migrations\20190726191921_8.designer.cs">
-      <DependentUpon>20190726191921_8.cs</DependentUpon>
+    <Compile Include="Migrations\20190730202359_2.cs" />
+    <Compile Include="Migrations\20190730202359_2.designer.cs">
+      <DependentUpon>20190730202359_2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\SalaoContextModelSnapshot.cs" />
     <Compile Include="Models\Agenda.cs" />
@@ -300,11 +283,20 @@
     <Compile Include="Models\Saida.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\Produto.cs" />
-    <Compile Include="Models\Endereco.cs" />
     <Compile Include="Models\Servico.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\js\bootstrap.bundle.js.map" />
+    <Content Include="Content\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Content\js\bootstrap.js.map" />
+    <Content Include="Content\js\bootstrap.min.js.map" />
+    <Content Include="Content\css\bootstrap-grid.css.map" />
+    <Content Include="Content\css\bootstrap-grid.min.css.map" />
+    <Content Include="Content\css\bootstrap-reboot.css.map" />
+    <Content Include="Content\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\css\bootstrap.css.map" />
+    <Content Include="Content\css\bootstrap.min.css.map" />
     <None Include="packages.config" />
     <Content Include="Views\web.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />

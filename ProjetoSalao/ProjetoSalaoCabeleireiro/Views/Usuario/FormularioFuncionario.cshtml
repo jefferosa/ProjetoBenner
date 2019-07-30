@@ -13,7 +13,7 @@
 
         <div class="form-group col-md-6">
             <label for="cpf">CPF:</label>
-            <input id="cpf" name="funcionario.CPF" value="@ViewBag.Funcionario.CPF" class="form-control" maxlength="11"/>
+            <input id="cpf" name="funcionario.CPF" value="@ViewBag.Funcionario.CPF" class="form-control" maxlength="11" />
         </div>
 
         <div class="form-group col-md-6">
@@ -29,6 +29,31 @@
         <div class="form-group col-md-6">
             <label for="senha">Senha:</label>
             <input id="senha" name="funcionario.Senha" type="password" value="@ViewBag.Funcionario.Senha" class="form-control" />
+        </div>
+
+        <div>
+            <label for="cep">Cep:</label>
+            <input name="funcionario.CEP" type="text" id="cep" value="@ViewBag.Funcionario.CEP" size="60" maxlength="9" onblur="pesquisacep(this.value);" class="form-control" />
+        </div>
+        <div class="form-group col-md-9">
+            <label for="rua">Rua:</label>
+            <input name="funcionario.Rua" type="text" id="rua" value="@ViewBag.Funcionario.Rua" size="60" class="form-control" />
+        </div>
+        <div class="form-group col-md-3">
+            <label for="numero">Número:</label>
+            <input name="funcionario.Numero" type="text" id="numero" value="@ViewBag.Funcionario.Numero" size="10" class="form-control" />
+        </div>
+        <div class="form-group col-md-5">
+            <label for="bairro">Bairro:</label>
+            <input name="funcionario.Bairro" type="text" id="bairro" value="@ViewBag.Funcionario.Bairro" size="40" class="form-control" />
+        </div>
+        <div class="form-group col-md-5">
+            <label for="cidade"> Cidade:</label>
+            <input name="funcionario.Cidade" type="text" id="cidade" value="@ViewBag.Funcionario.Cidade" size="40" class="form-control" />
+        </div>
+        <div class="form-group col-md-2">
+            <label for="estado">Estado:</label>
+            <input name="funcionario.UF" type="text" id="uf" value="@ViewBag.Funcionario.UF" size="1" class="form-control" />
         </div>
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Criar Conta</button>

@@ -25,15 +25,7 @@ namespace ProjetoBenner.Controllers
             if (cliente != null)
             {
                 Session["ClienteLogado"] = cliente;
-                if (cliente.Endereco == null)
-                {
-                    return RedirectToAction("PerfilCliente", "Usuario");
-                }
-                else
-                {
                     return RedirectToAction("IndexHomeCliente", "Home");
-                }
-                
             }
 
             FuncionarioDAO daoFuncionario = new FuncionarioDAO();
@@ -42,14 +34,7 @@ namespace ProjetoBenner.Controllers
             if (funcionario != null)
             {
                 Session["FuncionarioLogado"] = funcionario;
-                if (funcionario.Endereco == null)
-                {
-                    return RedirectToAction("PerfilFuncionario", "Usuario");
-                }
-                else
-                {
-                    return RedirectToAction("IndexHomeFuncionario", "Home");
-                }
+                return RedirectToAction("IndexHomeFuncionario", "Home");
             }
             else
             {
