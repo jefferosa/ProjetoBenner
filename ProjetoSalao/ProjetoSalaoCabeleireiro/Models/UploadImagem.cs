@@ -6,10 +6,13 @@ using System.Web;
 
 namespace ProjetoBenner.Models
 {
-    public class Galeria
+    public class UploadImagem
     {
         public int Id { get; set; }
 
-        public Byte[] Imagem { get; set; }
+        [Required]
+        [DataType(DataType.Upload)]
+        [Display(Name = "Imagem")]
+        public HttpPostedFileBase ImageUpload { get; set; }
     }
 }

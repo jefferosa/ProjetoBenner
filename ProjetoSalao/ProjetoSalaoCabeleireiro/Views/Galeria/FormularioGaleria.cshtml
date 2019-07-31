@@ -1,0 +1,16 @@
+﻿@model ProjetoBenner.Models.UploadImagem
+
+@using (Html.BeginForm("AdicionarImagem", "Galeria", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <form class="form-signin form-cadastro text-center navbar-search">
+        <div class="form-group">
+            @Html.LabelFor(m => m.ImageUpload, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.ImageUpload, new { type = "file", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.ImageUpload, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <input type="submit" value="Salvar Imagem" class="btn btn-success" />
+    </form>
+}

@@ -12,6 +12,8 @@ namespace ProjetoBenner
         public int Id { get; set; }
         [MaxLength(11)]
         public string CPF { get; set; }
+
+        [Required(ErrorMessage = "O nome é obrigatório", AllowEmptyStrings = false)]
         public string Nome { get; set; }
         [MaxLength(12)]
         public string Telefone { get; set; }

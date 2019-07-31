@@ -1,6 +1,16 @@
-﻿<div class="page-header navbar-fixed-top navbar">
+﻿@using ProjetoBenner.Models;
+
+<div class="page-header navbar-fixed-top navbar">
     <img class="Logo" src="~/Content/imagens/Logo.png" />
-    <span class="logout">@Html.ActionLink("Logout", "FazerLogout", "Login", new object { }, new { @class = "logout" })</span>
+    <div class="dropdown">
+        <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            @((Session["FuncionarioLogado"] as Funcionario).Nome)
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item">@Html.ActionLink("Logout", "FazerLogout", "Login", new object { }, new { @class = "drop-edit " })</a>
+            <a class="dropdown-item">@Html.ActionLink("Perfil", "PerfilFuncionario", "Usuario", new object { }, new { @class = "drop-edit " })</a>
+        </div>
+    </div>
 </div>
 
 <div class="page-container">

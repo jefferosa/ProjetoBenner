@@ -274,6 +274,10 @@
     <Compile Include="Migrations\20190730202359_2.designer.cs">
       <DependentUpon>20190730202359_2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190731205402_3.cs" />
+    <Compile Include="Migrations\20190731205402_3.designer.cs">
+      <DependentUpon>20190731205402_3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\SalaoContextModelSnapshot.cs" />
     <Compile Include="Models\Agenda.cs" />
     <Compile Include="Models\Cliente.cs" />
@@ -281,6 +285,7 @@
     <Compile Include="Models\Funcionario.cs" />
     <Compile Include="Models\Galeria.cs" />
     <Compile Include="Models\Saida.cs" />
+    <Compile Include="Models\UploadImagem.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\Produto.cs" />
     <Compile Include="Models\Servico.cs" />
@@ -319,6 +324,8 @@
     <Content Include="Views\Usuario\PerfilCliente.cshtml" />
     <Content Include="Views\Usuario\PerfilFuncionario.cshtml" />
     <Content Include="Views\Galeria\IndexGaleria.cshtml" />
+    <Content Include="Views\Galeria\UploadFile.cshtml" />
+    <Content Include="Views\Galeria\FormularioGaleria.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -328,6 +335,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\UploadedFiles\" />
     <Folder Include="Views\ControleFinanceiro\" />
   </ItemGroup>
   <PropertyGroup>
