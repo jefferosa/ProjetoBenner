@@ -1,26 +1,128 @@
-﻿<div id="tb">
-    <table class="table table-hover tb">
+﻿@using ProjetoBenner.Models;
 
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nome</th>
-                <th>Quantidade</th>
-                <th>Descricao</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var produto in ViewBag.Produto)
-            {
-                <tr>
-                    <td>@produto.Id</td>
-                    <td class="tb-td">@produto.Nome</td>
-                    <td>@produto.Quantidade</td>
-                    <td class="tb-td">@produto.Descricao</td>
-                </tr>
-            }
-        </tbody>
 
-    </table>
-    <span>@Html.ActionLink("Cadastrar Novo Produto", "FormularioProduto", "Produto", new object { }, new { @style = "color: white;" })</span>
+<div class="page-header navbar-fixed-top navbar">
+    <img class="Logo" src="~/Content/imagens/Logo.png" />
+
+    <div class="dropdown">
+        <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            @((Session["FuncionarioLogado"] as Funcionario).Nome)
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item">@Html.ActionLink("Logout", "FazerLogout", "Login", new object { }, new { @class = "drop-edit " })</a>
+            <a class="dropdown-item">@Html.ActionLink("Perfil", "PerfilFuncionario", "Usuario", new object { }, new { @class = "drop-edit " })</a>
+        </div>
+    </div>
 </div>
+
+<div class="page-container">
+    <div class="page-content-wrapper">
+
+        <ul class="bg-gradient-primary sidebar menu">
+
+            <li class="nav-item">
+                <a class="nav-link">
+                    <span>@Html.ActionLink("Inicio", "IndexHomeFuncionario", "Home")</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link">
+                    <span>@Html.ActionLink("Galeria", "IndexGaleria", "Galeria")</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link">
+                    <span>@Html.ActionLink("Estoque", "IndexProduto", "Produto")</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link">
+                    <span>@Html.ActionLink("Serviços", "IndexServico", "Servico")</span>
+                </a>
+            </li>
+
+        </ul>
+
+        <div id="tb">
+            <h2 class="titulo-tabela">Produtos em Estoque</h2>
+            <table class="table table-hover tb">
+
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nome</th>
+                        <th>Quantidade</th>
+                        <th>Descricao</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var produto in ViewBag.Produto)
+                    {
+                        <tr>
+                            <td>@produto.Id</td>
+                            <td class="tb-td">@produto.Nome</td>
+                            <td>@produto.Quantidade</td>
+                            <td class="tb-td">@produto.Descricao</td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-lg btn-primary botao-edit" data-toggle="modal" data-target="#produtoModal">
+                Novo Produto
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade produtoModal" id="produtoModal" tabindex="-1" role="dialog" aria-labelledby="produtoModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content produtoModal">
+                        <div class="modal-header produtoModal">
+                            <h5 class="modal-title" id="produtoModalLabel">Produto</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body produtoModal">
+                            <form action="/Produto/AdicionarProduto" method="post">
+                                <div class="form-row">
+
+                                    <div class="form-group col-md-9">
+                                        <label for="nome">Nome:</label>
+                                        <input id="nome" name="produto.Nome" class="form-control" />
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="quantidade">Quantidade:</label>
+                                        <input id="quantidade" name="produto.Quantidade" class="form-control" />
+                                    </div>
+                                    <div class="form-group col-md-5">
+                                        <label for="descricao">Descrição:</label>
+                                        <input id="descricao" name="produto.Descricao" class="form-control" />
+                                    </div>
+                                    <div class="form-group col-md-5">
+                                        <label for="preco">Preço:</label>
+                                        <input id="preco" name="produto.Preco" class="form-control" />
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer produtoModal">
+                                    <button class="btn btn-lg btn-primary btn-block" type="submit">Salvar Produto</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<footer class="page-footer-inner">
+    &copy;
+</footer>
