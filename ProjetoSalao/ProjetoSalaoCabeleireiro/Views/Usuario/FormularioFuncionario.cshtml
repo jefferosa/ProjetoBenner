@@ -1,63 +1,65 @@
-﻿<form action="/Usuario/AdicionarFuncionario" method="post" class="form-signin form-cadastro text-center navbar-search">
-    <div class="form-row">
+﻿<div class="tela-login">
+    <form action="/Usuario/AdicionarFuncionario" method="post" class="form-signin form-cadastro text-center navbar-search">
+        <div class="form-row">
 
-        <div class="form-group col-md-6">
-            <label for="nome">Nome</label>
-            <input id="nome" name="funcionario.Nome" value="@ViewBag.Funcionario.Nome" class="form-control" />
-        </div>
+            <div class="form-group col-md-6">
+                <label for="nome">Nome</label>
+                <input id="nome" name="funcionario.Nome" value="@ViewBag.Funcionario.Nome" class="form-control" />
+            </div>
 
-        <div class="form-group col-md-6">
-            <label for="login">Login:</label>
-            <input id="login" name="funcionario.Login" value="@ViewBag.Funcionario.Login" class="form-control" />
-        </div>
+            <div class="form-group col-md-6">
+                <label for="login">Login:</label>
+                <input id="login" name="funcionario.Login" value="@ViewBag.Funcionario.Login" class="form-control" />
+            </div>
 
-        <div class="form-group col-md-6">
-            <label for="cpf">CPF:</label>
-            <input id="cpf" name="funcionario.CPF" value="@ViewBag.Funcionario.CPF" class="form-control" maxlength="11" />
-        </div>
+            <div class="form-group col-md-6">
+                <label for="cpf">CPF:</label>
+                <input id="cpf" name="funcionario.CPF" value="@ViewBag.Funcionario.CPF" class="form-control" maxlength="11" />
+            </div>
 
-        <div class="form-group col-md-6">
-            <label for="email">Email:</label>
-            <input id="email" name="funcionario.Email" type="email" value="@ViewBag.Funcionario.Email" class="form-control" />
-        </div>
+            <div class="form-group col-md-6">
+                <label for="email">Email:</label>
+                <input id="email" name="funcionario.Email" type="email" value="@ViewBag.Funcionario.Email" class="form-control" />
+            </div>
 
-        <div class="form-group col-md-6">
-            <label for="telefone">Telefone:</label>
-            <input id="telefone" name="funcionario.Telefone" value="@ViewBag.Funcionario.Telefone" class="form-control" />
-        </div>
+            <div class="form-group col-md-6">
+                <label for="telefone">Telefone:</label>
+                <input id="telefone" name="funcionario.Telefone" value="@ViewBag.Funcionario.Telefone" class="form-control" />
+            </div>
 
-        <div class="form-group col-md-6">
-            <label for="senha">Senha:</label>
-            <input id="senha" name="funcionario.Senha" type="password" value="@ViewBag.Funcionario.Senha" class="form-control" />
-        </div>
+            <div class="form-group col-md-6">
+                <label for="senha">Senha:</label>
+                <input id="senha" name="funcionario.Senha" type="password" value="@ViewBag.Funcionario.Senha" class="form-control" />
+            </div>
 
-        <div>
-            <label for="cep">Cep:</label>
-            <input name="funcionario.CEP" type="text" id="cep" value="@ViewBag.Funcionario.CEP" size="60" maxlength="9" onblur="pesquisacep(this.value);" class="form-control" />
-        </div>
-        <div class="form-group col-md-9">
-            <label for="rua">Rua:</label>
-            <input name="funcionario.Rua" type="text" id="rua" value="@ViewBag.Funcionario.Rua" size="60" class="form-control" />
-        </div>
-        <div class="form-group col-md-3">
-            <label for="numero">Número:</label>
-            <input name="funcionario.Numero" type="text" id="numero" value="@ViewBag.Funcionario.Numero" size="10" class="form-control" />
-        </div>
-        <div class="form-group col-md-5">
-            <label for="bairro">Bairro:</label>
-            <input name="funcionario.Bairro" type="text" id="bairro" value="@ViewBag.Funcionario.Bairro" size="40" class="form-control" />
-        </div>
-        <div class="form-group col-md-5">
-            <label for="cidade"> Cidade:</label>
-            <input name="funcionario.Cidade" type="text" id="cidade" value="@ViewBag.Funcionario.Cidade" size="40" class="form-control" />
-        </div>
-        <div class="form-group col-md-2">
-            <label for="estado">Estado:</label>
-            <input name="funcionario.UF" type="text" id="uf" value="@ViewBag.Funcionario.UF" size="1" class="form-control" />
-        </div>
+            <div>
+                <label for="cep">Cep:</label>
+                <input name="funcionario.CEP" type="text" id="cep" value="@ViewBag.Funcionario.CEP" size="60" maxlength="9" onblur="pesquisacep(this.value);" class="form-control" />
+            </div>
+            <div class="form-group col-md-9">
+                <label for="rua">Rua:</label>
+                <input name="funcionario.Rua" type="text" id="rua" value="@ViewBag.Funcionario.Rua" size="60" class="form-control" />
+            </div>
+            <div class="form-group col-md-3">
+                <label for="numero">Número:</label>
+                <input name="funcionario.Numero" type="text" id="numero" value="@ViewBag.Funcionario.Numero" size="10" class="form-control" />
+            </div>
+            <div class="form-group col-md-5">
+                <label for="bairro">Bairro:</label>
+                <input name="funcionario.Bairro" type="text" id="bairro" value="@ViewBag.Funcionario.Bairro" size="40" class="form-control" />
+            </div>
+            <div class="form-group col-md-5">
+                <label for="cidade"> Cidade:</label>
+                <input name="funcionario.Cidade" type="text" id="cidade" value="@ViewBag.Funcionario.Cidade" size="40" class="form-control" />
+            </div>
+            <div class="form-group col-md-2">
+                <label for="estado">Estado:</label>
+                <input name="funcionario.UF" type="text" id="uf" value="@ViewBag.Funcionario.UF" size="1" class="form-control" />
+            </div>
 
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Criar Conta</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Criar Conta</button>
 
-        <span>@Html.ActionLink("Acessar Conta", "IndexLogin", "Login", new object { }, new { @style = "color: white;" })</span>
-    </div>
-</form>
+            <span>@Html.ActionLink("Acessar Conta", "IndexLogin", "Login", new object { }, new { @style = "color: white;" })</span>
+        </div>
+    </form>
+</div>

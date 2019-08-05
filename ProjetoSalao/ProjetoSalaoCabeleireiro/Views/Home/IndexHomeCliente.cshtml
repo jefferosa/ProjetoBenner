@@ -1,30 +1,236 @@
-﻿<div class="page-header navbar-fixed-top navbar">
-    <img class="Logo" src="~/Content/imagens/Logo.png" />
-    <span >@Html.ActionLink("Logout", "FazerLogout", "Login", new object { }, new { @class = "logout" })</span>
+﻿@using ProjetoBenner.Models;
+
+<!-- Preloader -->
+<div id="preloader">
+    <div class="loader"></div>
 </div>
-<div class="page-container">
-    <div class="page-content-wrapper">
-        <ul class="bg-gradient-primary sidebar menu">
-            <li class="nav-item">
-                <a class="nav-link">
-                    <span>@Html.ActionLink("Galeria", "IndexGaleria", "Galeria")</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link">
-                    <span>@Html.ActionLink("Perfil", "PerfilCliente", "Usuario")</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link">
-                    <span>@Html.ActionLink("Agendar Horário", "FormularioAgenda", "Agenda")</span>
-                </a>
-            </li>
-        </ul>
+<!-- /Preloader -->
+<!-- Header Area Start -->
+<header class="header-area">
+    <!-- Top Header Area Start -->
+    <div class="top-header-area">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-5">
+                    <div class="top-header-content">
+                        <p>Bem vindo ao salão Virtual!</p>
+                    </div>
+                </div>
+                <div class="col-7">
+                    <div class="top-header-content text-right">
+                        <p><i class="fa fa-clock-o" aria-hidden="true"></i> Mon-Sat: 8.00 to 17.00 <span class="mx-2"></span> | <span class="mx-2"></span> <i class="fa fa-phone" aria-hidden="true"></i> Call us: (+12)-345-6789</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    <!-- Top Header Area End -->
+    <!-- Main Header Start -->
+    <div class="main-header-area">
+        <div class="classy-nav-container breakpoint-off">
+            <div class="container">
+                <!-- Classy Menu -->
+                <nav class="classy-navbar justify-content-between" id="akameNav">
+
+                    <!-- Logo -->
+                    <a class="nav-brand" href="index.html"><img src="~/Content/template-img/core-img/logo.png" alt=""></a>
+
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+
+                    <!-- Menu -->
+                    <div class="classy-menu">
+                        <!-- Menu Close Button -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
+                        <!-- Nav Start -->
+                        <div class="classynav">
+                            <ul id="nav">
+                                <li class="active">@Html.ActionLink("Inicio", "IndexHomeCliente", "Home")</li>
+                                <li><a href="./portfolio.html">Portfolio</a></li>
+                                <li><a href="./service.html">Services</a></li>
+                                <li><a href="./about.html">About Us</a></li>
+                                <li>@Html.ActionLink("Galeria", "IndexGaleria", "Galeria")</li>
+                                <li><a href="./contact.html">Contact</a></li>
+                                <li>
+                                    @((Session["ClienteLogado"] as Cliente).Nome)
+                                    <ul class="dropdown">
+                                        <li>@Html.ActionLink("Perfil", "PerfilCliente", "Usuario")</li>
+                                        <li>@Html.ActionLink("Logout", "FazerLogout", "Login", new object { }, new { @class = "logout" })</li>
+
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Nav End -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Header Area End -->
+<!-- Welcome Area Start -->
+<section class="welcome-area">
+    <div class="welcome-slides owl-carousel">
+        <!-- Single Welcome Slide -->
+        <div class="single-welcome-slide bg-img" style="background-image: url(/Content/template-img/bg-img/16.jpg);">
+            <!-- Welcome Content -->
+            <div class="welcome-content h-100">
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <!-- Welcome Text -->
+                        <div class="col-12 col-md-9 col-lg-6">
+                            <div class="welcome-text">
+                                <h2 data-animation="fadeInUp" data-delay="100ms">We Care About <br> Your Hair</h2>
+                                <p data-animation="fadeInUp" data-delay="400ms">“Discover your own style. Don't try to repeat what has already been written - have the courage to do your own thing and don't be afraid to do something different.”</p>
+                                <a href="#" class="btn akame-btn" data-animation="fadeInUp" data-delay="700ms">About Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Single Welcome Slide -->
+        <div class="single-welcome-slide bg-img" style="background-image: url(/Content/template-img/bg-img/16.jpg);">
+            <!-- Welcome Content -->
+            <div class="welcome-content h-100">
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <!-- Welcome Text -->
+                        <div class="col-12 col-md-9 col-lg-6">
+                            <div class="welcome-text">
+                                <h2 data-animation="fadeInUp" data-delay="100ms">We Care About <br> Your Hair</h2>
+                                <p data-animation="fadeInUp" data-delay="400ms">“Discover your own style. Don't try to repeat what has already been written - have the courage to do your own thing and don't be afraid to do something different.”</p>
+                                <a href="#" class="btn akame-btn active" data-animation="fadeInUp" data-delay="700ms">About Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Welcome Area End -->
+<!-- About Area Start -->
+<section class="akame-about-area section-padding-80-0">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Section Heading -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="section-heading mb-80">
+                    <h2>Hair Salon</h2>
+                    <p>The House of Hair Salon &amp; Spa</p>
+                    <span>About Us</span>
+                </div>
+            </div>
+
+            <!-- About Us Thumbnail -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="about-us-thumbnail mb-80">
+                    <img src="~/Content/template-img/bg-img/15.jpg" alt="">
+                </div>
+            </div>
+
+            <!-- About Us Content -->
+            <div class="col-12 col-lg-4">
+                <div class="about-us-content mb-80 pl-4">
+                    <h3>Beautiful Hair Comes From A Legendary.</h3>
+                    <p>“Working in a salon, you look at trends all day long. You’re looking at color all the time,what new products are coming out. You’re a part of the fashion industry,especially if you’re working in a higher-end salon.”</p>
+                    <a href="#" class="btn akame-btn active mt-30">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- About Area End -->
+<!-- Border -->
+<div class="container">
+    <div class="border-top mt-3"></div>
 </div>
-<footer class="page-footer-inner">
-    &copy;
-</footer>
+
+<!-- Our Service Area Start -->
+<section class="akame-service-area section-padding-80-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <!-- Section Heading -->
+                <div class="section-heading text-center">
+                    <h2>Our Services</h2>
+                    <p>The House of Hair Salon &amp; Spa, incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <!-- Single Service Area -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-service-area mb-80 wow fadeInUp" data-wow-delay="200ms">
+                    <img src="~/Content/template-img/core-img/s1.png" alt="">
+                    <h5>Coloring</h5>
+                    <p>Ut enim ad minim veniam, quis trud exercitation...</p>
+                </div>
+            </div>
+
+            <!-- Single Service Area -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-service-area mb-80 wow fadeInUp" data-wow-delay="400ms">
+                    <img src="~/Content/template-img/core-img/s3.png" alt="">
+                    <h5>Haircut</h5>
+                    <p>Consectetur adipisicing elit, sed doe eiusmod.</p>
+                </div>
+            </div>
+
+            <!-- Single Service Area -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-service-area mb-80 wow fadeInUp" data-wow-delay="600ms">
+                    <img src="~/Content/template-img/core-img/s4.png" alt="">
+                    <h5>Hairstyle</h5>
+                    <p>Nemo enim ipsam voluptatem quia voluptas</p>
+                </div>
+            </div>
+
+            <!-- Single Service Area -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-service-area mb-80 wow fadeInUp" data-wow-delay="800ms">
+                    <img src="~/Content/template-img/core-img/s3.png" alt="">
+                    <h5>Coloring</h5>
+                    <p>Ut enim ad minim veniam, quis trud exercitation...</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- Our Service Area End -->
+@*<div class="page-container">
+        <div class="page-content-wrapper">
+            <ul class="bg-gradient-primary sidebar menu">
+                <li class="nav-item">
+                    <a class="nav-link">
+                        <span>@Html.ActionLink("Galeria", "IndexGaleria", "Galeria")</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link">
+                        <span>@Html.ActionLink("Perfil", "PerfilCliente", "Usuario")</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link">
+                        <span>@Html.ActionLink("Agendar Horário", "FormularioAgenda", "Agenda")</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <footer class="page-footer-inner">
+        &copy;
+    </footer>*@

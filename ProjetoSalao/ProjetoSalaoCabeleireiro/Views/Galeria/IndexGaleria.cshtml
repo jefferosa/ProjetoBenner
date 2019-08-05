@@ -1,81 +1,141 @@
 ﻿@model IEnumerable<ProjetoBenner.Models.Galeria>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Galeria";
 }
 
 @using ProjetoBenner.Models;
 
+<!-- Preloader -->
+<div id="preloader">
+    <div class="loader"></div>
+</div>
+<!-- /Preloader -->
 
-<div class="page-header navbar-fixed-top navbar">
-    <img class="Logo" src="~/Content/imagens/Logo.png" />
-
-    <div class="dropdown">
-        <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            @((Session["FuncionarioLogado"] as Funcionario).Nome)
-        </a>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item">@Html.ActionLink("Logout", "FazerLogout", "Login", new object { }, new { @class = "drop-edit " })</a>
-            <a class="dropdown-item">@Html.ActionLink("Perfil", "PerfilFuncionario", "Usuario", new object { }, new { @class = "drop-edit " })</a>
+<!-- Header Area Start -->
+<header class="header-area">
+    <!-- Top Header Area Start -->
+    <div class="top-header-area">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-5">
+                    <div class="top-header-content">
+                        <p>Bem vindo ao salão Virtual!</p>
+                    </div>
+                </div>
+                <div class="col-7">
+                    <div class="top-header-content text-right">
+                        <p><i class="fa fa-clock-o" aria-hidden="true"></i> Seg-Sab: 8.00 as 17.00 <span class="mx-2"></span> | <span class="mx-2"></span> <i class="fa fa-phone" aria-hidden="true"></i> Call us: (+12)-345-6789</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+    <!-- Top Header Area End -->
 
-<div class="page-container">
-    <div class="page-content-wrapper">
+    <!-- Main Header Start -->
+    <div class="main-header-area">
+        <div class="classy-nav-container breakpoint-off">
+            <div class="container">
+                <!-- Classy Menu -->
+                <nav class="classy-navbar justify-content-between" id="akameNav">
 
-        <ul class="bg-gradient-primary sidebar menu">
+                    <!-- Logo -->
+                    <a class="nav-brand" href="index.html"><img src="~/Content/template-img/core-img/logo.png" alt=""></a>
 
-            <li class="nav-item">
-                <a class="nav-link">
-                    <span>@Html.ActionLink("Inicio", "IndexHomeFuncionario", "Home")</span>
-                </a>
-            </li>
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
 
-            <li class="nav-item">
-                <a class="nav-link">
-                    <span>@Html.ActionLink("Galeria", "IndexGaleria", "Galeria")</span>
-                </a>
-            </li>
+                    <!-- Menu -->
+                    <div class="classy-menu">
+                        <!-- Menu Close Button -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
+                        <!-- Nav Start -->
+                        <div class="classynav">
+                            <ul id="nav">
+                                <li class="active">@Html.ActionLink("Inicio", "IndexHomeCliente", "Home")</li>
+                                <li><a href="./portfolio.html">Portfolio</a></li>
+                                <li><a href="./service.html">Services</a></li>
+                                <li><a href="./about.html">About Us</a></li>
+                                <li>@Html.ActionLink("Galeria", "IndexGaleria", "Galeria")</li>
+                                <li><a href="./contact.html">Contact</a></li>
+                                <li>
+                                    @((Session["ClienteLogado"] as Cliente).Nome)
+                                    <ul class="dropdown">
+                                        <li>@Html.ActionLink("Perfil", "PerfilCliente", "Usuario")</li>
+                                        <li>@Html.ActionLink("Logout", "FazerLogout", "Login", new object { }, new { @class = "logout" })</li>
 
-            <li class="nav-item">
-                <a class="nav-link">
-                    <span>@Html.ActionLink("Estoque", "IndexProduto", "Produto")</span>
-                </a>
-            </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Nav End -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Header Area End -->
 
-            <li class="nav-item">
-                <a class="nav-link">
-                    <span>@Html.ActionLink("Serviços", "IndexServico", "Servico")</span>
-                </a>
-            </li>
+<!-- Breadcrumb Area Start -->
+<section class="breadcrumb-area section-padding-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb-content">
+                    <h2>Galeria</h2>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a class="link-inicio" href="~/Home/IndexHomeCliente"><i class="icon_house_alt"></i> Inicio</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Galeria</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Area End -->
 
-        </ul>
+<!-- Portfolio Area Start -->
+<section class="akame-portfolio section-padding-0-80 clearfix">
+    <div class="container">
 
-        <div id="tb">
-            <table class="table table-hover tb">
-                <tr>
-                    <th>@Html.DisplayNameFor(model => model.Imagem)</th>
-                </tr>
-                @foreach (var item in Model)
-                {
-                    <tr>
+        <div class="row akame-portfolio-area">
+            @foreach (var item in Model)
+            {
+                <!-- Single Portfolio Item -->
+                <div class="col-12 col-sm-6 col-lg-4 akame-portfolio-item haircuts mb-30 wow fadeInUp" data-wow-delay="200ms">
+                    <div class="akame-portfolio-single-item">
+
                         @if (item.Imagem != null)
                         {
-                            <td class="tb-td">
-                                @{
-                                    var base64 = Convert.ToBase64String(item.Imagem);
-                                    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
-                                }
-                                <img src='@imgSrc' style="max-width:100%; max-height:100%;" />
-                            </td>
+
+                            var base64 = Convert.ToBase64String(item.Imagem);
+                            var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+
+                            <img src='@imgSrc' data-toggle="modalFoto" style="max-width:100%; max-height:100%;" />
                         }
-                    </tr>
-                }
-            </table>
+                        <!-- Overlay Content -->
+                        <div class="overlay-content d-flex align-items-center justify-content-center">
+                            <div class="overlay-text text-center">
+                                <h4>Hairstyle</h4>
+                                <p>Consectetur adipisicing elit sed doe</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            }
         </div>
     </div>
+</section>
+<!-- Portfolio Area End -->
+<!-- Border -->
+<div class="container">
+    <div class="border-top"></div>
 </div>
-
-<footer class="page-footer-inner">
-    &copy;
-</footer>
