@@ -11,12 +11,12 @@ namespace ProjetoBenner.Controllers
 {
     public class GaleriaController : Controller
     {
-        SalaoContext context = new SalaoContext();
-
         [HttpGet]
         public ActionResult IndexGaleria()
         {
-            var imagens = context.Galeria.ToList();
+            GaleriaDAO dao = new GaleriaDAO();
+            IList<Galeria> imagens = dao.ListarImagens();
+            ViewBag.Galeria = imagens;
             return View(imagens);
         }
 
@@ -32,7 +32,6 @@ namespace ProjetoBenner.Controllers
         {
             Galeria galeria = new Galeria();
             var imageTypes = new string[]{
-                    "image/gif",
                     "image/jpeg",
                     "image/pjpeg",
                     "image/png"
@@ -44,7 +43,7 @@ namespace ProjetoBenner.Controllers
             }
             else if (!imageTypes.Contains(uploadImagem.ImageUpload.ContentType))
             {
-                ModelState.AddModelError("ImageUpload", "Escolha uma iamgem GIF, JPG ou PNG.");
+                ModelState.AddModelError("ImageUpload", "Escolha uma iamgem JPG ou PNG.");
             }
             if (ModelState.IsValid)
             {
@@ -57,6 +56,15 @@ namespace ProjetoBenner.Controllers
                 ViewBag.Galeria = galeria;
                 return View(uploadImagem);
             }
+        }
+
+        public ActionResult RemoverImagens(Galeria galeria)
+        {
+            SalaoContext context = new SalaoContext();
+            ViewBag.Galeria = galeria;
+            context.Remove(galeria);
+            context.SaveChanges();
+            return Json(galeria);
         }
     }
 }

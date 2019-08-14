@@ -49,19 +49,20 @@
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul id="nav">
-                                <li class="active">@Html.ActionLink("Inicio", "IndexHomeCliente", "Home")</li>
-                                <li><a href="./portfolio.html">Portfolio</a></li>
-                                <li><a href="./service.html">Services</a></li>
-                                <li><a href="./about.html">About Us</a></li>
+                                <li>@Html.ActionLink("Inicio", "IndexHomeCliente", "Home")</li>
+                                <li>@Html.ActionLink("Agendar Horario", "IndexAgenda", "Agenda")</li>
                                 <li>@Html.ActionLink("Galeria", "IndexGaleria", "Galeria")</li>
-                                <li><a href="./contact.html">Contact</a></li>
                                 <li>
-                                    @((Session["ClienteLogado"] as Cliente).Nome)
-                                    <ul class="dropdown">
-                                        <li>@Html.ActionLink("Perfil", "PerfilCliente", "Usuario")</li>
-                                        <li>@Html.ActionLink("Logout", "FazerLogout", "Login", new object { }, new { @class = "logout" })</li>
+                                    @if (Session["ClienteLogado"] != null)
+                                    {
+                                        @Html.ActionLink((Session["ClienteLogado"] as Cliente).Nome, "PerfilCliente", "Usuario")
+                                        <ul class="dropdown">
+                                            <li class="active">@Html.ActionLink("Perfil", "PerfilCliente", "Usuario")</li>
+                                            <li>@Html.ActionLink("Logout", "FazerLogout", "Login", new object { }, new { @class = "logout" })</li>
 
-                                    </ul>
+                                        </ul>
+                                    }
+
                                 </li>
                             </ul>
                         </div>

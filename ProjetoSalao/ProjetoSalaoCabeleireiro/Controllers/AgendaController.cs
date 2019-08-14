@@ -28,6 +28,7 @@ namespace ProjetoBenner.Controllers
         [HttpPost]
         public ActionResult AgendarHorario(Agenda agenda)
         {
+
             if (agenda.Data == null || agenda.Horario == null || agenda.ServicoId == null)
             {
                 ModelState.AddModelError("agenda.CadastroEmBranco", "Não pode cadastrar um horário em branco");

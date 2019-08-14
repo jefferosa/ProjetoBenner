@@ -213,6 +213,10 @@ span {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+.adicionarImagemModal {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
 .modal-title {
     color: white;
 }
@@ -285,7 +289,16 @@ ul {
 .tela-login {
     background: url(/Content/imagens/background.jpg);
     background-attachment: fixed;
-    height: 904px;
+    min-height: 100%;
+    padding-top: 10%;
+}
+
+html{
+    height: 100%;
+}
+
+body{
+    height: 100%;
 }
 
 .botoes-cadastro {
@@ -309,4 +322,10 @@ ul {
 
 .link-inicio:visited {
     color: black;
+}
+
+.formImagem{
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
 }

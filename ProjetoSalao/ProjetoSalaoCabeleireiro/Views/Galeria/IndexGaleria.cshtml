@@ -10,7 +10,6 @@
     <div class="loader"></div>
 </div>
 <!-- /Preloader -->
-
 <!-- Header Area Start -->
 <header class="header-area">
     <!-- Top Header Area Start -->
@@ -31,7 +30,6 @@
         </div>
     </div>
     <!-- Top Header Area End -->
-
     <!-- Main Header Start -->
     <div class="main-header-area">
         <div class="classy-nav-container breakpoint-off">
@@ -49,30 +47,30 @@
 
                     <!-- Menu -->
                     <div class="classy-menu">
-                        <!-- Menu Close Button -->
+                        <!-- Menu Botao Fechar -->
                         <div class="classycloseIcon">
                             <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
                         </div>
-                        <!-- Nav Start -->
+                        <!-- Nav Inicio -->
                         <div class="classynav">
                             <ul id="nav">
-                                <li class="active">@Html.ActionLink("Inicio", "IndexHomeCliente", "Home")</li>
-                                <li><a href="./portfolio.html">Portfolio</a></li>
-                                <li><a href="./service.html">Services</a></li>
-                                <li><a href="./about.html">About Us</a></li>
-                                <li>@Html.ActionLink("Galeria", "IndexGaleria", "Galeria")</li>
-                                <li><a href="./contact.html">Contact</a></li>
+                                <li>@Html.ActionLink("Inicio", "IndexHomeCliente", "Home")</li>
+                                <li>@Html.ActionLink("Agendar Horario", "IndexAgenda", "Agenda")</li>
+                                <li class="active">@Html.ActionLink("Galeria", "IndexGaleria", "Galeria")</li>
                                 <li>
-                                    @((Session["ClienteLogado"] as Cliente).Nome)
-                                    <ul class="dropdown">
-                                        <li>@Html.ActionLink("Perfil", "PerfilCliente", "Usuario")</li>
-                                        <li>@Html.ActionLink("Logout", "FazerLogout", "Login", new object { }, new { @class = "logout" })</li>
+                                    @if (Session["ClienteLogado"] != null)
+                                    {
+                                        @Html.ActionLink((Session["ClienteLogado"] as Cliente).Nome, "PerfilCliente", "Usuario")
+                                        <ul class="dropdown">
+                                            <li class="active">@Html.ActionLink("Perfil", "PerfilCliente", "Usuario")</li>
+                                            <li>@Html.ActionLink("Logout", "FazerLogout", "Login", new object { }, new { @class = "logout" })</li>
 
-                                    </ul>
+                                        </ul>
+                                    }
                                 </li>
                             </ul>
                         </div>
-                        <!-- Nav End -->
+                        <!-- Nav Fim -->
                     </div>
                 </nav>
             </div>
@@ -80,7 +78,6 @@
     </div>
 </header>
 <!-- Header Area End -->
-
 <!-- Breadcrumb Area Start -->
 <section class="breadcrumb-area section-padding-80">
     <div class="container">
@@ -100,7 +97,6 @@
     </div>
 </section>
 <!-- Breadcrumb Area End -->
-
 <!-- Portfolio Area Start -->
 <section class="akame-portfolio section-padding-0-80 clearfix">
     <div class="container">
@@ -109,28 +105,39 @@
             @foreach (var item in Model)
             {
                 <!-- Single Portfolio Item -->
-                <div class="col-12 col-sm-6 col-lg-4 akame-portfolio-item haircuts mb-30 wow fadeInUp" data-wow-delay="200ms">
-                    <div class="akame-portfolio-single-item">
+                <div class="col-6 col-sm-3 col-lg-4 akame-portfolio-item haircuts mb-30 wow" data-wow-delay="200ms">
+                    <div class="">
 
                         @if (item.Imagem != null)
                         {
 
                             var base64 = Convert.ToBase64String(item.Imagem);
-                            var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                            var Imagem = String.Format("data:image/png;base64,{0}", base64);
 
-                            <img src='@imgSrc' data-toggle="modalFoto" style="max-width:100%; max-height:100%;" />
-                        }
-                        <!-- Overlay Content -->
-                        <div class="overlay-content d-flex align-items-center justify-content-center">
-                            <div class="overlay-text text-center">
-                                <h4>Hairstyle</h4>
-                                <p>Consectetur adipisicing elit sed doe</p>
+
+                            <img src='@Imagem' style="max-width:100%; max-height:100%;" />
+
+                            <!-- Overlay Content -->
+                            <div class="overlay-content d-flex align-items-center justify-content-center">
                             </div>
-                        </div>
 
+                            <button onclick="remove(@item);" class="close" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+
+                            <a href="@Imagem" class="thumbnail-zoom">
+                                <i class="icon_search">
+                                </i>
+                            </a>
+                        }
                     </div>
                 </div>
             }
+            <div class="col-6 col-sm-3 col-lg-2 akame-portfolio-item mb-30" data-toggle="modal" data-target="#adicionarImagemModal">
+                <div class="akame-portfolio-single-item">
+                    <img src="~/content/imagens/addImagem.png" alt="">
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -139,3 +146,43 @@
 <div class="container">
     <div class="border-top"></div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade adicionarImagemModal" id="adicionarImagemModal" tabindex="-1" role="dialog" aria-labelledby="adicionariImagemModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content adicionarImagemModal">
+            <div class="modal-header adicionarImagemModal">
+                <h5 class="modal-title" id="adicionarImagemModalLabel">Adicionar Imagem</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body adicionarImagemModal">
+                <div class="form-row">
+                    <div class="form-group">
+                        @using (Html.BeginForm("AdicionarImagem", "Galeria", FormMethod.Post, new { enctype = "multipart/form-data", @class = "formImagem" }))
+                        {
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <input id="ImageUpload" name="ImageUpload" type="file" class="form-control" required />
+                                </div>
+                            </div>
+                            <div class="modal-footer adicionarImagemModal">
+                                <button class="btn btn-lg btn-primary btn-block btn-success" type="submit">Salvar Imagem</button>
+                            </div>
+                        }
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function remove(itemId) {
+        var url = "@Url.Action("RemoverImagens", "Galeria")";
+    }
+
+</script>

@@ -32,12 +32,21 @@ namespace ProjetoBenner.DAO
             }
         }
 
-        public void AtualizarImagens(Galeria galeria)
+        public Galeria BuscarPorId(int id)
         {
             using (var context = new SalaoContext())
             {
-                context.Galeria.Update(galeria);
-                context.SaveChanges();
+                return context.Galeria.Where(i => i.Id == id)
+                    .FirstOrDefault();
+            }
+        }
+
+        public void AtualizarGaleria(Galeria galeria)
+        {
+            using (var contexto = new SalaoContext())
+            {
+                contexto.Galeria.Update(galeria);
+                contexto.SaveChanges();
             }
         }
     }
