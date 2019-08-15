@@ -1,79 +1,27 @@
-﻿@using ProjetoBenner.Models;
+﻿@{
+    Layout = "~/Views/Shared/_LayoutCliente.cshtml";
+}
+@using ProjetoBenner.Models;
 
-<!-- Preloader -->
-<div id="preloader">
-    <div class="loader"></div>
-</div>
-<!-- /Preloader -->
-<!-- Header Area Start -->
-<header class="header-area">
-    <!-- Top Header Area Start -->
-    <div class="top-header-area">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center">
-                <div class="col-5">
-                    <div class="top-header-content">
-                        <p>Bem vindo ao salão Virtual!</p>
-                    </div>
-                </div>
-                <div class="col-7">
-                    <div class="top-header-content text-right">
-                        <p><i class="fa fa-clock-o" aria-hidden="true"></i> Mon-Sat: 8.00 to 17.00 <span class="mx-2"></span> | <span class="mx-2"></span> <i class="fa fa-phone" aria-hidden="true"></i> Call us: (+12)-345-6789</p>
-                    </div>
+<!-- Breadcrumb Area Start -->
+<section class="breadcrumb-area section-padding-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb-content">
+                    <h2>Perfil</h2>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a class="link-inicio" href="~/Home/IndexHomeCliente"><i class="icon_house_alt"></i> Inicio</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Perfil</li>
+                        </ol>
+                    </nav>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Top Header Area End -->
-    <!-- Main Header Start -->
-    <div class="main-header-area">
-        <div class="classy-nav-container breakpoint-off">
-            <div class="container">
-                <!-- Classy Menu -->
-                <nav class="classy-navbar justify-content-between" id="akameNav">
-
-                    <!-- Logo -->
-                    <a class="nav-brand" href="index.html"><img src="~/Content/template-img/core-img/logo.png" alt=""></a>
-
-                    <!-- Navbar Toggler -->
-                    <div class="classy-navbar-toggler">
-                        <span class="navbarToggler"><span></span><span></span><span></span></span>
-                    </div>
-
-                    <!-- Menu -->
-                    <div class="classy-menu">
-                        <!-- Menu Close Button -->
-                        <div class="classycloseIcon">
-                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-                        </div>
-                        <!-- Nav Start -->
-                        <div class="classynav">
-                            <ul id="nav">
-                                <li>@Html.ActionLink("Inicio", "IndexHomeCliente", "Home")</li>
-                                <li>@Html.ActionLink("Agendar Horario", "IndexAgenda", "Agenda")</li>
-                                <li>@Html.ActionLink("Galeria", "IndexGaleria", "Galeria")</li>
-                                <li>
-                                    @if (Session["ClienteLogado"] != null)
-                                    {
-                                        @Html.ActionLink((Session["ClienteLogado"] as Cliente).Nome, "PerfilCliente", "Usuario")
-                                        <ul class="dropdown">
-                                            <li class="active">@Html.ActionLink("Perfil", "PerfilCliente", "Usuario")</li>
-                                            <li>@Html.ActionLink("Logout", "FazerLogout", "Login", new object { }, new { @class = "logout" })</li>
-
-                                        </ul>
-                                    }
-
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- Nav End -->
-                    </div>
-                </nav>
-            </div>
-        </div>
-    </div>
-</header>
-<!-- Header Area End -->
+</section>
+<!-- Breadcrumb Area End -->
 
 <section class="welcome-area">
     <div class="formulario">
@@ -125,3 +73,8 @@
     </div>
 </section>
 <!-- Welcome Area End -->
+
+<script>
+    var btn = document.querySelector('.btn4');
+    btn.classList.add("active");
+</script>

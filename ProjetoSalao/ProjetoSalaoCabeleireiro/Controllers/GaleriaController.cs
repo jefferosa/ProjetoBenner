@@ -20,11 +20,13 @@ namespace ProjetoBenner.Controllers
             return View(imagens);
         }
 
-        public ActionResult FormularioGaleria()
+        [HttpGet]
+        public ActionResult GaleriaFuncionario()
         {
-            ViewBag.Galeria = new Galeria();
-            var uploadImagem = new UploadImagem();
-            return View(uploadImagem);
+            GaleriaDAO dao = new GaleriaDAO();
+            IList<Galeria> imagens = dao.ListarImagens();
+            ViewBag.Galeria = imagens;
+            return View(imagens);
         }
 
         [HttpPost]
@@ -49,7 +51,7 @@ namespace ProjetoBenner.Controllers
             {
                 GaleriaDAO dao = new GaleriaDAO();
                 dao.AdicionarImagem(uploadImagem);
-                return RedirectToAction("IndexGaleria");
+                return RedirectToAction("GaleriaFuncionario");
             }
             else
             {

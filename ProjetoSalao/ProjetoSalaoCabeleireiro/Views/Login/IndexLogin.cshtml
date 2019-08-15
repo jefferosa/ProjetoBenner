@@ -1,187 +1,215 @@
-﻿<div class="tela-login">
+﻿<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" href="~/Content/imagens/favicon.ico" />
+    <title>Salão Virtual</title>
+    <link rel="stylesheet" href="~/Content/css/reset.css" />
+    <link rel="stylesheet" href="~/Content/bootstrap-css/bootstrap.css" />
+    <link rel="stylesheet" href="~/Content/style.css">
+    <link rel="stylesheet" href="~/Content/css/Estilo.css" />
+</head>
+
+<body>
+    <div class="tela-login">
 
 
-    <form action="/Login/AutenticaLogin" method="post" class="form-signin text-center navbar-search">
+        <form action="/Login/AutenticaLogin" method="post" class="form-signin text-center navbar-search">
 
-        @*Imagem*@
-        <img class="mb-4" src="~/Content/imagens/Logo.png" alt="" width="72" height="72">
+            @*Imagem*@
+            <img class="mb-4" src="~/Content/imagens/Logo.png" alt="" width="72" height="72">
 
-        <h1 class="h3 mb-3 font-weight-normal">Por favor se conecte</h1>
+            <h1 class="h3 mb-3 font-weight-normal">Por favor se conecte</h1>
 
-        <label for="login" class="sr-only">Login</label>
-        <input style="margin-bottom: 10px" type="text" name="login" id="login" class="form-control" placeholder="Login" required autofocus>
+            <label for="login" class="sr-only">Login</label>
+            <input style="margin-bottom: 10px" type="text" name="login" id="login" class="form-control" placeholder="Login" required autofocus>
 
-        <label for="senha" class="sr-only">Senha</label>
-        <input style="margin-bottom: 20px" type="password" name="senha" id="senha" class="form-control" placeholder="Senha" required>
+            <label for="senha" class="sr-only">Senha</label>
+            <input style="margin-bottom: 20px" type="password" name="senha" id="senha" class="form-control" placeholder="Senha" required>
 
-        <button class="btn btn-lg btn-primary btn-block aceBotao" type="submit">Acessar</button>
-        <div class="form-row botoes-cadastro">
-            <div class="col-md-5">
-                <button class="btn btn-lg btn-primary btn-block cadBotao" size="30" type="submit" data-toggle="modal" data-target="#cadastroModal">Criar Conta</button>
+            <button class="btn btn-lg btn-primary btn-block aceBotao" type="submit">Acessar</button>
+            <div class="form-row botoes-cadastro">
+                <div class="col-md-5">
+                    <button class="btn btn-lg btn-primary btn-block cadBotao" size="30" type="submit" data-toggle="modal" data-target="#cadastroModal">Criar Conta</button>
+                </div>
+                <div class="col-md-7">
+                    <button class="btn btn-lg btn-primary btn-block cadBotao" size="30" type="submit" data-toggle="modal" data-target="#cadastroFuncionarioModal">Cadastrar Funcionario</button>
+                </div>
             </div>
-            <div class="col-md-7">
-                <button class="btn btn-lg btn-primary btn-block cadBotao" size="30" type="submit" data-toggle="modal" data-target="#cadastroFuncionarioModal">Cadastrar Funcionario</button>
+        </form>
+
+        <!-- Modal -->
+        <div class="modal fade cadastroModal" id="cadastroModal" tabindex="-1" role="dialog" aria-labelledby="cadastroModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content cadastroModal">
+                    <div class="modal-header cadastroModal">
+                        <h5 class="modal-title" id="cadastroModalLabel">Cadastro</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body cadastroModal">
+                        <form action="/Usuario/AdicionarCliente" method="post" class="form-signin form-cadastro text-center navbar-search">
+                            <div class="form-row">
+
+                                <div class="form-group col-md-6">
+                                    <label for="nome">Nome</label>
+                                    <input id="nome" name="cliente.Nome" class="form-control" required />
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="login">Login:</label>
+                                    <input id="login" name="cliente.Login" class="form-control" required />
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="cpf">CPF:</label>
+                                    <input id="cpf" name="cliente.CPF" class="form-control" required />
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="email">Email:</label>
+                                    <input id="email" name="cliente.Email" type="email" class="form-control" required />
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="telefone">Telefone:</label>
+                                    <input id="telefone" name="cliente.Telefone" class="form-control" required />
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="senha">Senha:</label>
+                                    <input id="senha" name="cliente.Senha" type="password" class="form-control" required />
+                                </div>
+
+                                <div>
+                                    <label for="cep">Cep:</label>
+                                    <input name="cliente.CEP" type="text" id="cep" size="60" maxlength="9" onblur="pesquisacep(this.value);" class="form-control" required />
+                                </div>
+                                <div class="form-group col-md-9">
+                                    <label for="rua">Rua:</label>
+                                    <input name="cliente.Rua" type="text" id="rua" size="60" class="form-control" required />
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="numero">Número:</label>
+                                    <input name="cliente.Numero" type="text" id="numero" size="10" class="form-control" required />
+                                </div>
+                                <div class="form-group col-md-5">
+                                    <label for="bairro">Bairro:</label>
+                                    <input name="cliente.Bairro" type="text" id="bairro" size="40" class="form-control" required />
+                                </div>
+                                <div class="form-group col-md-5">
+                                    <label for="cidade"> Cidade:</label>
+                                    <input name="cliente.Cidade" type="text" id="cidade" size="40" class="form-control" required />
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="estado">Estado:</label>
+                                    <input name="cliente.UF" type="text" id="uf" size="1" class="form-control" required />
+                                </div>
+
+                            </div>
+                            <div class="modal-footer cadastroModal">
+                                <button class="btn btn-lg btn-primary btn-block" type="submit">Criar Conta</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
             </div>
         </div>
-    </form>
 
-    <!-- Modal -->
-    <div class="modal fade cadastroModal" id="cadastroModal" tabindex="-1" role="dialog" aria-labelledby="cadastroModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content cadastroModal">
-                <div class="modal-header cadastroModal">
-                    <h5 class="modal-title" id="cadastroModalLabel">Cadastro</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+        <!-- Modal -->
+        <div class="modal fade cadastroFuncionarioModal" id="cadastroFuncionarioModal" tabindex="-1" role="dialog" aria-labelledby="cadastroFuncionarioModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content cadastroFuncionarioModal">
+                    <div class="modal-header cadastroFuncionarioModal">
+                        <h5 class="modal-title" id="cadastroFuncionarioModalLabel">Cadastro</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body cadastroFuncionarioModal">
+                        <form action="/Usuario/AdicionarFuncionario" method="post" class="form-signin form-cadastro text-center navbar-search">
+                            <div class="form-row">
+
+                                <div class="form-group col-md-6">
+                                    <label for="nome">Nome</label>
+                                    <input id="nome" name="funcionario.Nome" class="form-control" required />
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="login">Login:</label>
+                                    <input id="login" name="funcionario.Login" class="form-control" required />
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="cpf">CPF:</label>
+                                    <input id="cpf" name="funcionario.CPF" class="form-control" required />
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="email">Email:</label>
+                                    <input id="email" name="funcionario.Email" type="email" class="form-control" required />
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="telefone">Telefone:</label>
+                                    <input id="telefone" name="funcionario.Telefone" class="form-control" required />
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="senha">Senha:</label>
+                                    <input id="senha" name="funcionario.Senha" type="password" class="form-control" required />
+                                </div>
+
+                                <div>
+                                    <label for="cep">Cep:</label>
+                                    <input name="funcionario.CEP" type="text" id="cep" size="60" maxlength="9" onblur="pesquisacep(this.value);" class="form-control" required />
+                                </div>
+                                <div class="form-group col-md-9">
+                                    <label for="rua">Rua:</label>
+                                    <input name="funcionario.Rua" type="text" id="rua" size="60" class="form-control" required />
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="numero">Número:</label>
+                                    <input name="funcionario.Numero" type="text" id="numero" size="10" class="form-control" required />
+                                </div>
+                                <div class="form-group col-md-5">
+                                    <label for="bairro">Bairro:</label>
+                                    <input name="funcionario.Bairro" type="text" id="bairro" size="40" class="form-control" required />
+                                </div>
+                                <div class="form-group col-md-5">
+                                    <label for="cidade"> Cidade:</label>
+                                    <input name="funcionario.Cidade" type="text" id="cidade" size="40" class="form-control" required />
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="estado">Estado:</label>
+                                    <input name="funcionario.UF" type="text" id="uf" size="1" class="form-control" required />
+                                </div>
+
+                            </div>
+                            <div class="modal-footer cadastroFuncionarioModal">
+                                <button class="btn btn-lg btn-primary btn-block" type="submit">Criar Conta</button>
+                            </div>
+                        </form>
+                    </div>
+
                 </div>
-                <div class="modal-body cadastroModal">
-                    <form action="/Usuario/AdicionarCliente" method="post" class="form-signin form-cadastro text-center navbar-search">
-                        <div class="form-row">
-
-                            <div class="form-group col-md-6">
-                                <label for="nome">Nome</label>
-                                <input id="nome" name="cliente.Nome" class="form-control" required />
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label for="login">Login:</label>
-                                <input id="login" name="cliente.Login" class="form-control" required />
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label for="cpf">CPF:</label>
-                                <input id="cpf" name="cliente.CPF" class="form-control" required />
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label for="email">Email:</label>
-                                <input id="email" name="cliente.Email" type="email" class="form-control" required />
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label for="telefone">Telefone:</label>
-                                <input id="telefone" name="cliente.Telefone" class="form-control" required />
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label for="senha">Senha:</label>
-                                <input id="senha" name="cliente.Senha" type="password" class="form-control" required />
-                            </div>
-
-                            <div>
-                                <label for="cep">Cep:</label>
-                                <input name="cliente.CEP" type="text" id="cep" size="60" maxlength="9" onblur="pesquisacep(this.value);" class="form-control" required />
-                            </div>
-                            <div class="form-group col-md-9">
-                                <label for="rua">Rua:</label>
-                                <input name="cliente.Rua" type="text" id="rua" size="60" class="form-control" required />
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label for="numero">Número:</label>
-                                <input name="cliente.Numero" type="text" id="numero" size="10" class="form-control" required />
-                            </div>
-                            <div class="form-group col-md-5">
-                                <label for="bairro">Bairro:</label>
-                                <input name="cliente.Bairro" type="text" id="bairro" size="40" class="form-control" required />
-                            </div>
-                            <div class="form-group col-md-5">
-                                <label for="cidade"> Cidade:</label>
-                                <input name="cliente.Cidade" type="text" id="cidade" size="40" class="form-control" required />
-                            </div>
-                            <div class="form-group col-md-2">
-                                <label for="estado">Estado:</label>
-                                <input name="cliente.UF" type="text" id="uf" size="1" class="form-control" required />
-                            </div>
-
-                        </div>
-                        <div class="modal-footer cadastroModal">
-                            <button class="btn btn-lg btn-primary btn-block" type="submit">Criar Conta</button>
-                        </div>
-                    </form>
-                </div>
-
             </div>
         </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade cadastroFuncionarioModal" id="cadastroFuncionarioModal" tabindex="-1" role="dialog" aria-labelledby="cadastroFuncionarioModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content cadastroFuncionarioModal">
-                <div class="modal-header cadastroFuncionarioModal">
-                    <h5 class="modal-title" id="cadastroFuncionarioModalLabel">Cadastro</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body cadastroFuncionarioModal">
-                    <form action="/Usuario/AdicionarFuncionario" method="post" class="form-signin form-cadastro text-center navbar-search">
-                        <div class="form-row">
-
-                            <div class="form-group col-md-6">
-                                <label for="nome">Nome</label>
-                                <input id="nome" name="funcionario.Nome" class="form-control" required />
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label for="login">Login:</label>
-                                <input id="login" name="funcionario.Login" class="form-control" required />
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label for="cpf">CPF:</label>
-                                <input id="cpf" name="funcionario.CPF" class="form-control" required />
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label for="email">Email:</label>
-                                <input id="email" name="funcionario.Email" type="email" class="form-control" required />
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label for="telefone">Telefone:</label>
-                                <input id="telefone" name="funcionario.Telefone" class="form-control" required />
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label for="senha">Senha:</label>
-                                <input id="senha" name="funcionario.Senha" type="password" class="form-control" required />
-                            </div>
-
-                            <div>
-                                <label for="cep">Cep:</label>
-                                <input name="funcionario.CEP" type="text" id="cep" size="60" maxlength="9" onblur="pesquisacep(this.value);" class="form-control" required />
-                            </div>
-                            <div class="form-group col-md-9">
-                                <label for="rua">Rua:</label>
-                                <input name="funcionario.Rua" type="text" id="rua" size="60" class="form-control" required />
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label for="numero">Número:</label>
-                                <input name="funcionario.Numero" type="text" id="numero" size="10" class="form-control" required />
-                            </div>
-                            <div class="form-group col-md-5">
-                                <label for="bairro">Bairro:</label>
-                                <input name="funcionario.Bairro" type="text" id="bairro" size="40" class="form-control" required />
-                            </div>
-                            <div class="form-group col-md-5">
-                                <label for="cidade"> Cidade:</label>
-                                <input name="funcionario.Cidade" type="text" id="cidade" size="40" class="form-control" required />
-                            </div>
-                            <div class="form-group col-md-2">
-                                <label for="estado">Estado:</label>
-                                <input name="funcionario.UF" type="text" id="uf" size="1" class="form-control" required />
-                            </div>
-
-                        </div>
-                        <div class="modal-footer cadastroFuncionarioModal">
-                            <button class="btn btn-lg btn-primary btn-block" type="submit">Criar Conta</button>
-                        </div>
-                    </form>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</div>
+    <script src="~/Content/js/jquery-3.4.1.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/viaCEP.js"></script>
+    <script src="~/Content/template-js/jquery.min.js"></script>
+    <script src="~/Content/template-js/popper.min.js"></script>
+    <script src="~/Content/template-js/bootstrap.min.js"></script>
+    <script src="~/Content/template-js/akame.bundle.js"></script>
+    <script src="~/Content/template-js/default-assets/active.js"></script>
+</body>
+</html>

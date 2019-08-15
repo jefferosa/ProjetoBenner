@@ -1,0 +1,173 @@
+﻿@using ProjetoBenner.Models;
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" href="~/Content/imagens/favicon.ico" />
+    <title>Salão Virtual</title>
+    <link rel="stylesheet" href="~/Content/css/reset.css" />
+    <link rel="stylesheet" href="~/Content/bootstrap-css/bootstrap.css" />
+    <link rel="stylesheet" href="~/Content/style.css">
+    <link rel="stylesheet" href="~/Content/css/Estilo.css" />
+</head>
+<body>
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header Area Start -->
+    <header class="header-area">
+        <!-- Top Header Area Start -->
+        <div class="top-header-area">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-5">
+                        <div class="top-header-content">
+                            <p>Bem vindo ao salão Virtual!</p>
+                        </div>
+                    </div>
+                    <div class="col-7">
+                        <div class="top-header-content text-right">
+                            <p><i class="fa fa-clock-o" aria-hidden="true"></i> Seg-Sab: 08:00 as 19:00 <span class="mx-2"></span> | <span class="mx-2"></span> <i class="fa fa-phone" aria-hidden="true"></i> Ligue-nos: (00)-00000-0000</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Top Header Area End -->
+        <!-- Main Header Start -->
+        <div class="main-header-area">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Classy Menu -->
+                    <nav class="classy-navbar justify-content-between" id="akameNav">
+
+                        <!-- Logo -->
+                        <a class="nav-brand" href="~/Home/IndexHomeCliente"><img src="~/Content/imagens/LogoNome.png" alt=""></a>
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+                            <!-- Menu Close Button -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+                            <!-- Nav Start -->
+                            <div class="classynav">
+                                <ul id="nav">
+                                    <li class="btn1">@Html.ActionLink("Inicio", "IndexHomeCliente", "Home")</li>
+                                    <li class="btn2">@Html.ActionLink("Agendar Horario", "IndexAgenda", "Agenda")</li>
+                                    <li class="btn3">@Html.ActionLink("Galeria", "IndexGaleria", "Galeria")</li>
+                                    <li>
+                                        @if (Session["ClienteLogado"] != null)
+                                        {
+                                            @Html.ActionLink((Session["ClienteLogado"] as Cliente).Nome, "PerfilCliente", "Usuario")
+                                            <ul class="dropdown">
+                                                <li class="btn4">@Html.ActionLink("Perfil", "PerfilCliente", "Usuario")</li>
+                                                <li>@Html.ActionLink("Logout", "FazerLogout", "Login", new object { }, new { @class = "logout" })</li>
+
+                                            </ul>
+                                        }
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- Nav End -->
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header Area End -->
+
+    @RenderBody()
+
+    <!-- Border -->
+    <div class="container">
+        <div class="border-top"></div>
+    </div>
+
+    <!-- Footer Area Start -->
+    <footer class="footer-area section-padding-80-0">
+        <div class="container">
+            <div class="row justify-content-between">
+
+                <!-- Single Footer Widget -->
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="single-footer-widget mb-80">
+                        <!-- Footer Logo -->
+                        <a href="#" class="footer-logo"><img src="~/content/imagens/LogoNome.png" alt=""></a>
+
+                        <!-- Copywrite Text -->
+                        <div class="copywrite-text">
+                            <p>
+                                &copy; Salão Virtual
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Footer Widget -->
+                <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+                    <div class="single-footer-widget mb-80">
+                        <!-- Widget Title -->
+                        <h4 class="widget-title">Horarios de Atendimento</h4>
+
+                        <!-- Open Times -->
+                        <div class="open-time">
+                            <p>Segunda: Sexta-Feita: 08:00 - 19:00</p>
+                            <p>Sabado: 08:00 - 20:00</p>
+                        </div>
+
+                        <!-- Social Info -->
+                        <div class="social-info">
+                            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                            <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+                            <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Footer Widget -->
+                <div class="col-12 col-md-4 col-xl-3">
+                    <div class="single-footer-widget mb-80">
+
+                        <!-- Widget Title -->
+                        <h4 class="widget-title">Contate-Nos</h4>
+
+                        <!-- Contact Address -->
+                        <div class="contact-address">
+                            <p>Tel: (00) 00000-0000</p>
+                            <p>E-mail: email@gmail.com</p>
+                            <p>Endereço: Iris Watson, CEP 00000-000 Fusce Rd, NY</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Area End -->
+
+    <script src="~/Content/js/jquery-3.4.1.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/viaCEP.js"></script>
+    <script src="~/Content/template-js/jquery.min.js"></script>
+    <script src="~/Content/template-js/popper.min.js"></script>
+    <script src="~/Content/template-js/bootstrap.min.js"></script>
+    <script src="~/Content/template-js/akame.bundle.js"></script>
+    <script src="~/Content/template-js/default-assets/active.js"></script>
+
+</body>
+</html>

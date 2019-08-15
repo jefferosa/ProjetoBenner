@@ -1,83 +1,12 @@
-﻿@model IEnumerable<ProjetoBenner.Models.Galeria>
+﻿@{
+    Layout = "~/Views/Shared/_LayoutCliente.cshtml";
+}
+
+@model IEnumerable<ProjetoBenner.Models.Galeria>
 @{
     ViewBag.Title = "Galeria";
 }
 
-@using ProjetoBenner.Models;
-
-<!-- Preloader -->
-<div id="preloader">
-    <div class="loader"></div>
-</div>
-<!-- /Preloader -->
-<!-- Header Area Start -->
-<header class="header-area">
-    <!-- Top Header Area Start -->
-    <div class="top-header-area">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center">
-                <div class="col-5">
-                    <div class="top-header-content">
-                        <p>Bem vindo ao salão Virtual!</p>
-                    </div>
-                </div>
-                <div class="col-7">
-                    <div class="top-header-content text-right">
-                        <p><i class="fa fa-clock-o" aria-hidden="true"></i> Seg-Sab: 8.00 as 17.00 <span class="mx-2"></span> | <span class="mx-2"></span> <i class="fa fa-phone" aria-hidden="true"></i> Call us: (+12)-345-6789</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Top Header Area End -->
-    <!-- Main Header Start -->
-    <div class="main-header-area">
-        <div class="classy-nav-container breakpoint-off">
-            <div class="container">
-                <!-- Classy Menu -->
-                <nav class="classy-navbar justify-content-between" id="akameNav">
-
-                    <!-- Logo -->
-                    <a class="nav-brand" href="index.html"><img src="~/Content/template-img/core-img/logo.png" alt=""></a>
-
-                    <!-- Navbar Toggler -->
-                    <div class="classy-navbar-toggler">
-                        <span class="navbarToggler"><span></span><span></span><span></span></span>
-                    </div>
-
-                    <!-- Menu -->
-                    <div class="classy-menu">
-                        <!-- Menu Botao Fechar -->
-                        <div class="classycloseIcon">
-                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-                        </div>
-                        <!-- Nav Inicio -->
-                        <div class="classynav">
-                            <ul id="nav">
-                                <li>@Html.ActionLink("Inicio", "IndexHomeCliente", "Home")</li>
-                                <li>@Html.ActionLink("Agendar Horario", "IndexAgenda", "Agenda")</li>
-                                <li class="active">@Html.ActionLink("Galeria", "IndexGaleria", "Galeria")</li>
-                                <li>
-                                    @if (Session["ClienteLogado"] != null)
-                                    {
-                                        @Html.ActionLink((Session["ClienteLogado"] as Cliente).Nome, "PerfilCliente", "Usuario")
-                                        <ul class="dropdown">
-                                            <li class="active">@Html.ActionLink("Perfil", "PerfilCliente", "Usuario")</li>
-                                            <li>@Html.ActionLink("Logout", "FazerLogout", "Login", new object { }, new { @class = "logout" })</li>
-
-                                        </ul>
-                                    }
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- Nav Fim -->
-                    </div>
-                </nav>
-            </div>
-        </div>
-    </div>
-</header>
-<!-- Header Area End -->
 <!-- Breadcrumb Area Start -->
 <section class="breadcrumb-area section-padding-80">
     <div class="container">
@@ -106,7 +35,7 @@
             {
                 <!-- Single Portfolio Item -->
                 <div class="col-6 col-sm-3 col-lg-4 akame-portfolio-item haircuts mb-30 wow" data-wow-delay="200ms">
-                    <div class="">
+                    <div class="akame-portfolio-single-item">
 
                         @if (item.Imagem != null)
                         {
@@ -121,23 +50,16 @@
                             <div class="overlay-content d-flex align-items-center justify-content-center">
                             </div>
 
-                            <button onclick="remove(@item);" class="close" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-
                             <a href="@Imagem" class="thumbnail-zoom">
                                 <i class="icon_search">
                                 </i>
                             </a>
                         }
+
                     </div>
                 </div>
+
             }
-            <div class="col-6 col-sm-3 col-lg-2 akame-portfolio-item mb-30" data-toggle="modal" data-target="#adicionarImagemModal">
-                <div class="akame-portfolio-single-item">
-                    <img src="~/content/imagens/addImagem.png" alt="">
-                </div>
-            </div>
         </div>
     </div>
 </section>
@@ -147,42 +69,3 @@
     <div class="border-top"></div>
 </div>
 
-<!-- Modal -->
-<div class="modal fade adicionarImagemModal" id="adicionarImagemModal" tabindex="-1" role="dialog" aria-labelledby="adicionariImagemModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content adicionarImagemModal">
-            <div class="modal-header adicionarImagemModal">
-                <h5 class="modal-title" id="adicionarImagemModalLabel">Adicionar Imagem</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body adicionarImagemModal">
-                <div class="form-row">
-                    <div class="form-group">
-                        @using (Html.BeginForm("AdicionarImagem", "Galeria", FormMethod.Post, new { enctype = "multipart/form-data", @class = "formImagem" }))
-                        {
-                            <div class="form-group">
-                                <div class="col-md-10">
-                                    <input id="ImageUpload" name="ImageUpload" type="file" class="form-control" required />
-                                </div>
-                            </div>
-                            <div class="modal-footer adicionarImagemModal">
-                                <button class="btn btn-lg btn-primary btn-block btn-success" type="submit">Salvar Imagem</button>
-                            </div>
-                        }
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<script type="text/javascript">
-    function remove(itemId) {
-        var url = "@Url.Action("RemoverImagens", "Galeria")";
-    }
-
-</script>

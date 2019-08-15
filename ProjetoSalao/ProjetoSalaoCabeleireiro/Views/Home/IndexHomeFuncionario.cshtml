@@ -1,48 +1,9 @@
-﻿@using ProjetoBenner.Models;
+﻿@{
+    Layout = "~/Views/Shared/_LayoutFuncionario.cshtml";
+}
+@using ProjetoBenner.Models;
 
-<div class="page-header navbar-fixed-top navbar">
-    <img class="Logo" src="~/Content/imagens/Logo.png" />
-    <div class="dropdown">
-        <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            @((Session["FuncionarioLogado"] as Funcionario).Nome)
-        </a>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item">@Html.ActionLink("Logout", "FazerLogout", "Login", new object { }, new { @class = "drop-edit " })</a>
-            <a class="dropdown-item">@Html.ActionLink("Perfil", "PerfilFuncionario", "Usuario", new object { }, new { @class = "drop-edit " })</a>
-        </div>
-    </div>
-</div>
-
-<div class="page-container">
-    <div class="page-content-wrapper">
-        <ul class="bg-gradient-primary sidebar menu">
-            <li class="nav-item">
-                <a class="nav-link">
-                    <span>@Html.ActionLink("Galeria", "IndexGaleria", "Galeria")</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link">
-                    <span>@Html.ActionLink("Estoque", "IndexProduto", "Produto")</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link">
-                    <span>@Html.ActionLink("Serviços", "IndexServico", "Servico")</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link">
-                    <span>@Html.ActionLink("Perfil", "PerfilFuncionario", "Usuario")</span>
-                </a>
-            </li>
-        </ul>
-    </div>
-</div>
-
-<footer class="page-footer-inner">
-    &copy;
-</footer>
+<script>
+    var btn = document.querySelector('.btn1');
+    btn.classList.add("active");
+</script>

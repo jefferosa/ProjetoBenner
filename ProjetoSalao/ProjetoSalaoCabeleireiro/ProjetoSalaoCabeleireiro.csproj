@@ -231,6 +231,9 @@
     <Content Include="Content\css\reset.css" />
     <Content Include="Content\css\sb-admin-2.min.css" />
     <Content Include="Content\imagens\addImagem.png" />
+    <Content Include="Content\imagens\carrousel.jpg" />
+    <Content Include="Content\imagens\carrousel2.jpg" />
+    <Content Include="Content\imagens\LogoNome.png" />
     <Content Include="Content\imagens\servicoIMG3.png" />
     <Content Include="Content\imagens\servicoIMG2.png" />
     <Content Include="Content\imagens\servicoIMG1.png" />
@@ -428,17 +431,14 @@
     <Content Include="Content\style.css.map" />
     <None Include="packages.config" />
     <Content Include="Views\web.config" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_LayoutCliente.cshtml" />
     <Content Include="Views\Home\IndexHomeCliente.cshtml" />
     <Content Include="Views\Servico\IndexServico.cshtml" />
     <Content Include="Views\Servico\FormularioServico.cshtml" />
     <Content Include="Views\Login\IndexLogin.cshtml" />
     <Content Include="Views\Produto\IndexProduto.cshtml" />
     <Content Include="Views\Produto\FormularioProduto.cshtml" />
-    <Content Include="Views\Produto\Visualiza.cshtml" />
     <Content Include="Views\Usuario\FormularioCliente.cshtml" />
-    <Content Include="Views\Usuario\IndexUsuario.cshtml" />
     <Content Include="Views\Agenda\FormularioAgenda.cshtml" />
     <Content Include="Views\Endereco\FormularioEndereco.cshtml" />
     <Content Include="Views\Servico\VisualizaServico.cshtml" />
@@ -449,7 +449,8 @@
     <Content Include="Views\Usuario\PerfilFuncionario.cshtml" />
     <Content Include="Views\Galeria\IndexGaleria.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Galeria\IndexGaleriaFuncionario.cshtml" />
+    <Content Include="Views\Galeria\GaleriaFuncionario.cshtml" />
+    <Content Include="Views\Shared\_LayoutFuncionario.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,27 +1,57 @@
-﻿<div id="tb">
-    <table class="table table-hover tb">
+﻿@{
+    Layout = "~/Views/Shared/_LayoutFuncionario.cshtml";
+}
 
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Tipo</th>
-                <th>Tempo Estimado</th>
-                <th>Valor</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var servico in ViewBag.Servico)
-            {
+<!-- Breadcrumb Area Start -->
+<section class="breadcrumb-area section-padding-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb-content">
+                    <h2>Serviços</h2>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a class="link-inicio" href="~/Home/IndexHomeFuncionario"><i class="icon_house_alt"></i> Inicio</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Serviços</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Area End -->
+
+<section class="welcome-area">
+    <div id="tb">
+        <table class="table table-hover tb">
+
+            <thead>
                 <tr>
-                    <td>@servico.Id</td>
-                    <td class="tb-td">@servico.Tipo</td>
-                    <td>@servico.Tempo</td>
-                    <td class="tb-td">@servico.Valor</td>
+                    <th>Id</th>
+                    <th>Tipo</th>
+                    <th>Tempo Estimado</th>
+                    <th>Valor</th>
                 </tr>
-            }
-        </tbody>
+            </thead>
+            <tbody>
+                @foreach (var servico in ViewBag.Servico)
+                {
+                    <tr>
+                        <td>@servico.Id</td>
+                        <td class="tb-td">@servico.Tipo</td>
+                        <td>@servico.Tempo</td>
+                        <td class="tb-td">@servico.Valor</td>
+                    </tr>
+                }
+            </tbody>
 
-    </table>
-    <span>@Html.ActionLink("Cadastrar Novo Serviço", "FormularioServico", "Servico", new object { }, new { @style = "color: whites;" })</span>
-</div>
+        </table>
+        <span>@Html.ActionLink("Cadastrar Novo Serviço", "FormularioServico", "Servico", new object { }, new { @style = "color: whites;" })</span>
+    </div>
+</section>
 
+<script>
+    var btn = document.querySelector('.btn5');
+    btn.classList.add("active");
+</script>

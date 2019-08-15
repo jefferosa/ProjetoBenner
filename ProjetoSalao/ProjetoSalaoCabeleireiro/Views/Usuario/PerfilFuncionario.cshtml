@@ -1,104 +1,82 @@
-﻿@using ProjetoBenner.Models;
+﻿@{
+    Layout = "~/Views/Shared/_LayoutFuncionario.cshtml";
+}
+@using ProjetoBenner.Models;
 
-<div class="page-header navbar-fixed-top navbar">
-    <img class="Logo" src="~/Content/imagens/Logo.png" />
-
-    <div class="dropdown">
-        <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            @((Session["FuncionarioLogado"] as Funcionario).Nome)
-        </a>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item">@Html.ActionLink("Logout", "FazerLogout", "Login", new object { }, new { @class = "drop-edit " })</a>
-            <a class="dropdown-item">@Html.ActionLink("Perfil", "PerfilFuncionario", "Usuario", new object { }, new { @class = "drop-edit " })</a>
+<!-- Breadcrumb Area Start -->
+<section class="breadcrumb-area section-padding-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb-content">
+                    <h2>Perfil</h2>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a class="link-inicio" href="~/Home/IndexHomeFuncionario"><i class="icon_house_alt"></i> Inicio</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Perfil</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
         </div>
     </div>
+</section>
+<!-- Breadcrumb Area End -->
 
-</div>
+<section class="welcome-area">
+    <div class="formulario">
+        <form class="form">
+            @if (Session["FuncionarioLogado"] != null)
+            {
+                var funcionario = Session["FuncionarioLogado"] as Funcionario;
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="nome">Nome:</label>
+                        <label class="form-control" for="nome">@funcionario.Nome</label>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="cpf">CPF:</label>
+                        <label class="form-control" for="cpf">@funcionario.CPF</label>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="telefone">Telefone:</label>
+                        <label class="form-control" for="telefone">@funcionario.Telefone</label>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="email">Email:</label>
+                        <label class="form-control" for="email">@funcionario.Email</label>
+                    </div>
 
-<div class="page-container">
-    <div class="page-content-wrapper">
+                    <div class="form-group col-md-6">
+                        <label for="cep">CEP: </label>
+                        <label class="form-control" for="cep">@funcionario.CEP</label>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="cidade">Cidade: </label>
+                        <label class="form-control" for="cidade">@funcionario.Cidade</label>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="bairro">Bairro: </label>
+                        <label class="form-control" for="bairro">@funcionario.Bairro</label>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="rua">Rua: </label>
+                        <label class="form-control" for="rua">@funcionario.Rua</label>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="numero">Numero: </label>
+                        <label class="form-control" for="numero">@funcionario.Numero</label>
+                    </div>
+                </div>
+            }
 
-        <ul class="bg-gradient-primary sidebar menu">
-            
-            <li class="nav-item">
-                <a class="nav-link">
-                    <span>@Html.ActionLink("Inicio", "IndexHomeFuncionario", "Home")</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link">
-                    <span>@Html.ActionLink("Galeria", "IndexGaleria", "Galeria")</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link">
-                    <span>@Html.ActionLink("Estoque", "IndexProduto", "Produto")</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link">
-                    <span>@Html.ActionLink("Serviços", "IndexServico", "Servico")</span>
-                </a>
-            </li>
-
-        </ul>
-
-        <div class="formulario">
-            <form class="navbar-search form">
-
-                @if (Session["FuncionarioLogado"] != null)
-                {
-                    var funcionario = Session["FuncionarioLogado"] as Funcionario;
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="nome">Nome:</label>
-                                <label class="form-control" for="nome">@funcionario.Nome</label>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="cpf">CPF:</label>
-                                <label class="form-control" for="cpf">@funcionario.CPF</label>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="telefone">Telefone:</label>
-                                <label class="form-control" for="telefone">@funcionario.Telefone</label>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="email">Email:</label>
-                                <label class="form-control" for="email">@funcionario.Email</label>
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label for="cep">CEP: </label>
-                                <label class="form-control" for="cep">@funcionario.CEP</label>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="cidade">Cidade: </label>
-                                <label class="form-control" for="cidade">@funcionario.Cidade</label>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="bairro">Bairro: </label>
-                                <label class="form-control" for="bairro">@funcionario.Bairro</label>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="rua">Rua: </label>
-                                <label class="form-control" for="rua">@funcionario.Rua</label>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="numero">Numero: </label>
-                                <label class="form-control" for="numero">@funcionario.Numero</label>
-                            </div>
-                        </div>
-                }
-
-                <span>@Html.ActionLink("Alterar Dados", "FormularioEndereco", "Endereco", new object { }, new { @style = "color: white;" })</span>
-            </form>
-        </div>
+            <span>@Html.ActionLink("Alterar Dados", "FormularioEndereco", "Endereco")</span>
+        </form>
     </div>
-</div>
+</section>
+<!-- Welcome Area End -->
 
-<footer class="page-footer-inner">
-    &copy;
-</footer>
+<script>
+    var btn = document.querySelector('.btn6');
+    btn.classList.add("active");
+</script>
