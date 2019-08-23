@@ -1,28 +1,11 @@
 ﻿
-a:link {
-    color: #ffffff;
-    text-decoration: none;
-}
-
-a:visited {
+a:link, a:visited, a:active, a:hover {
     color: #ffffff;
     text-decoration: none;
 }
 
 a:hover {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 115%;
-}
-
-a:active {
-    color: #ffffff;
-    text-decoration: underline;
-}
-
-.botao {
-    border: 1px solid;
-    border-radius: 50px;
+    font-size: 160%;
 }
 
 .form {
@@ -63,15 +46,6 @@ a:active {
     filter: none;
     position: fixed;
     background-image: none;
-}
-
-.menu {
-    width: 10%;
-    max-width: 15%;
-    height: 100%;
-    font-size: 110%;
-    text-align: center;
-    background-attachment: fixed;
 }
 
 #tb {
@@ -160,10 +134,6 @@ td {
     height: 100%;
 }
 
-span {
-    padding-right: 10px;
-}
-
 .Logo {
     height: 10%;
     width: 15%;
@@ -183,17 +153,7 @@ span {
     font-size: 115%;
 }
 
-.drop-edit:visited {
-    color: rgb(0, 0, 0);
-    text-decoration: none;
-}
-
-.drop-edit:link {
-    color: rgb(0, 0, 0);
-    text-decoration: none;
-}
-
-.drop-edit:active {
+.drop-edit:visited, .drop-edit:link, .drop-edit:active {
     color: rgb(0, 0, 0);
     text-decoration: none;
 }
@@ -202,19 +162,7 @@ span {
     color: white;
 }
 
-.produtoModal {
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.cadastroModal {
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.cadastroFuncionarioModal {
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.adicionarImagemModal {
+.cadastroModal, .cadastroFuncionarioModal, .adicionarImagemModal, .produtoModal {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -222,8 +170,9 @@ span {
     color: white;
 }
 
-.close {
-    color: red;
+.close:active, .close:hover, .close:visited, .close:link, .close {
+    color: rgb(252, 3, 3);
+    position: relative;
 }
 
 #tb-menu li {
@@ -240,7 +189,7 @@ span {
 user agent stylesheet
 li {
     display: list-item;
-    text-align: -webkit-match-parent;
+    text-align: match-parent;
 }
 
 #tb-menu ul {
@@ -338,6 +287,6 @@ body{
     color: black;
 }
 
-.close{
-    position: relative;
+.acrescenta, .decrementa{
+    font-size: 140%;
 }

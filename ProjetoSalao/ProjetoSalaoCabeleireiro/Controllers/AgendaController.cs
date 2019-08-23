@@ -13,7 +13,9 @@ namespace ProjetoBenner.Controllers
         // GET: Agenda
         public ActionResult IndexAgenda()
         {
-            return View();
+            AgendaDAO dao = new AgendaDAO();
+            var horarios = dao.Listar();
+            return View(horarios);
         }
 
         public ActionResult FormularioAgenda()

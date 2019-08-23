@@ -549,7 +549,6 @@ C:\projeto\ProjetoBenner\ProjetoSalao\ProjetoSalaoCabeleireiro\bin\System.Web.We
 C:\projeto\ProjetoBenner\ProjetoSalao\ProjetoSalaoCabeleireiro\bin\System.Web.Helpers.xml
 C:\projeto\ProjetoBenner\ProjetoSalao\ProjetoSalaoCabeleireiro\bin\System.Web.Mvc.xml
 C:\projeto\ProjetoBenner\ProjetoSalao\ProjetoSalaoCabeleireiro\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\projeto\ProjetoBenner\ProjetoSalao\ProjetoSalaoCabeleireiro\obj\Debug\ProjetoSalaoCabeleireiro.csprojAssemblyReference.cache
 C:\projeto\ProjetoBenner\ProjetoSalao\ProjetoSalaoCabeleireiro\obj\Debug\ProjetoSalaoCabeleireiro.csproj.CoreCompileInputs.cache
 C:\projeto\ProjetoBenner\ProjetoSalao\ProjetoSalaoCabeleireiro\obj\Debug\ProjetoSalaoCabeleireiro.csproj.CopyComplete
 C:\projeto\ProjetoBenner\ProjetoSalao\ProjetoSalaoCabeleireiro\obj\Debug\ProjetoBenner.dll
@@ -560,3 +559,4 @@ C:\projeto\ProjetoBenner\ProjetoSalao\ProjetoSalaoCabeleireiro\bin\pt-br\System.
 C:\projeto\ProjetoBenner\ProjetoSalao\ProjetoSalaoCabeleireiro\bin\pt-br\System.Web.Webpages.Razor.resources.dll
 C:\projeto\ProjetoBenner\ProjetoSalao\ProjetoSalaoCabeleireiro\bin\pt-br\System.Web.Helpers.resources.dll
 C:\projeto\ProjetoBenner\ProjetoSalao\ProjetoSalaoCabeleireiro\bin\pt-br\System.Web.Mvc.resources.dll
+C:\projeto\ProjetoBenner\ProjetoSalao\ProjetoSalaoCabeleireiro\obj\Debug\ProjetoSalaoCabeleireiro.csprojAssemblyReference.cache

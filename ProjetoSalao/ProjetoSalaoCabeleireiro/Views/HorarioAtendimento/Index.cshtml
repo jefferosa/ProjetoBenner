@@ -1,0 +1,130 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutFuncionario.cshtml";
+}
+
+<section class="welcome-area">
+    <div id="tb">
+
+        <table class="table table-hover tb">
+
+            <thead>
+                <tr>
+                    <th>Horario de Abertura</th>
+                    <th>Horario de Fechamento</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var horario in ViewBag.HorarioAtendimento)
+                {
+                    <tr>
+                        <td class="tb-td">@horario.HorarioAbertura.TimeOfDay</td>
+                        <td class="tb-td">@horario.HorarioFechamento.TimeOfDay</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-lg btn-primary botao-edit" data-toggle="modal" data-target="#produtoModal" id="teste">
+            Cadastrar Horario de Atendimento
+        </button>
+    </div>
+</section>
+<!-- Modal -->
+<div class="modal fade produtoModal" id="produtoModal" tabindex="-1" role="dialog" aria-labelledby="produtoModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content produtoModal">
+            <div class="modal-header produtoModal">
+                <h5 class="modal-title" id="produtoModalLabel">Produto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body produtoModal">
+
+
+                <label for="HorarioAbertura">Horario de Abertura:</label>
+                <input id="horaA" type="time" class="form-control" required />
+
+
+                <label for="HorarioFechamento">Horario de Fechamento:</label>
+                <input id="horaB" type="time" class="form-control" required />
+
+                <div class="input-group">
+                    <div class="input-group-append" id="t">
+                        <button class="btn btn-primary botao" type="button" onclick="CadastrarHorario();" data-dismiss="modal">
+                            <i class="fas fa-search fa-sm">Cadastrar</i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@*<div class="modal fade produtoModal" id="atualizaModal" tabindex="-1" role="dialog" aria-labelledby="produtoModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content produtoModal">
+            <div class="modal-header produtoModal">
+                <h5 class="modal-title" id="produtoModalLabel">Produto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body produtoModal">
+
+                <label for="HorarioAbertura">Horario de Abertura:</label>
+                <input id="horaA" type="time" class="form-control" required />
+
+
+                <label for="HorarioFechamento">Horario de Fechamento:</label>
+                <input id="horaB" type="time" class="form-control" required />
+
+                <div class="input-group">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary botao close" type="button" onclik="Cadastrar()">
+                            <i class="fas fa-search fa-sm">Cadastrar</i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>*@
+
+<script>
+    function CadastrarHorario() {
+        var horaA = $("#horaA").val();
+        var horaB = $("#horaB").val();
+
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            cache: false,
+            url: "@Url.Action("AdicionarHorarioAtendimento", "HorarioAtendimento")", // webmethod or web serivces URL
+            data: {
+                HoraA: horaA,
+                HoraB: horaB
+            },
+            complete:
+            function validar(jqXHR, resposta) {
+                 if (jqXHR.responseJSON == "Sim") {
+                     $("#t").html('<button type="button" class="btn btn - lg btn - primary botao - edit" data-toggle="modal" data-target="#atualizaModal" id="teste"> Atualizar Horario de Atendimento</button >');
+
+                 } else {
+                    alert("Erro ao Cadastrar");
+                 }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert('Error - ' + errorThrown);
+            }
+        });
+
+
+    }
+
+</script>

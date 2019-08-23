@@ -33,6 +33,7 @@
                     <th>Nome</th>
                     <th>Quantidade</th>
                     <th>Descricao</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -41,8 +42,12 @@
                     <tr>
                         <td>@produto.Id</td>
                         <td class="tb-td">@produto.Nome</td>
-                        <td>@produto.Quantidade</td>
+                        <td id="quantidade@(produto.Id)">@produto.Quantidade</td>
                         <td class="tb-td">@produto.Descricao</td>
+                        <td>
+                            <a class="acrescenta" href="#" onclick="acrescenta(@produto.Id);">+</a><br />
+                            <a class="decrementa" href="#" onclick="decrementa(@produto.Id);">-</a>
+                        </td>    
                     </tr>
                 }
             </tbody>
@@ -103,4 +108,17 @@
 <script>
     var btn = document.querySelector('.btn4');
     btn.classList.add("active");
+
+    function decrementa(produtoId) {
+        var url = "@Url.Action("DecrementarQtd", "Produto")";
+        $.post(url, { id: produtoId }, atualiza);
+    }
+    function acrescenta(produtoId) {
+        var url = "@Url.Action("AcrescentarQtd", "Produto")";
+        $.post(url, { id: produtoId }, atualiza);
+    }
+
+    function atualiza(resposta) {
+        $("#quantidade" + resposta.Id).html(resposta.Quantidade);
+    }
 </script>

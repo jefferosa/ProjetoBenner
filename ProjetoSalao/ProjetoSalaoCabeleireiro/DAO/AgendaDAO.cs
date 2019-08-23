@@ -17,6 +17,14 @@ namespace ProjetoBenner.DAO
             }
         }
 
+        public IList<HorarioAtendimento> Listar()
+        {
+            using (var context = new SalaoContext())
+            {
+                return context.Horarios.ToList();
+            }
+        }
+
         public void RemoverHorario(Agenda agenda)
         {
             using(var context = new SalaoContext())

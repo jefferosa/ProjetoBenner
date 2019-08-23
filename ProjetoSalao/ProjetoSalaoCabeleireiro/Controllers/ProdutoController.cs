@@ -53,5 +53,14 @@ namespace ProjetoBenner.Controllers
             dao.AtualizarProdutos(produto);
             return Json(produto);
         }
+
+        public ActionResult AcrescentarQtd(int id)
+        {
+            ProdutoDAO dao = new ProdutoDAO();
+            Produto produto = dao.BuscarProdutoId(id);
+            produto.Quantidade++;
+            dao.AtualizarProdutos(produto);
+            return Json(produto);
+        }
     }
 }

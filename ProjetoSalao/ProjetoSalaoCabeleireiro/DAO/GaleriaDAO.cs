@@ -43,10 +43,20 @@ namespace ProjetoBenner.DAO
 
         public void AtualizarGaleria(Galeria galeria)
         {
-            using (var contexto = new SalaoContext())
+            using (var context = new SalaoContext())
             {
-                contexto.Galeria.Update(galeria);
-                contexto.SaveChanges();
+                context.Entry(galeria).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
+
+        public void RemoverImagem(int id)
+        {
+            using (var context = new SalaoContext())
+            {
+                var img = context.Galeria.First(i => i.Id == id);
+                context.Galeria.Remove(img);
+                context.SaveChanges();
             }
         }
     }

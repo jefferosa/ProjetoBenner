@@ -8,9 +8,10 @@ using ProjetoBenner.DAO;
 namespace ProjetoBenner.Migrations
 {
     [DbContext(typeof(SalaoContext))]
-    partial class SalaoContextModelSnapshot : ModelSnapshot
+    [Migration("20190816194533_7")]
+    partial class _7
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -149,9 +150,9 @@ namespace ProjetoBenner.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("HorarioAbertura");
+                    b.Property<string>("HorarioAbertura");
 
-                    b.Property<DateTime>("HorarioFechamento");
+                    b.Property<string>("HorarioFechamento");
 
                     b.HasKey("Id");
 

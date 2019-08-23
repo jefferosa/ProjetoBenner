@@ -60,13 +60,11 @@ namespace ProjetoBenner.Controllers
             }
         }
 
-        public ActionResult RemoverImagens(Galeria galeria)
+        public ActionResult RemoverImagens(int id)
         {
-            SalaoContext context = new SalaoContext();
-            ViewBag.Galeria = galeria;
-            context.Remove(galeria);
-            context.SaveChanges();
-            return Json(galeria);
+            GaleriaDAO dao = new GaleriaDAO();
+            dao.RemoverImagem(id);
+            return Json(id);
         }
     }
 }

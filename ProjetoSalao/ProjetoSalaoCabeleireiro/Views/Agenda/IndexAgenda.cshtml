@@ -1,6 +1,8 @@
 ﻿@{
     Layout = "~/Views/Shared/_LayoutCliente.cshtml";
 }
+@using ProjetoBenner.Models;
+@model IEnumerable<ProjetoBenner.Models.HorarioAtendimento>
 
 <!-- Breadcrumb Area Start -->
 <section class="breadcrumb-area section-padding-80">
@@ -37,203 +39,79 @@
             </div>
 
             <!-- Booking Table -->
-            <div class="col-12 col-lg-8">
-                <div class="booking-table-slider owl-carousel mb-80">
+            <div class="col-6 col-lg-12">
+                <div class="booking-table-slider owl-carousel mb-100">
 
                     <!-- Single Booking Table -->
-                    <div class="single-booking-table d-flex">
 
-                        <!-- Single Date & Hours -->
-                        <div class="single-date-hours active">
-                            <div class="booking-day">
-                                <h5>Hoje</h5>
-                                <h6>Segunda, @DateTime.Now.Day/@DateTime.Now.Month</h6>
+                    @for (var j = 0; j < 6; j += 3)
+                    {
+                        DateTime data = DateTime.Today;
+                        data = data.AddDays(1);
+                        string[] diasSemana = { "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sabado", "Domingo" };
+                        <div class="single-booking-table d-flex">
+                            <!-- Single Date & Hours -->
+                            <div class="single-date-hours active">
+                                <div class="booking-day">
+                                    <h5>@(diasSemana[j]) </h5>
+                                    <h6>@(data.Day + j)/@DateTime.Now.Month</h6>
+                                </div>
+                                <div class="booking-hours d-flex flex-wrap">
+                                    @foreach (var horario in Model)
+                                    {
+                                        var tempoTrabalho = (horario.HorarioFechamento.Hour - horario.HorarioAbertura.Hour) * 60;
+                                        DateTime horarioAtendimento = horario.HorarioAbertura;
+                                        for (var i = 0; i < tempoTrabalho; i += 30)
+                                        {
+                                            <span>@(horarioAtendimento.ToShortTimeString())</span>
+                                            horarioAtendimento = horario.HorarioAbertura.AddMinutes(30 + i);
+                                        }
+                                    }
+                                </div>
                             </div>
-                            <div class="booking-hours d-flex flex-wrap">
-                                <span class="active">07:00</span>
-                                <span>13:30</span>
-                                <span>07:30</span>
-                                <span>14:00</span>
-                                <span>08:00</span>
-                                <span>14:30</span>
-                                <span>08:30</span>
-                                <span>15:00</span>
-                                <span class="active">09:00</span>
-                                <span>15:30</span>
-                                <span>09:30</span>
-                                <span>16:00</span>
-                                <span>10:00</span>
-                                <span>16:30</span>
-                                <span>10:30</span>
-                                <span>19:00</span>
-                                <span>11:00</span>
-                                <span>10:00</span>
-                                <span>11:30</span>
-                                <span>10:30</span>
-                                <span>13:00</span>
+
+                            <div class="single-date-hours">
+                                <div class="booking-day">
+                                    <h5>@(diasSemana[j + 1]) </h5>
+                                    <h6>@(data.Day + j + 1)/@DateTime.Now.Month</h6>
+                                </div>
+                                <div class="booking-hours d-flex flex-wrap">
+                                    @foreach (var horario in Model)
+                                    {
+                                        var tempoTrabalho = (horario.HorarioFechamento.Hour - horario.HorarioAbertura.Hour) * 60;
+                                        DateTime horarioAtendimento = horario.HorarioAbertura;
+                                        for (var i = 0; i < tempoTrabalho; i += 30)
+                                        {
+                                            <span>@(horarioAtendimento.ToShortTimeString())</span>
+                                            horarioAtendimento = horario.HorarioAbertura.AddMinutes(30 + i);
+                                        }
+                                    }
+                                </div>
+                            </div>
+
+                            <div class="single-date-hours">
+                                <div class="booking-day">
+                                    <h5>@(diasSemana[j + 2]) </h5>
+                                    <h6>@(data.Day + j + 2)/@DateTime.Now.Month</h6>
+                                </div>
+                                <div class="booking-hours d-flex flex-wrap">
+                                    @foreach (var horario in Model)
+                                    {
+                                        var tempoTrabalho = (horario.HorarioFechamento.Hour - horario.HorarioAbertura.Hour) * 60;
+                                        DateTime horarioAtendimento = horario.HorarioAbertura;
+                                        for (var i = 0; i < tempoTrabalho; i += 30)
+                                        {
+                                            <span>@(horarioAtendimento.ToShortTimeString())</span>
+                                            horarioAtendimento = horario.HorarioAbertura.AddMinutes(30 + i);
+                                        }
+                                    }
+                                </div>
                             </div>
                         </div>
-
-                        <!-- Single Date & Hours -->
-                        <div class="single-date-hours">
-                            <div class="booking-day">
-                                <h5>Amanhã</h5>
-                                <h6>Terça, @DateTime.UtcNow.Day/@DateTime.Now.Month</</h6>
-                            </div>
-                            <div class="booking-hours d-flex flex-wrap">
-                                <span>09:00</span>
-                                <span>10:00</span>
-                                <span class="active">09:15</span>
-                                <span class="active">10:15</span>
-                                <span>09:30</span>
-                                <span class="active">10:30</span>
-                                <span>09:45</span>
-                                <span>10:45</span>
-                            </div>
-                        </div>
-
-                        <!-- Single Date & Hours -->
-                        <div class="single-date-hours">
-                            <div class="booking-day">
-                                <h5>After</h5>
-                                <h6>Wednesday, 04/10</h6>
-                            </div>
-                            <div class="booking-hours d-flex flex-wrap">
-                                <span>09:00</span>
-                                <span class="active">10:00</span>
-                                <span>09:15</span>
-                                <span class="active">10:15</span>
-                                <span>09:30</span>
-                                <span class="active">10:30</span>
-                                <span>09:45</span>
-                                <span class="active">10:45</span>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <!-- Single Booking Table -->
-                    <div class="single-booking-table d-flex">
-
-                        <!-- Single Date & Hours -->
-                        <div class="single-date-hours">
-                            <div class="booking-day">
-                                <h5>After</h5>
-                                <h6>Monday, 02/10</h6>
-                            </div>
-                            <div class="booking-hours d-flex flex-wrap">
-                                <span class="active">09:00</span>
-                                <span>10:00</span>
-                                <span class="active">09:15</span>
-                                <span>10:15</span>
-                                <span>09:30</span>
-                                <span>10:30</span>
-                                <span>09:45</span>
-                                <span>10:45</span>
-                            </div>
-                        </div>
-
-                        <!-- Single Date & Hours -->
-                        <div class="single-date-hours">
-                            <div class="booking-day">
-                                <h5>After</h5>
-                                <h6>Tueday, 03/10</h6>
-                            </div>
-                            <div class="booking-hours d-flex flex-wrap">
-                                <span>09:00</span>
-                                <span>10:00</span>
-                                <span class="active">09:15</span>
-                                <span class="active">10:15</span>
-                                <span>09:30</span>
-                                <span class="active">10:30</span>
-                                <span>09:45</span>
-                                <span>10:45</span>
-                            </div>
-                        </div>
-
-                        <!-- Single Date & Hours -->
-                        <div class="single-date-hours">
-                            <div class="booking-day">
-                                <h5>After</h5>
-                                <h6>Wednesday, 04/10</h6>
-                            </div>
-                            <div class="booking-hours d-flex flex-wrap">
-                                <span>09:00</span>
-                                <span class="active">10:00</span>
-                                <span>09:15</span>
-                                <span class="active">10:15</span>
-                                <span>09:30</span>
-                                <span class="active">10:30</span>
-                                <span>09:45</span>
-                                <span class="active">10:45</span>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <!-- Single Booking Table -->
-                    <div class="single-booking-table d-flex">
-
-                        <!-- Single Date & Hours -->
-                        <div class="single-date-hours">
-                            <div class="booking-day">
-                                <h5>After</h5>
-                                <h6>Monday, 02/10</h6>
-                            </div>
-                            <div class="booking-hours d-flex flex-wrap">
-                                <span class="active">09:00</span>
-                                <span>10:00</span>
-                                <span class="active">09:15</span>
-                                <span>10:15</span>
-                                <span>09:30</span>
-                                <span>10:30</span>
-                                <span>09:45</span>
-                                <span>10:45</span>
-                            </div>
-                        </div>
-
-                        <!-- Single Date & Hours -->
-                        <div class="single-date-hours">
-                            <div class="booking-day">
-                                <h5>After</h5>
-                                <h6>Tueday, 03/10</h6>
-                            </div>
-                            <div class="booking-hours d-flex flex-wrap">
-                                <span>09:00</span>
-                                <span>10:00</span>
-                                <span class="active">09:15</span>
-                                <span class="active">10:15</span>
-                                <span>09:30</span>
-                                <span class="active">10:30</span>
-                                <span>09:45</span>
-                                <span>10:45</span>
-                            </div>
-                        </div>
-
-                        <!-- Single Date & Hours -->
-                        <div class="single-date-hours">
-                            <div class="booking-day">
-                                <h5>After</h5>
-                                <h6>Wednesday, 04/10</h6>
-                            </div>
-                            <div class="booking-hours d-flex flex-wrap">
-                                <span>09:00</span>
-                                <span class="active">10:00</span>
-                                <span>09:15</span>
-                                <span class="active">10:15</span>
-                                <span>09:30</span>
-                                <span class="active">10:30</span>
-                                <span>09:45</span>
-                                <span class="active">10:45</span>
-                            </div>
-                        </div>
-
-                    </div>
-
+                    }
                 </div>
             </div>
         </div>
-    </div>
 </section>
 <!-- Booking Area End -->
 

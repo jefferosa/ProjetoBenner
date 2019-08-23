@@ -10,6 +10,8 @@ namespace ProjetoBenner
     public class Usuario
     {
         public int Id { get; set; }
+
+        [Display(Name = "CPF: ")]
         [MaxLength(11)]
         public string CPF { get; set; }
 
