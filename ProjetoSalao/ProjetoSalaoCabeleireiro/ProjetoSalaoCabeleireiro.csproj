@@ -221,12 +221,32 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-css\all.min.css" />
     <Content Include="Content\bootstrap-css\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-css\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-css\bootstrap-js\bootstrap.bundle.js" />
+    <Content Include="Content\bootstrap-css\bootstrap-js\bootstrap.bundle.min.js" />
+    <Content Include="Content\bootstrap-css\bootstrap-js\bootstrap.js" />
+    <Content Include="Content\bootstrap-css\bootstrap-js\bootstrap.min.js" />
+    <Content Include="Content\bootstrap-css\bootstrap-js\chart-area-demo.js" />
+    <Content Include="Content\bootstrap-css\bootstrap-js\chart-bar-demo.js" />
+    <Content Include="Content\bootstrap-css\bootstrap-js\chart-pie-demo.js" />
+    <Content Include="Content\bootstrap-css\bootstrap-js\Chart.bundle.js" />
+    <Content Include="Content\bootstrap-css\bootstrap-js\Chart.bundle.min.js" />
+    <Content Include="Content\bootstrap-css\bootstrap-js\Chart.js" />
+    <Content Include="Content\bootstrap-css\bootstrap-js\Chart.min.js" />
+    <Content Include="Content\bootstrap-css\bootstrap-js\datatables-demo.js" />
+    <Content Include="Content\bootstrap-css\bootstrap-js\jquery.easing.compatibility.js" />
+    <Content Include="Content\bootstrap-css\bootstrap-js\jquery.easing.js" />
+    <Content Include="Content\bootstrap-css\bootstrap-js\jquery.easing.min.js" />
+    <Content Include="Content\bootstrap-css\bootstrap-js\jquery.min.js" />
+    <Content Include="Content\bootstrap-css\bootstrap-js\sb-admin-2.js" />
+    <Content Include="Content\bootstrap-css\bootstrap-js\sb-admin-2.min.js" />
     <Content Include="Content\bootstrap-css\bootstrap-reboot.css" />
     <Content Include="Content\bootstrap-css\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap-css\bootstrap.css" />
     <Content Include="Content\bootstrap-css\bootstrap.min.css" />
+    <Content Include="Content\bootstrap-css\sb-admin-2.min.css" />
     <Content Include="Content\css\Estilo.css" />
     <Content Include="Content\css\reset.css" />
     <Content Include="Content\css\sb-admin-2.min.css" />
@@ -390,6 +410,10 @@
     <Compile Include="Migrations\20190820194208_8.designer.cs">
       <DependentUpon>20190820194208_8.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190827111904_9.cs" />
+    <Compile Include="Migrations\20190827111904_9.designer.cs">
+      <DependentUpon>20190827111904_9.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\SalaoContextModelSnapshot.cs" />
     <Compile Include="Models\Agenda.cs" />
     <Compile Include="Models\Cliente.cs" />
@@ -452,6 +476,16 @@
     <Content Include="Content\template-scss\_spacing.scss" />
     <Content Include="Content\template-scss\_team.scss" />
     <Content Include="Content\style.css.map" />
+    <Content Include="Content\fonts\fa-solid-900.ttf" />
+    <Content Include="Content\fonts\fa-solid-900.woff" />
+    <Content Include="Content\fonts\fa-solid-900.woff2" />
+    <Content Include="Content\webfonts\fa-solid-900.ttf" />
+    <Content Include="Content\webfonts\fa-solid-900.woff" />
+    <Content Include="Content\webfonts\fa-solid-900.woff2" />
+    <Content Include="Content\bootstrap-css\bootstrap-js\bootstrap.bundle.js.map" />
+    <Content Include="Content\bootstrap-css\bootstrap-js\bootstrap.bundle.min.js.map" />
+    <Content Include="Content\bootstrap-css\bootstrap-js\bootstrap.js.map" />
+    <Content Include="Content\bootstrap-css\bootstrap-js\bootstrap.min.js.map" />
     <None Include="packages.config" />
     <Content Include="Views\web.config" />
     <Content Include="Views\Shared\_LayoutCliente.cshtml" />

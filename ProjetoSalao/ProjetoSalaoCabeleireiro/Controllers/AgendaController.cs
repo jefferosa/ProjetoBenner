@@ -15,7 +15,23 @@ namespace ProjetoBenner.Controllers
         {
             AgendaDAO dao = new AgendaDAO();
             var horarios = dao.Listar();
+            ViewBag.Agenda = new Agenda();
+            ServicoDAO daoS = new ServicoDAO();
+            IList<Servico> servico = daoS.ListaServicos();
+
+
+            //var agendamentos = dao.ListarAgendamentos();
+            //ViewBag.Agenda = agendamentos;
+            ViewBag.Servico = servico;
             return View(horarios);
+        }
+
+        public ActionResult Agendamentos()
+        {
+            AgendaDAO dao = new AgendaDAO();
+            IList<Agenda> agendamentos = dao.ListarAgendamentos();
+            ViewBag.Agenda = agendamentos;
+            return View(agendamentos);
         }
 
         public ActionResult FormularioAgenda()
@@ -28,9 +44,13 @@ namespace ProjetoBenner.Controllers
         }
 
         [HttpPost]
-        public ActionResult AgendarHorario(Agenda agenda)
+        public ActionResult AgendarHorario(DateTime HoraSelecionada, DateTime Data, int ServicoId, int ClienteId)
         {
-
+            Agenda agenda = new Agenda();
+            agenda.Horario = HoraSelecionada;
+            agenda.Data = Data;
+            agenda.ServicoId = ServicoId;
+            agenda.ClienteId = ClienteId;
             if (agenda.Data == null || agenda.Horario == null || agenda.ServicoId == null)
             {
                 ModelState.AddModelError("agenda.CadastroEmBranco", "Não pode cadastrar um horário em branco");
@@ -38,15 +58,14 @@ namespace ProjetoBenner.Controllers
             if (ModelState.IsValid)
             {
                 AgendaDAO dao = new AgendaDAO();
-                dao.AgendarHorario(agenda);
-                return RedirectToAction("IndexAgenda");
+                return Json(dao.AgendarHorario(agenda));
             }
             else
             {
                 ViewBag.Agenda = agenda;
                 ServicoDAO servicoDAO = new ServicoDAO();
                 ViewBag.Servico = servicoDAO.ListaServicos();
-                return View("FormularioAgenda");
+                return View("IndexAgenda");
             }
         }
     }

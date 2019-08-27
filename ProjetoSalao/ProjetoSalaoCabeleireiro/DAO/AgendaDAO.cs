@@ -8,13 +8,18 @@ namespace ProjetoBenner.DAO
 {
     public class AgendaDAO
     {
-        public void AgendarHorario(Agenda agenda)
+        
+        public bool AgendarHorario(Agenda agenda)
         {
-            using(var context = new SalaoContext())
+            bool valida = false;
+            using (var context = new SalaoContext())
             {
                 context.Agenda.Add(agenda);
                 context.SaveChanges();
+
+                valida = true;
             }
+            return valida;
         }
 
         public IList<HorarioAtendimento> Listar()
@@ -25,9 +30,17 @@ namespace ProjetoBenner.DAO
             }
         }
 
+        public IList<Agenda> ListarAgendamentos()
+        {
+            using (var context = new SalaoContext())
+            {
+                return context.Agenda.ToList();
+            }
+        }
+
         public void RemoverHorario(Agenda agenda)
         {
-            using(var context = new SalaoContext())
+            using (var context = new SalaoContext())
             {
                 context.Agenda.Remove(agenda);
                 context.SaveChanges();

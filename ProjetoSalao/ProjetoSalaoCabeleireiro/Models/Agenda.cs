@@ -12,5 +12,7 @@ namespace ProjetoBenner.Models
         public DateTime Horario { get; set; }
         public Servico Servico { get; set; }
         public int? ServicoId { get; set; }
+        public Cliente Cliente { get; set; }
+        public int? ClienteId { get; set; }
     }
 }

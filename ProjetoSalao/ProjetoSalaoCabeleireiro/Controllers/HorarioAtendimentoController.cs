@@ -32,7 +32,7 @@ namespace ProjetoBenner.Controllers
             if (ModelState.IsValid)
             {
                 HorarioAtendimentoDAO dao = new HorarioAtendimentoDAO();
-                string valida = (dao.AdicionarHorarioAtendimento(horario))?"Sim":"Não";
+                string valida = (dao.AdicionarHorarioAtendimento(horario)) ? "Sim" : "Não";
                 return Json(valida);
             }
             else
@@ -40,6 +40,13 @@ namespace ProjetoBenner.Controllers
                 ViewBag.HorarioAtendimento = horario;
                 return View("Index");
             }
+        }
+
+        public ActionResult ListarHorarios()
+        {
+            HorarioAtendimentoDAO dao = new HorarioAtendimentoDAO();
+            IList<HorarioAtendimento> horarios = dao.ListarHorarioAtendimento();
+            return Json(horarios);
         }
     }
 }
