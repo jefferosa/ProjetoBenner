@@ -20,7 +20,15 @@ namespace ProjetoBenner.Controllers
         [AutorizacaoFuncionario]
         public ActionResult IndexHomeFuncionario()
         {
-            return View();
+            AgendaDAO dao = new AgendaDAO();
+            var agendamentos = dao.ListarAgendamentos();
+            
+
+            ViewBag.Agendamentos = agendamentos;
+
+
+            ViewBag.Agenda = agendamentos.Count();
+            return View(agendamentos);
         }
     }
 }

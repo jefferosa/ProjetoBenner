@@ -54,6 +54,7 @@ namespace ProjetoBenner.Controllers
             agenda.Data = Data;
             agenda.ServicoId = ServicoId;
             agenda.ClienteId = ClienteId;
+
             ViewBag.Agenda = agenda;
             FuncionarioDAO daoFuncionarios = new FuncionarioDAO();
 

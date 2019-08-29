@@ -20,6 +20,10 @@ a:hover {
     align-items: center;
 }
 
+th {
+    text-align: center;
+}
+
 .formulario {
     color: black;
     width: 40%;
