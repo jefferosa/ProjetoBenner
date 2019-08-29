@@ -1539,11 +1539,11 @@ input:focus {
     .single-booking-table .single-date-hours .booking-day {
       border: 1px solid #e5e5e5;
       text-align: center;
-      padding: 20px 15px;
+      padding: 15px 10px;
       width: 100%;
       border-left: none; }
       .single-booking-table .single-date-hours .booking-day h5 {
-        font-weight: 600;
+        font-weight: 500;
         font-family: "Open Sans", sans-serif; }
         @media only screen and (min-width: 992px) and (max-width: 1199px) {
           .single-booking-table .single-date-hours .booking-day h5 {
@@ -1569,11 +1569,11 @@ input:focus {
         -ms-flex: 0 0 50%;
         flex: 0 0 50%;
         max-width: 50%;
-        width: 50%;
+        width: 40%;
         border-right: 1px solid #e5e5e5;
         border-bottom: 1px solid #e5e5e5;
-        padding: 20px 5px;
-        font-size: 24px;
+        padding: 8px 5px;
+        font-size: 80%;
         color: #252525; }
         @media only screen and (min-width: 992px) and (max-width: 1199px) {
           .single-booking-table .single-date-hours .booking-hours span {

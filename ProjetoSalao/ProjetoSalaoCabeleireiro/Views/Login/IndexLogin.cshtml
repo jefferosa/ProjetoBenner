@@ -58,17 +58,17 @@
 
                                 <div class="form-group col-md-6">
                                     <label for="nome">Nome</label>
-                                    <input id="nome" name="cliente.Nome" class="form-control" required />
+                                    <input id="nome" name="cliente.Nome" class="form-control" type="text" required />
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label for="login">Login:</label>
-                                    <input id="login" name="cliente.Login" class="form-control" required />
+                                    <input id="login" name="cliente.Login" class="form-control" type="text" min="4" required />
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label for="cpf">CPF:</label>
-                                    <input id="cpf" name="cliente.CPF" class="form-control" required />
+                                    <input id="cpf" name="cliente.CPF" class="form-control" type="text" maxlength="14" pattern="[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}" required /><span id="resposta"></span>
                                 </div>
 
                                 <div class="form-group col-md-6">
@@ -113,7 +113,7 @@
 
                             </div>
                             <div class="modal-footer cadastroModal">
-                                <button class="btn btn-lg btn-primary btn-block" type="submit">Criar Conta</button>
+                                <button id="cadastrar" class="btn btn-lg btn-primary btn-block" type="submit" disabled>Criar Conta</button>
                             </div>
                         </form>
                     </div>
@@ -148,7 +148,7 @@
 
                                 <div class="form-group col-md-6">
                                     <label for="cpf">CPF:</label>
-                                    <input id="cpf" name="funcionario.CPF" class="form-control" required />
+                                    <input id="cpf2" name="funcionario.CPF" class="form-control" type="text" maxlength="14" pattern="[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}" required /><span id="resposta2"></span>
                                 </div>
 
                                 <div class="form-group col-md-6">
@@ -163,7 +163,7 @@
 
                                 <div class="form-group col-md-6">
                                     <label for="senha">Senha:</label>
-                                    <input id="senha" name="funcionario.Senha" type="password" class="form-control" required />
+                                    <input id="senha" name="funcionario.Senha" type="password" class="form-control" min="6" required />
                                 </div>
 
                                 <div>
@@ -193,7 +193,7 @@
 
                             </div>
                             <div class="modal-footer cadastroFuncionarioModal">
-                                <button class="btn btn-lg btn-primary btn-block" type="submit">Criar Conta</button>
+                                <button id="cadastrar2" class="btn btn-lg btn-primary btn-block" type="submit" disabled>Criar Conta</button>
                             </div>
                         </form>
                     </div>
@@ -211,5 +211,79 @@
     <script src="~/Content/template-js/bootstrap.min.js"></script>
     <script src="~/Content/template-js/akame.bundle.js"></script>
     <script src="~/Content/template-js/default-assets/active.js"></script>
+
+    <script>
+
+        function CPF() {
+            "user_strict";
+            function r(r) {
+                for (var t = null, n = 0; 9 > n; ++n)
+                    t += r.toString().charAt(n) * (10 - n);
+                var i = t % 11; return i = 2 > i ? 0 : 11 - i
+            } function t(r) {
+                for (var t = null, n = 0; 10 > n; ++n)
+                    t += r.toString().charAt(n) * (11 - n);
+                var i = t % 11; return i = 2 > i ? 0 : 11 - i
+            } var n = "CPF Inválido", i = "CPF Válido";
+            this.gera = function () {
+                for (var n = "", i = 0; 9 > i; ++i)
+                    n += Math.floor(9 * Math.random()) + "";
+                var o = r(n), a = n + "-" + o + t(n + "" + o);
+                return a
+            }, this.valida = function (o) {
+                for (var a = o.replace(/\D/g, ""), u = a.substring(0, 9), f = a.substring(9, 11), v = 0; 10 > v; v++)
+                    if ("" + u + f == "" + v + v + v + v + v + v + v + v + v + v + v)
+                        return n;
+                var c = r(u), e = t(u + "" + c);
+                return f.toString() === c.toString() + e.toString() ? i : n
+            }
+        }
+
+        var CPF = new CPF();
+
+        $(document).ready(function () {
+            $("#cpf").keyup(function () {
+                var teste = CPF.valida($(this).val());
+                $("#resposta").html(teste);
+                if (teste == "CPF Válido") {
+                    $("#cadastrar").removeAttr("disabled");
+                } else {
+                    $("#cadastrar").attr("disabled", true);
+                }
+            });
+
+            $("#cpf").blur(function () {
+                var teste = CPF.valida($(this).val());
+                $("#resposta").html(teste);
+                if (teste == "CPF Válido") {
+                    $("#cadastrar").removeAttr("disabled");
+                } else {
+                    $("#cadastrar").attr("disabled", true);
+                }
+            });
+        });
+
+        $(document).ready(function () {
+            $("#cpf2").keyup(function () {
+                var teste = CPF.valida($(this).val());
+                $("#resposta2").html(teste);
+                if (teste == "CPF Válido") {
+                    $("#cadastrar2").removeAttr("disabled");
+                } else {
+                    $("#cadastrar2").attr("disabled", true);
+                }
+            });
+
+            $("#cpf2").blur(function () {
+                var teste = CPF.valida($(this).val());
+                $("#resposta2").html(teste);
+                if (teste == "CPF Válido") {
+                    $("#cadastrar2").removeAttr("disabled");
+                } else {
+                    $("#cadastrar2").attr("disabled", true);
+                }
+            });
+        });
+    </script>
 </body>
 </html>

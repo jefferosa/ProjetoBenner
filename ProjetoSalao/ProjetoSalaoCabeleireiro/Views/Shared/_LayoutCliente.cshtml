@@ -81,6 +81,10 @@
 
                                             </ul>
                                         }
+                                        else
+                                        {
+                                            @Html.ActionLink("Login", "IndexLogin", "Login")
+                                        }
                                     </li>
                                 </ul>
                             </div>
@@ -95,6 +99,18 @@
 
     @RenderBody()
 
+    <!-- Breadcrumb Area Start -->
+    <section class="breadcrumb-area section-padding-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb-content">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Area End -->
     <!-- Border -->
     <div class="container">
         <div class="border-top"></div>

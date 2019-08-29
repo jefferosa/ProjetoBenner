@@ -1,4 +1,5 @@
 ﻿using ProjetoBenner.DAO;
+using ProjetoBenner.Filtros;
 using ProjetoBenner.Models;
 using System;
 using System.Collections.Generic;
@@ -8,9 +9,11 @@ using System.Web.Mvc;
 
 namespace ProjetoBenner.Controllers
 {
+    [AutorizacaoFilter]
     public class AgendaController : Controller
     {
         // GET: Agenda
+        
         public ActionResult IndexAgenda()
         {
             AgendaDAO dao = new AgendaDAO();
@@ -33,7 +36,7 @@ namespace ProjetoBenner.Controllers
             ViewBag.Agenda = agendamentos;
             return View(agendamentos);
         }
-
+        
         public ActionResult FormularioAgenda()
         {
             ViewBag.Agenda = new Agenda();
@@ -42,7 +45,7 @@ namespace ProjetoBenner.Controllers
             ViewBag.Servico = servico;
             return View(servico);
         }
-
+        
         [HttpPost]
         public ActionResult AgendarHorario(DateTime HoraSelecionada, DateTime Data, int ServicoId, int ClienteId)
         {
@@ -51,9 +54,22 @@ namespace ProjetoBenner.Controllers
             agenda.Data = Data;
             agenda.ServicoId = ServicoId;
             agenda.ClienteId = ClienteId;
+            ViewBag.Agenda = agenda;
+            FuncionarioDAO daoFuncionarios = new FuncionarioDAO();
+
+            IList<Funcionario> funcionarios = daoFuncionarios.ListarFuncionarios();
+            int cont = funcionarios.Count();
+
+            AgendaDAO daoProcura = new AgendaDAO();
+            int agendaProcura = daoProcura.BuscarAgendamento(agenda.Horario, agenda.Data);
+
             if (agenda.Data == null || agenda.Horario == null || agenda.ServicoId == null)
             {
                 ModelState.AddModelError("agenda.CadastroEmBranco", "Não pode cadastrar um horário em branco");
+            }
+            if (agendaProcura == cont)
+            {
+                return Json(false);
             }
             if (ModelState.IsValid)
             {

@@ -260,6 +260,8 @@
     <Content Include="Content\imagens\background.jpg" />
     <Content Include="Content\imagens\favicon.ico" />
     <Content Include="Content\imagens\Logo.png" />
+    <Content Include="Content\imagens\tesoura.jpeg" />
+    <Content Include="Content\imagens\tesoura.jpg" />
     <Content Include="Content\js\bootstrap.bundle.js" />
     <Content Include="Content\js\bootstrap.bundle.min.js" />
     <Content Include="Content\js\bootstrap.js" />
@@ -375,44 +377,14 @@
     <Compile Include="DAO\ProdutoDAO.cs" />
     <Compile Include="DAO\SalaoContext.cs" />
     <Compile Include="DAO\ServicoDAO.cs" />
+    <Compile Include="Filtros\AutorizacaoFilterAttribute.cs" />
+    <Compile Include="Filtros\AutorizacaoFuncionarioAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20190730192850_1.cs" />
-    <Compile Include="Migrations\20190730192850_1.designer.cs">
-      <DependentUpon>20190730192850_1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190730202359_2.cs" />
-    <Compile Include="Migrations\20190730202359_2.designer.cs">
-      <DependentUpon>20190730202359_2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190731205402_3.cs" />
-    <Compile Include="Migrations\20190731205402_3.designer.cs">
-      <DependentUpon>20190731205402_3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190816172022_4.cs" />
-    <Compile Include="Migrations\20190816172022_4.designer.cs">
-      <DependentUpon>20190816172022_4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190816185900_5.cs" />
-    <Compile Include="Migrations\20190816185900_5.designer.cs">
-      <DependentUpon>20190816185900_5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190816191232_6.cs" />
-    <Compile Include="Migrations\20190816191232_6.designer.cs">
-      <DependentUpon>20190816191232_6.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190816194533_7.cs" />
-    <Compile Include="Migrations\20190816194533_7.designer.cs">
-      <DependentUpon>20190816194533_7.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190820194208_8.cs" />
-    <Compile Include="Migrations\20190820194208_8.designer.cs">
-      <DependentUpon>20190820194208_8.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190827111904_9.cs" />
-    <Compile Include="Migrations\20190827111904_9.designer.cs">
-      <DependentUpon>20190827111904_9.cs</DependentUpon>
+    <Compile Include="Migrations\20190828224801_1.cs" />
+    <Compile Include="Migrations\20190828224801_1.designer.cs">
+      <DependentUpon>20190828224801_1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\SalaoContextModelSnapshot.cs" />
     <Compile Include="Models\Agenda.cs" />
@@ -491,7 +463,6 @@
     <Content Include="Views\Shared\_LayoutCliente.cshtml" />
     <Content Include="Views\Home\IndexHomeCliente.cshtml" />
     <Content Include="Views\Servico\IndexServico.cshtml" />
-    <Content Include="Views\Servico\FormularioServico.cshtml" />
     <Content Include="Views\Login\IndexLogin.cshtml" />
     <Content Include="Views\Produto\IndexProduto.cshtml" />
     <Content Include="Views\Produto\FormularioProduto.cshtml" />

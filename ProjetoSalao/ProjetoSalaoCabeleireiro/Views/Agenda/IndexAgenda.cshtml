@@ -27,23 +27,12 @@
 <section class="booking-area-start section-padding-80-0">
     <div class="container">
         <div class="row align-items-center">
-            @foreach (var horario in Model)
-            {
-                <!-- Booking Info -->
-                <div class="col-12 col-lg-4">
-                    <div class="booking-info mb-80">
-                        <h2>Agendar</h2>
-                        <p>Segunda - Sábado: @horario.HorarioAbertura.ToShortTimeString() AM - @horario.HorarioFechamento.ToShortTimeString() PM</p>
-                    </div>
-                </div>
-            }
-
             <!-- Booking Table -->
-            <div class="col-8 col-lg-12">
+            <div class="col-8 col-lg-10">
                 <div id="agenda" class="booking-table-slider owl-carousel mb-100">
 
                     <!-- Single Booking Table -->
-                    
+
                     @for (var j = 0; j < 7; j += 3)
                     {
                         DateTime data = DateTime.Today;
@@ -54,7 +43,7 @@
                             <!-- Single Date & Hours -->
                             <div class="single-date-hours active">
                                 <div class="booking-day">
-                                    <h5>@(diasSemana[((int)data.DayOfWeek)]) </h5>
+                                    <h6>@(diasSemana[((int)data.AddDays(j).DayOfWeek)]) </h6>
                                     <h6 id="@id">@(data.AddDays(j).ToShortDateString())</h6>
                                 </div>
                                 <div class="booking-hours d-flex flex-wrap">
@@ -79,7 +68,7 @@
 
                             <div class="single-date-hours">
                                 <div class="booking-day">
-                                    <h5>@(diasSemana[((int)data.DayOfWeek)+1]) </h5>
+                                    <h6>@(diasSemana[((int)data.AddDays(j + 1).DayOfWeek)]) </h6>
                                     <h6 id="@id">@(data.AddDays(j + 1).ToShortDateString())</h6>
                                 </div>
                                 <div class="booking-hours d-flex flex-wrap">
@@ -98,7 +87,7 @@
 
                             <div class="single-date-hours">
                                 <div class="booking-day">
-                                    <h5>@(diasSemana[((int)data.DayOfWeek)+2]) </h5>
+                                    <h6>@(diasSemana[((int)data.AddDays(j + 2).DayOfWeek)]) </h6>
                                     <h6>@(data.AddDays(j + 2).ToShortDateString())</h6>
                                 </div>
                                 <div class="booking-hours d-flex flex-wrap">
@@ -119,6 +108,7 @@
                 </div>
             </div>
         </div>
+    </div>
 </section>
 <!-- Booking Area End -->
 <!-- Modal -->
@@ -133,22 +123,25 @@
             </div>
             <div class="modal-body produtoModal">
 
-                <label for="HorarioAbertura">Horario:</label>
+                <label class="texto-label" for="HorarioAbertura">Horario:</label>
                 <input id="horaSelecionada" type="time" class="form-control" required disabled />
 
-                <label for="HorarioFechamento">Data:</label>
+                <label class="texto-label" for="HorarioFechamento">Data:</label>
                 <input id="data" type="text" class="form-control" required disabled />
 
-                <label for="servico">Serviço:</label>
+                <label class="texto-label" for="servico">Serviço:</label>
                 <select id="servico" name="agenda.ServicoId" class="form-control">
                     @foreach (var servico in ViewBag.Servico)
                     {
                         <option value="@servico.Id" selected="@servico.Id.Equals(ViewBag.Agenda.ServicoId)">@servico.Tipo</option>
                     }
                 </select>
+                @if (Session["ClienteLogado"] != null)
+                {
+                    <label for="ClienteId">ClienteId:</label>
+                    <label id="clienteId" type="number" class="form-control" required disabled> @((Session["ClienteLogado"] as Cliente).Id)</label>
+                }
 
-                <label for="ClienteId">ClienteId:</label>
-                <label id="clienteId" type="number" class="form-control" required disabled>@((Session["ClienteLogado"] as Cliente).Id)</label>
 
                 <div class="input-group">
                     <div class="input-group-append" id="t">
@@ -164,90 +157,9 @@
 
 <script>
     var btn = document.querySelector('.btn2');
-    btn.classList.add("active");
-    var hora = new Date();
-    var url = "@Url.Action("ListarHorarios", "HorarioAtendimento")";
-    $.post(url, calculaTempo);
+                btn.classList.add("active");
 
-    function calculaTempo(data)
-    {
-        var pattern = /Date\(([^)]+)\)/;
-        var results = pattern.exec(data[0].HorarioAbertura);
-        var results1 = pattern.exec(data[0].HorarioFechamento);
-        var horaAbertura = new Date(parseFloat(results[1]));
-        var horaFechamento = new Date(parseFloat(results1[1]));
-        var hora2 = horaAbertura;
-        var data = new Date();
-        for (var j = 0; j < 6; j += 3) {
-            var diasSemana = [ "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sabado", "Domingo" ];
-
-            var div = $("<div>").addClass("single-booking-table").addClass("d-flex");
-            var div2 = $("<div>").addClass("single-date-hours").addClass("active");
-            var div3 = $("<div>").addClass("booking-day");
-            var div4 = $("<div>").addClass("booking-hours").addClass("d-flex").addClass("flex-wrap");
-            var h5 = $("<h5>").text(diasSemana[j]);
-            data.setDate(data.getDate() + j);
-            var h6 = $("<h6>").text(data.toLocaleDateString());
-
-            var div5 = $("<div>").addClass("single-date-hours").addClass("active");
-            var div6 = $("<div>").addClass("booking-day");
-            var div7 = $("<div>").addClass("booking-hours").addClass("d-flex").addClass("flex-wrap");
-            var h52 = $("<h5>").text(diasSemana[j + 1]);
-            data.setDate(data.getDate() + j + 1);
-            var h62 = $("<h6>").text(data.toLocaleDateString());
-
-            var div8 = $("<div>").addClass("single-date-hours").addClass("active");
-            var div9 = $("<div>").addClass("booking-day");
-            var div10 = $("<div>").addClass("booking-hours").addClass("d-flex").addClass("flex-wrap");
-            var h5_3 = $("<h5>").text(diasSemana[j + 2]);
-            data.setDate(data.getDate() + j + 2);
-            var h6_3 = $("<h6>").text(data.toLocaleDateString());
-
-
-
-            div.append(div2);
-            div.append(div5);
-            div.append(div8);
-            div2.append(div3);
-            div2.append(div4);
-            div3.append(h5);
-            div3.append(h6);
-
-            div5.append(div6);
-            div5.append(div7);
-            div6.append(h52);
-            div6.append(h62);
-
-
-            div8.append(div9);
-            div9.append(h5_3);
-            div9.append(h6_3);
-            div8.append(div10);
-
-           horaAbertura.foreach()
-            for (var i = 0; horaAbertura < horaFechamento; i++) {
-                var span = $("<span>");
-                span.text(horaAbertura.toLocaleTimeString())
-                horaAbertura.setMinutes(horaAbertura.getMinutes() + 30);
-                div4.append(span);
-            }
-
-            for (var i = 0; horaAbertura < horaFechamento; i++) {
-                var span2 = $("<span>");
-                span2.text(hora2.toLocaleTimeString())
-                hora2.setMinutes(hora2.getMinutes() + 30);
-                div7.append(span2);
-            }
-
-
-
-            $("#agenda").prepend(div);
-            console.log(div);
-        }
-
-
-    }
-
+    var pegaValClick;
     $(".pegaHora").click(function () {
         var horaDia = $(this).text();
         $('#horaSelecionada').val(horaDia);
@@ -255,7 +167,7 @@
         var dataDia = $(this).data("dia");
         $('#data').val(dataDia);
 
-        $(this).addClass("active");
+        pegaValClick = $(this);
     });
 
     function AgendarHorario() {
@@ -278,16 +190,15 @@
             },
             complete:
             function validar(jqXHR, resposta) {
-                 if (jqXHR.responseJSON == true) {
-                     $('#testeC').addClass("active");
-                     alert("Sucesso ao agendar horario");
-                 } else {
-                    alert("Erro ao Cadastrar");
-                 }
+                if (jqXHR.responseJSON == true) {
+                    alert("Sucesso ao agendar horario");
+                } else {
+                    pegaValClick.addClass("active");
+                    pegaValClick.removeAttr("data-toggle");
+                    alert("Horário Indisponível");
+                }
             },
-            error: function (jqXHR, textStatus, errorThrown) {
-                alert('Error - ' + errorThrown);
-            }
-        });
-    }
+        }
+        )
+    };
 </script>

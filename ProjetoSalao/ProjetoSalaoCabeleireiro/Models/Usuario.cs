@@ -12,7 +12,6 @@ namespace ProjetoBenner
         public int Id { get; set; }
 
         [Display(Name = "CPF: ")]
-        [MaxLength(11)]
         public string CPF { get; set; }
 
         [Required(ErrorMessage = "O nome é obrigatório", AllowEmptyStrings = false)]
@@ -24,7 +23,7 @@ namespace ProjetoBenner
         [MinLength(4)]
         public string Login { get; set; }
         public string Email { get; set; }
-        public int CEP { get; set; }
+        public string CEP { get; set; }
         public string Rua { get; set; }
         public int Numero { get; set; }
         public string Cidade { get; set; }

@@ -1,4 +1,5 @@
 ﻿using ProjetoBenner.DAO;
+using ProjetoBenner.Filtros;
 using ProjetoBenner.Models;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 
 namespace ProjetoBenner.Controllers
 {
+    [AutorizacaoFuncionario]
     public class ProdutoController : Controller
     {
         // GET: Produto

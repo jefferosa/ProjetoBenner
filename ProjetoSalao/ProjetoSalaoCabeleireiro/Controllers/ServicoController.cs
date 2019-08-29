@@ -1,4 +1,5 @@
 ﻿using ProjetoBenner.DAO;
+using ProjetoBenner.Filtros;
 using ProjetoBenner.Models;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 
 namespace ProjetoBenner.Controllers
 {
+    [AutorizacaoFuncionario]
     public class ServicoController : Controller
     {
         // GET: Servico
@@ -15,8 +17,10 @@ namespace ProjetoBenner.Controllers
         {
             ServicoDAO dao = new ServicoDAO();
             IList<Servico> servicos = dao.ListaServicos();
+            
             ViewBag.Servico = servicos;
-            return View("IndexServico");
+            ViewBag.Servicos = new Servico();
+            return View();
         }
 
         public ActionResult FormularioServico()

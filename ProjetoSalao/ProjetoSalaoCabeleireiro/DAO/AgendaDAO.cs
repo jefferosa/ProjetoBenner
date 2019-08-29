@@ -8,7 +8,7 @@ namespace ProjetoBenner.DAO
 {
     public class AgendaDAO
     {
-        
+
         public bool AgendarHorario(Agenda agenda)
         {
             bool valida = false;
@@ -30,10 +30,22 @@ namespace ProjetoBenner.DAO
             }
         }
 
+        public int BuscarAgendamento(DateTime horaSelecionada, DateTime data)
+        {
+            using (var context = new SalaoContext())
+            {
+                int cont = 0;
+                cont = context.Agenda.Count(u => u.Horario == horaSelecionada && u.Data == data);
+
+                return cont;
+            }
+        }
+
         public IList<Agenda> ListarAgendamentos()
         {
             using (var context = new SalaoContext())
             {
+
                 return context.Agenda.ToList();
             }
         }

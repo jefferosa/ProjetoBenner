@@ -46,10 +46,9 @@ namespace ProjetoBenner.Migrations
 
                     b.Property<string>("Bairro");
 
-                    b.Property<int>("CEP");
+                    b.Property<string>("CEP");
 
-                    b.Property<string>("CPF")
-                        .HasMaxLength(11);
+                    b.Property<string>("CPF");
 
                     b.Property<string>("Cidade");
 
@@ -101,10 +100,9 @@ namespace ProjetoBenner.Migrations
 
                     b.Property<string>("Bairro");
 
-                    b.Property<int>("CEP");
+                    b.Property<string>("CEP");
 
-                    b.Property<string>("CPF")
-                        .HasMaxLength(11);
+                    b.Property<string>("CPF");
 
                     b.Property<string>("Cidade");
 

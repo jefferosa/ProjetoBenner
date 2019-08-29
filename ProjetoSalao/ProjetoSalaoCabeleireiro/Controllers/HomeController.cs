@@ -1,4 +1,5 @@
 ﻿using ProjetoBenner.DAO;
+using ProjetoBenner.Filtros;
 using ProjetoBenner.Models;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace ProjetoBenner.Controllers
             return View();
         }
 
+        [AutorizacaoFuncionario]
         public ActionResult IndexHomeFuncionario()
         {
             return View();

@@ -54,7 +54,7 @@ namespace ProjetoBenner.Controllers
             else
             {
                 ViewBag.Cliente = cliente;
-                return View("FormularioCliente");
+                return RedirectToAction("IndexLogin","Login");
             }
         }
 
@@ -73,7 +73,7 @@ namespace ProjetoBenner.Controllers
             else
             {
                 ViewBag.Funcionario = funcionario;
-                return View("FormularioFuncionario");
+                return RedirectToAction("IndexLogin", "Login");
             }
         }
     }

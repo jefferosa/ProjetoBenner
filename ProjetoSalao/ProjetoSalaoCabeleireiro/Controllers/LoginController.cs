@@ -26,7 +26,7 @@ namespace ProjetoBenner.Controllers
             {
                 Session.Timeout = 60;
                 Session["ClienteLogado"] = cliente;
-                    return RedirectToAction("IndexHomeCliente", "Home");
+                return RedirectToAction("IndexHomeCliente", "Home");
             }
 
             FuncionarioDAO daoFuncionario = new FuncionarioDAO();

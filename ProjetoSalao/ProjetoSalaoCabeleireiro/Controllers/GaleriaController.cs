@@ -1,4 +1,5 @@
 ﻿using ProjetoBenner.DAO;
+using ProjetoBenner.Filtros;
 using ProjetoBenner.Models;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,7 @@ namespace ProjetoBenner.Controllers
         }
 
         [HttpGet]
+        [AutorizacaoFuncionario]
         public ActionResult GaleriaFuncionario()
         {
             GaleriaDAO dao = new GaleriaDAO();
@@ -30,6 +32,7 @@ namespace ProjetoBenner.Controllers
         }
 
         [HttpPost]
+        [AutorizacaoFuncionario]
         public ActionResult AdicionarImagem(UploadImagem uploadImagem)
         {
             Galeria galeria = new Galeria();
@@ -60,6 +63,7 @@ namespace ProjetoBenner.Controllers
             }
         }
 
+        [AutorizacaoFuncionario]
         public ActionResult RemoverImagens(int id)
         {
             GaleriaDAO dao = new GaleriaDAO();

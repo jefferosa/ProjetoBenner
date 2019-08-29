@@ -28,6 +28,15 @@ a:hover {
 
 .form-row {
     max-height: 100%;
+    color: white;
+}
+
+.texto-label {
+    color: white;
+}
+
+.labelPerfil {
+    color: black;
 }
 
 .input-group {
@@ -243,11 +252,11 @@ ul {
     padding-top: 10%;
 }
 
-html{
+html {
     height: 100%;
 }
 
-body{
+body {
     height: 100%;
 }
 
@@ -274,7 +283,7 @@ body{
     color: black;
 }
 
-.formImagem{
+.formImagem {
     margin: auto;
     background-color: rgba(0, 0, 0, 0.5);
     width: 100%;
@@ -287,6 +296,10 @@ body{
     color: black;
 }
 
-.acrescenta, .decrementa{
+.acrescenta, .decrementa {
     font-size: 140%;
+}
+
+.row align-items-center {
+    margin: auto;
 }

@@ -14,9 +14,8 @@
                         <!-- Welcome Text -->
                         <div class="col-12 col-md-9 col-lg-6">
                             <div data-animation="fadeInUp" data-delay="100ms" class="welcome-text slider">
-                                <h2 data-animation="fadeInUp" data-delay="100ms">We Care About <br> Your Hair</h2>
-                                <p data-animation="fadeInUp" data-delay="400ms">“Discover your own style. Don't try to repeat what has already been written - have the courage to do your own thing and don't be afraid to do something different.”</p>
-                                <a href="#" class="btn akame-btn" data-animation="fadeInUp" data-delay="700ms">About Us</a>
+                                <h2 data-animation="fadeInUp" data-delay="100ms">Confira Alguns <br> De Nossos Trabalhos</h2>
+                                <a href="~/Galeria/IndexGaleria" class="btn akame-btn active" data-animation="fadeInUp" data-delay="700ms">Nossos Trabalhos</a>
                             </div>
                         </div>
                     </div>
@@ -33,9 +32,9 @@
                         <!-- Welcome Text -->
                         <div class="col-12 col-md-9 col-lg-6">
                             <div data-animation="fadeInUp" data-delay="100ms" class="welcome-text slider">
-                                <h2 data-animation="fadeInUp" data-delay="100ms">We Care About <br> Your Hair</h2>
-                                <p data-animation="fadeInUp" data-delay="400ms">“Discover your own style. Don't try to repeat what has already been written - have the courage to do your own thing and don't be afraid to do something different.”</p>
-                                <a href="#" class="btn akame-btn active" data-animation="fadeInUp" data-delay="700ms">About Us</a>
+                                <h2 data-animation="fadeInUp" data-delay="100ms">Venha nos <br> Conhecer</h2>
+                                <p data-animation="fadeInUp" data-delay="400ms">“Satisfação Garantida”</p>
+                                <a href="~/Agenda/IndexAgenda" class="btn akame-btn active" data-animation="fadeInUp" data-delay="700ms">Agendar Horário</a>
                             </div>
                         </div>
                     </div>
@@ -54,7 +53,7 @@
                 <div class="section-heading mb-80">
                     <h2>Hair Salon</h2>
                     <p>The House of Hair Salon &amp; Spa</p>
-                    <span>About Us</span>
+                    <span>@Html.ActionLink("Galeria", "IndexGaleria", "Galeria")</span>
                 </div>
             </div>
 
@@ -65,12 +64,9 @@
                 </div>
             </div>
 
-            <!-- About Us Content -->
-            <div class="col-12 col-lg-4">
-                <div class="about-us-content mb-80 pl-4">
-                    <h3>Beautiful Hair Comes From A Legendary.</h3>
-                    <p>“Working in a salon, you look at trends all day long. You’re looking at color all the time,what new products are coming out. You’re a part of the fashion industry,especially if you’re working in a higher-end salon.”</p>
-                    <a href="#" class="btn akame-btn active mt-30">Read More</a>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="about-us-thumbnail mb-80">
+                    <img src="~/Content/imagens/tesoura.jpg" alt="">
                 </div>
             </div>
         </div>
@@ -98,34 +94,44 @@
 
             <!-- Single Service Area -->
             <div class="col-12 col-sm-6 col-lg-3">
-                <div class="single-service-area mb-80 wow fadeInUp" data-wow-delay="200ms">
-                    <img src="~/Content/template-img/core-img/s1.png" alt="">
-                    <h5>Coloração</h5>
-                </div>
+                <a href="~/Agenda/IndexAgenda">
+                    <div class="single-service-area mb-80 wow fadeInUp" data-wow-delay="200ms">
+                        <img src="~/Content/template-img/core-img/s1.png" alt="">
+                        <h5>Coloração</h5>
+                    </div>
+                </a>
             </div>
 
             <!-- Single Service Area -->
             <div class="col-12 col-sm-6 col-lg-3">
-                <div class="single-service-area mb-80 wow fadeInUp" data-wow-delay="400ms">
-                    <img src="~/Content/template-img/core-img/s3.png" alt="">
-                    <h5>Cortes</h5>
-                </div>
+                <a href="~/Agenda/IndexAgenda">
+                    <div class="single-service-area mb-80 wow fadeInUp" data-wow-delay="400ms">
+                        <img src="~/Content/template-img/core-img/s3.png" alt="">
+                        <h5>Cortes</h5>
+                    </div>
+                </a>
             </div>
 
             <!-- Single Service Area -->
             <div class="col-12 col-sm-6 col-lg-3">
-                <div class="single-service-area mb-80 wow fadeInUp" data-wow-delay="600ms">
-                    <img src="~/Content/template-img/core-img/s4.png" alt="">
-                    <h5>Penteados</h5>
-                </div>
+                <a href="~/Agenda/IndexAgenda">
+                    <div class="single-service-area mb-80 wow fadeInUp" data-wow-delay="600ms">
+                        <img src="~/Content/template-img/core-img/s4.png" alt="">
+                        <h5>Penteados</h5>
+                    </div>
+                </a>
             </div>
 
             <!-- Single Service Area -->
             <div class="col-12 col-sm-6 col-lg-3">
-                <div class="single-service-area mb-80 wow fadeInUp" data-wow-delay="800ms">
-                    <img src="~/Content/template-img/core-img/s3.png" alt="">
-                    <h5>Hidratação</h5>
-                </div>
+                <a href="~/Agenda/IndexAgenda">
+                    <div class="single-service-area mb-80 wow fadeInUp" data-wow-delay="800ms">
+
+                        <img src="~/Content/template-img/core-img/s3.png" alt="">
+                        <h5>Hidratação</h5>
+
+                    </div>
+                </a>
             </div>
 
         </div>

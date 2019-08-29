@@ -8,8 +8,8 @@ using ProjetoBenner.DAO;
 namespace ProjetoBenner.Migrations
 {
     [DbContext(typeof(SalaoContext))]
-    [Migration("20190816194533_7")]
-    partial class _7
+    [Migration("20190828224801_1")]
+    partial class _1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -22,6 +22,8 @@ namespace ProjetoBenner.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int?>("ClienteId");
+
                     b.Property<DateTime>("Data");
 
                     b.Property<DateTime>("Horario");
@@ -29,6 +31,9 @@ namespace ProjetoBenner.Migrations
                     b.Property<int?>("ServicoId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ClienteId")
+                        .IsUnique();
 
                     b.HasIndex("ServicoId");
 
@@ -40,14 +45,11 @@ namespace ProjetoBenner.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("AgendaId");
-
                     b.Property<string>("Bairro");
 
-                    b.Property<int>("CEP");
+                    b.Property<string>("CEP");
 
-                    b.Property<string>("CPF")
-                        .HasMaxLength(11);
+                    b.Property<string>("CPF");
 
                     b.Property<string>("Cidade");
 
@@ -70,8 +72,6 @@ namespace ProjetoBenner.Migrations
                     b.Property<string>("UF");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AgendaId");
 
                     b.ToTable("Clientes");
                 });
@@ -101,10 +101,9 @@ namespace ProjetoBenner.Migrations
 
                     b.Property<string>("Bairro");
 
-                    b.Property<int>("CEP");
+                    b.Property<string>("CEP");
 
-                    b.Property<string>("CPF")
-                        .HasMaxLength(11);
+                    b.Property<string>("CPF");
 
                     b.Property<string>("Cidade");
 
@@ -150,9 +149,9 @@ namespace ProjetoBenner.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("HorarioAbertura");
+                    b.Property<DateTime>("HorarioAbertura");
 
-                    b.Property<string>("HorarioFechamento");
+                    b.Property<DateTime>("HorarioFechamento");
 
                     b.HasKey("Id");
 
@@ -212,16 +211,13 @@ namespace ProjetoBenner.Migrations
 
             modelBuilder.Entity("ProjetoBenner.Models.Agenda", b =>
                 {
+                    b.HasOne("ProjetoBenner.Models.Cliente", "Cliente")
+                        .WithOne("Agenda")
+                        .HasForeignKey("ProjetoBenner.Models.Agenda", "ClienteId");
+
                     b.HasOne("ProjetoBenner.Models.Servico", "Servico")
                         .WithMany()
                         .HasForeignKey("ServicoId");
-                });
-
-            modelBuilder.Entity("ProjetoBenner.Models.Cliente", b =>
-                {
-                    b.HasOne("ProjetoBenner.Models.Agenda", "Agenda")
-                        .WithMany()
-                        .HasForeignKey("AgendaId");
                 });
 
             modelBuilder.Entity("ProjetoBenner.Models.Funcionario", b =>

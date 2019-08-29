@@ -79,7 +79,7 @@
                                     <li>
                                         @if (Session["FuncionarioLogado"] != null)
                                         {
-                                            @Html.ActionLink((Session["FuncionarioLogado"] as Funcionario).Nome, "PerfilFunconario", "Usuario")
+                                            @Html.ActionLink((Session["FuncionarioLogado"] as Funcionario).Nome, "PerfilFuncionario", "Usuario")
                                             <ul class="dropdown">
                                                 <li class="btn6">@Html.ActionLink("Perfil", "PerfilFuncionario", "Usuario")</li>
                                                 <li>@Html.ActionLink("Logout", "FazerLogout", "Login")</li>
@@ -104,6 +104,18 @@
 
     @RenderBody()
 
+    <!-- Breadcrumb Area Start -->
+    <section class="breadcrumb-area section-padding-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb-content">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Area End -->
     <!-- Border -->
     <div class="container">
         <div class="border-top"></div>
