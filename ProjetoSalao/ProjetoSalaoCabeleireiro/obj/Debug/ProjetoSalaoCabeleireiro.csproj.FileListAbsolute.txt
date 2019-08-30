@@ -464,8 +464,6 @@ C:\projeto\ProjetoBenner\ProjetoSalao\ProjetoSalaoCabeleireiro\bin\roslyn\vbc.ex
 C:\projeto\ProjetoBenner\ProjetoSalao\ProjetoSalaoCabeleireiro\bin\roslyn\vbc.rsp
 C:\projeto\ProjetoBenner\ProjetoSalao\ProjetoSalaoCabeleireiro\bin\roslyn\VBCSCompiler.exe
 C:\projeto\ProjetoBenner\ProjetoSalao\ProjetoSalaoCabeleireiro\bin\roslyn\VBCSCompiler.exe.config
-C:\projeto\ProjetoBenner\ProjetoSalao\ProjetoSalaoCabeleireiro\bin\EntityFramework.dll
-C:\projeto\ProjetoBenner\ProjetoSalao\ProjetoSalaoCabeleireiro\bin\EntityFramework.SqlServer.dll
 C:\projeto\ProjetoBenner\ProjetoSalao\ProjetoSalaoCabeleireiro\bin\Microsoft.AspNetCore.Hosting.Abstractions.dll
 C:\projeto\ProjetoBenner\ProjetoSalao\ProjetoSalaoCabeleireiro\bin\Microsoft.AspNetCore.Hosting.Server.Abstractions.dll
 C:\projeto\ProjetoBenner\ProjetoSalao\ProjetoSalaoCabeleireiro\bin\Microsoft.AspNetCore.Http.Abstractions.dll
@@ -515,8 +513,6 @@ C:\projeto\ProjetoBenner\ProjetoSalao\ProjetoSalaoCabeleireiro\bin\System.Web.We
 C:\projeto\ProjetoBenner\ProjetoSalao\ProjetoSalaoCabeleireiro\bin\System.Web.Webpages.dll
 C:\projeto\ProjetoBenner\ProjetoSalao\ProjetoSalaoCabeleireiro\bin\System.Web.Webpages.Razor.dll
 C:\projeto\ProjetoBenner\ProjetoSalao\ProjetoSalaoCabeleireiro\bin\System.Xml.ReaderWriter.dll
-C:\projeto\ProjetoBenner\ProjetoSalao\ProjetoSalaoCabeleireiro\bin\EntityFramework.xml
-C:\projeto\ProjetoBenner\ProjetoSalao\ProjetoSalaoCabeleireiro\bin\EntityFramework.SqlServer.xml
 C:\projeto\ProjetoBenner\ProjetoSalao\ProjetoSalaoCabeleireiro\bin\Microsoft.AspNetCore.Hosting.Abstractions.xml
 C:\projeto\ProjetoBenner\ProjetoSalao\ProjetoSalaoCabeleireiro\bin\Microsoft.AspNetCore.Hosting.Server.Abstractions.xml
 C:\projeto\ProjetoBenner\ProjetoSalao\ProjetoSalaoCabeleireiro\bin\Microsoft.AspNetCore.Http.Abstractions.xml

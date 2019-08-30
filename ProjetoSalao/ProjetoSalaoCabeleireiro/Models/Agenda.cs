@@ -13,6 +13,6 @@ namespace ProjetoBenner.Models
         public Servico Servico { get; set; }
         public int? ServicoId { get; set; }
         public Cliente Cliente { get; set; }
-        public int? ClienteId { get; set; }
+        public int ClienteId { get; set; }
     }
 }

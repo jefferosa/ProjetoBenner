@@ -116,18 +116,34 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>Cliente Id</th>
-                                <th>Serviço Id</th>
+                                <th>Cliente</th>
+                                <th>Serviço</th>
                                 <th>Horario</th>
                                 <th>Data</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var agendamento in Model)
+                            @foreach (var agendamento in ViewBag.Agendamentos)
                             {
                                 <tr>
-                                    <td>@agendamento.ClienteId</td>
-                                    <td>@agendamento.ServicoId</td>
+                                    @if (agendamento.Cliente != null)
+                                    {
+                                        <td>@agendamento.Cliente.Nome</td>
+                                    }
+                                    else
+                                    {
+                                        <td>Sem Cliente</td>
+                                    }
+
+                                    @if (agendamento.Servico != null)
+                                    {
+                                        <td>@agendamento.Servico.Tipo</td>
+                                    }
+                                    else
+                                    {
+                                        <td>Sem serviço</td>
+                                    }
+
                                     <td>@agendamento.Horario.ToShortTimeString()</td>
                                     <td>@agendamento.Data.ToShortDateString()</td>
                                 </tr>

@@ -21,7 +21,7 @@ namespace ProjetoBenner.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("ClienteId");
+                    b.Property<int>("ClienteId");
 
                     b.Property<DateTime>("Data");
 
@@ -212,7 +212,8 @@ namespace ProjetoBenner.Migrations
                 {
                     b.HasOne("ProjetoBenner.Models.Cliente", "Cliente")
                         .WithOne("Agenda")
-                        .HasForeignKey("ProjetoBenner.Models.Agenda", "ClienteId");
+                        .HasForeignKey("ProjetoBenner.Models.Agenda", "ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("ProjetoBenner.Models.Servico", "Servico")
                         .WithMany()

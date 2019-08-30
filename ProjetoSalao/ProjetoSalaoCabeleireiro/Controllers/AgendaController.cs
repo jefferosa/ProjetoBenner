@@ -13,19 +13,21 @@ namespace ProjetoBenner.Controllers
     public class AgendaController : Controller
     {
         // GET: Agenda
-        
+
         public ActionResult IndexAgenda()
         {
             AgendaDAO dao = new AgendaDAO();
             var horarios = dao.Listar();
-            ViewBag.Agenda = new Agenda();
+            ViewBag.Horarios = horarios;
+
             ServicoDAO daoS = new ServicoDAO();
-            IList<Servico> servico = daoS.ListaServicos();
-
-
-            //var agendamentos = dao.ListarAgendamentos();
-            //ViewBag.Agenda = agendamentos;
+            var servico = daoS.ListaServicos();
             ViewBag.Servico = servico;
+
+            var agendamentos = dao.ListarAgendamentos();
+            ViewBag.Cont = agendamentos.Count();
+            ViewBag.Agenda = agendamentos;
+            
             return View(horarios);
         }
 
@@ -36,7 +38,7 @@ namespace ProjetoBenner.Controllers
             ViewBag.Agenda = agendamentos;
             return View(agendamentos);
         }
-        
+
         public ActionResult FormularioAgenda()
         {
             ViewBag.Agenda = new Agenda();
@@ -45,7 +47,7 @@ namespace ProjetoBenner.Controllers
             ViewBag.Servico = servico;
             return View(servico);
         }
-        
+
         [HttpPost]
         public ActionResult AgendarHorario(DateTime HoraSelecionada, DateTime Data, int ServicoId, int ClienteId)
         {

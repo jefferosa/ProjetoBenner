@@ -1,4 +1,5 @@
-﻿using ProjetoBenner.DAO;
+﻿using Microsoft.EntityFrameworkCore;
+using ProjetoBenner.DAO;
 using ProjetoBenner.Filtros;
 using ProjetoBenner.Models;
 using System;
@@ -20,9 +21,9 @@ namespace ProjetoBenner.Controllers
         [AutorizacaoFuncionario]
         public ActionResult IndexHomeFuncionario()
         {
+            var db = new SalaoContext();
             AgendaDAO dao = new AgendaDAO();
             var agendamentos = dao.ListarAgendamentos();
-            
 
             ViewBag.Agendamentos = agendamentos;
 

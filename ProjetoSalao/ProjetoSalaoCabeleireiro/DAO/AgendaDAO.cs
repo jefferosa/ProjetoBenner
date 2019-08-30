@@ -1,7 +1,7 @@
-﻿using ProjetoBenner.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using ProjetoBenner.Models;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -46,7 +46,7 @@ namespace ProjetoBenner.DAO
         {
             using (var context = new SalaoContext())
             {
-                return context.Agenda.Include("Servico").ToList();
+                return context.Agenda.Include(p => p.Servico).Include(c => c.Cliente).ToList();
             }
         }
 
