@@ -4,31 +4,19 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using ProjetoBenner.DAO;
+using ProjetoBenner.Models;
 
 namespace ProjetoBenner.Migrations
 {
     [DbContext(typeof(SalaoContext))]
-    partial class SalaoContextModelSnapshot : ModelSnapshot
+    [Migration("20190903203955_2")]
+    partial class _2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("ProjetoBenner.DAO.LucroAgendamento", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("DataEntrada");
-
-                    b.Property<double>("ValorEntrada");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Lucros");
-                });
 
             modelBuilder.Entity("ProjetoBenner.Models.Agenda", b =>
                 {
@@ -39,7 +27,7 @@ namespace ProjetoBenner.Migrations
 
                     b.Property<DateTime>("Data");
 
-                    b.Property<string>("Estado");
+                    b.Property<int>("Estado");
 
                     b.Property<DateTime>("Horario");
 

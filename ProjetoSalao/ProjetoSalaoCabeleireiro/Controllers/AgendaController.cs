@@ -9,11 +9,12 @@ using System.Web.Mvc;
 
 namespace ProjetoBenner.Controllers
 {
-    [AutorizacaoFilter]
+    
     public class AgendaController : Controller
     {
         // GET: Agenda
 
+        [AutorizacaoFilter]
         public ActionResult IndexAgenda()
         {
             AgendaDAO dao = new AgendaDAO();
@@ -27,7 +28,40 @@ namespace ProjetoBenner.Controllers
             var agendamentos = dao.ListarAgendamentos();
             ViewBag.Cont = agendamentos.Count();
             ViewBag.Agenda = agendamentos;
-            
+
+            FuncionarioDAO daoFuncionarios = new FuncionarioDAO();
+            IList<Funcionario> funcionarios = daoFuncionarios.ListarFuncionarios();
+            int cont = funcionarios.Count();
+
+            var DiasDaSemana = new DiasDaSemana();
+            ViewBag.DiasDaSemana = DiasDaSemana;
+
+            ViewBag.ContFun = cont;
+
+            return View(horarios);
+        }
+
+        [AutorizacaoFuncionario]
+        public ActionResult IndexAgendaFuncionario()
+        {
+            AgendaDAO dao = new AgendaDAO();
+            var horarios = dao.Listar();
+            ViewBag.Horarios = horarios;
+
+            ServicoDAO daoS = new ServicoDAO();
+            var servico = daoS.ListaServicos();
+            ViewBag.Servico = servico;
+
+            var agendamentos = dao.ListarAgendamentos();
+            ViewBag.Cont = agendamentos.Count();
+            ViewBag.Agenda = agendamentos;
+
+            FuncionarioDAO daoFuncionarios = new FuncionarioDAO();
+            IList<Funcionario> funcionarios = daoFuncionarios.ListarFuncionarios();
+            int cont = funcionarios.Count();
+
+            ViewBag.ContFun = cont;
+
             return View(horarios);
         }
 
@@ -56,6 +90,7 @@ namespace ProjetoBenner.Controllers
             agenda.Data = Data;
             agenda.ServicoId = ServicoId;
             agenda.ClienteId = ClienteId;
+            agenda.Estado = "Agendado";
 
             ViewBag.Agenda = agenda;
             FuncionarioDAO daoFuncionarios = new FuncionarioDAO();
@@ -65,6 +100,9 @@ namespace ProjetoBenner.Controllers
 
             AgendaDAO daoProcura = new AgendaDAO();
             int agendaProcura = daoProcura.BuscarAgendamento(agenda.Horario, agenda.Data);
+
+            ViewBag.AgendamentoC = agendaProcura;
+            ViewBag.Cont = cont;
 
             if (agenda.Data == null || agenda.Horario == null || agenda.ServicoId == null)
             {

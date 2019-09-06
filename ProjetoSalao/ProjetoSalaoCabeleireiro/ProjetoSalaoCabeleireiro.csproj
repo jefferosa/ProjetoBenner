@@ -256,6 +256,7 @@
     <Content Include="Content\imagens\Logo.png" />
     <Content Include="Content\imagens\tesoura.jpeg" />
     <Content Include="Content\imagens\tesoura.jpg" />
+    <Content Include="Content\js\Agenda.js" />
     <Content Include="Content\js\bootstrap.bundle.js" />
     <Content Include="Content\js\bootstrap.bundle.min.js" />
     <Content Include="Content\js\bootstrap.js" />
@@ -354,7 +355,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AgendaController.cs" />
-    <Compile Include="Controllers\ControleFinanceiroController.cs" />
+    <Compile Include="Controllers\LucroAgendamentoController.cs" />
     <Compile Include="Controllers\GaleriaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HorarioAtendimentoController.cs" />
@@ -364,10 +365,15 @@
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="DAO\AgendaDAO.cs" />
     <Compile Include="DAO\ClienteDAO.cs" />
-    <Compile Include="DAO\ControleFinanceiroDAO.cs" />
+    <Compile Include="DAO\LucroAgendamentoDAO.cs" />
     <Compile Include="DAO\FuncionarioDAO.cs" />
     <Compile Include="DAO\GaleriaDAO.cs" />
     <Compile Include="DAO\HorarioAtendimentoDAO.cs" />
+    <Compile Include="Migrations\20190905203940_4.cs" />
+    <Compile Include="Migrations\20190905203940_4.designer.cs">
+      <DependentUpon>20190905203940_4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LucroAgendamento.cs" />
     <Compile Include="DAO\ProdutoDAO.cs" />
     <Compile Include="DAO\SalaoContext.cs" />
     <Compile Include="DAO\ServicoDAO.cs" />
@@ -380,10 +386,19 @@
     <Compile Include="Migrations\20190830174154_1.designer.cs">
       <DependentUpon>20190830174154_1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190903203955_2.cs" />
+    <Compile Include="Migrations\20190903203955_2.designer.cs">
+      <DependentUpon>20190903203955_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190905173928_3.cs" />
+    <Compile Include="Migrations\20190905173928_3.designer.cs">
+      <DependentUpon>20190905173928_3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\SalaoContextModelSnapshot.cs" />
     <Compile Include="Models\Agenda.cs" />
     <Compile Include="Models\Cliente.cs" />
-    <Compile Include="Models\Entrada.cs" />
+    <Compile Include="Models\DiasDaSemana.cs" />
+    <Compile Include="Models\EstadoAtendimento.cs" />
     <Compile Include="Models\Funcionario.cs" />
     <Compile Include="Models\Galeria.cs" />
     <Compile Include="Models\HorarioAtendimento.cs" />
@@ -473,6 +488,7 @@
     <Content Include="Views\Shared\_LayoutFuncionario.cshtml" />
     <Content Include="Views\HorarioAtendimento\Index.cshtml" />
     <Content Include="Views\Agenda\IndexAgenda.cshtml" />
+    <Content Include="Views\Agenda\IndexAgendaFuncionario.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

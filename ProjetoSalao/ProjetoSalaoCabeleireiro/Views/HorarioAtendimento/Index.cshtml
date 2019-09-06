@@ -4,6 +4,26 @@
     Layout = "~/Views/Shared/_LayoutFuncionario.cshtml";
 }
 
+<!-- Breadcrumb Area Start -->
+<section class="breadcrumb-area section-padding-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb-content">
+                    <h2>Horário de Atendimento</h2>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a class="link-inicio" href="~/Home/IndexHomeFuncionario"><i class="icon_house_alt"></i> Inicio</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Horário de Atendimento</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Area End -->
+
 <section class="welcome-area">
     <div id="tb">
 
@@ -25,9 +45,19 @@
                 }
             </tbody>
         </table>
-        <button type="button" class="btn btn-lg btn-primary botao-edit" data-toggle="modal" data-target="#produtoModal" id="teste">
-            Cadastrar Horario de Atendimento
-        </button>
+        @if (ViewBag.HorarioAtendimento == null)
+        {
+            <button type="button" class="btn btn-lg btn-primary botao-edit" data-toggle="modal" data-target="#produtoModal" id="teste">
+                Cadastrar Horario de Atendimento
+            </button>
+        }
+        else
+        {
+            <button type="button" class="btn btn-lg btn-primary botao-edit" data-toggle="modal" data-target="#produtoModal" id="teste" disabled>
+                Cadastrar Horario de Atendimento
+            </button>
+        }
+
     </div>
 </section>
 <!-- Modal -->
@@ -65,36 +95,36 @@
 </div>
 
 @*<div class="modal fade produtoModal" id="atualizaModal" tabindex="-1" role="dialog" aria-labelledby="produtoModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content produtoModal">
-            <div class="modal-header produtoModal">
-                <h5 class="modal-title" id="produtoModalLabel">Produto</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body produtoModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content produtoModal">
+                <div class="modal-header produtoModal">
+                    <h5 class="modal-title" id="produtoModalLabel">Produto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body produtoModal">
 
-                <label for="HorarioAbertura">Horario de Abertura:</label>
-                <input id="horaA" type="time" class="form-control" required />
+                    <label for="HorarioAbertura">Horario de Abertura:</label>
+                    <input id="horaA" type="time" class="form-control" required />
 
 
-                <label for="HorarioFechamento">Horario de Fechamento:</label>
-                <input id="horaB" type="time" class="form-control" required />
+                    <label for="HorarioFechamento">Horario de Fechamento:</label>
+                    <input id="horaB" type="time" class="form-control" required />
 
-                <div class="input-group">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary botao close" type="button" onclik="Cadastrar()">
-                            <i class="fas fa-search fa-sm">Cadastrar</i>
-                        </button>
+                    <div class="input-group">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary botao close" type="button" onclik="Cadastrar()">
+                                <i class="fas fa-search fa-sm">Cadastrar</i>
+                            </button>
+                        </div>
                     </div>
+
                 </div>
 
             </div>
-
         </div>
-    </div>
-</div>*@
+    </div>*@
 
 <script>
     function CadastrarHorario() {

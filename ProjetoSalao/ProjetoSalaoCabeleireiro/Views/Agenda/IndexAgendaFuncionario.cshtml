@@ -1,5 +1,5 @@
 ﻿@{
-    Layout = "~/Views/Shared/_LayoutCliente.cshtml";
+    Layout = "~/Views/Shared/_LayoutFuncionario.cshtml";
 }
 @using ProjetoBenner.Models;
 @model IEnumerable<ProjetoBenner.Models.HorarioAtendimento>
@@ -13,7 +13,7 @@
                     <h2>Agendar Horario</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a class="link-inicio" href="~/Home/IndexHomeCliente"><i class="icon_house_alt"></i> Inicio</a></li>
+                            <li class="breadcrumb-item"><a class="link-inicio" href="~/Home/IndexHome"><i class="icon_house_alt"></i> Inicio</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Agenda</li>
                         </ol>
                     </nav>
@@ -33,22 +33,22 @@
 
                     <!-- Single Booking Table -->
 
-                    @for (var DiasSemanas = 0; DiasSemanas < 30; DiasSemanas += 3)
+                    @for (var j = 0; j < 30; j += 3)
                     {
-                        var dataHoje = DateTime.Now;
-                        var dataColuna1 = DateTime.Today;
-                        dataColuna1 = dataColuna1.AddDays(DiasSemanas);
-                        var dataColuna2 = DateTime.Today;
-                        dataColuna2 = dataColuna2.AddDays(DiasSemanas + 1);
-                        var dataColuna3 = DateTime.Today;
-                        dataColuna3 = dataColuna3.AddDays(DiasSemanas + 2);
+                        var dataT = DateTime.Now;
+                        var data = DateTime.Today;
+                        data = data.AddDays(j);
+                        var data2 = DateTime.Today;
+                        data2 = data2.AddDays(j + 1);
+                        var data3 = DateTime.Today;
+                        data3 = data3.AddDays(j + 2);
                         string[] diasSemana = { "Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sabado" };
                         <div class="single-booking-table d-flex">
                             <!-- Single Date & Hours -->
                             <div id="ativar" class="single-date-hours">
                                 <div class="booking-day">
-                                    <h6>@(ViewBag.DiasDaSemana = (DiasDaSemana)((int)dataColuna1.DayOfWeek)) </h6>
-                                    <h6 class="diaTeste@(DiasSemanas)">@(dataColuna1.ToShortDateString())</h6>
+                                    <h6>@(diasSemana[((int)data.DayOfWeek)]) </h6>
+                                    <h6 class="diaTeste@(j)">@(data.ToShortDateString())</h6>
                                 </div>
                                 <div class="booking-hours d-flex flex-wrap">
                                     @foreach (var horario in Model)
@@ -56,14 +56,14 @@
                                         var tempoTrabalho = (horario.HorarioFechamento.Hour - horario.HorarioAbertura.Hour) * 60;
                                         DateTime horarioAtendimento = horario.HorarioAbertura;
 
-                                        for (var tempoEntreHorarios = 0; tempoEntreHorarios < tempoTrabalho; tempoEntreHorarios += 30)
+                                        for (var i = 0; i < tempoTrabalho; i += 30)
                                         {
                                             var cont = 0;
                                             bool pinta = false;
                                             foreach (var hora in ViewBag.Agenda)
                                             {
 
-                                                if (dataColuna1 == hora.Data && horarioAtendimento.TimeOfDay == hora.Horario.TimeOfDay)
+                                                if (data == hora.Data && horarioAtendimento.TimeOfDay == hora.Horario.TimeOfDay)
                                                 {
                                                     cont++;
                                                     if (cont == ViewBag.ContFun)
@@ -75,28 +75,28 @@
                                             }
                                             if (pinta == true)
                                             {
-                                                <span id="horaDia" class="pegaHora bg-danger active" data-target="#produtoModal" data-dia="@(dataColuna1.ToShortDateString())">@(horarioAtendimento.ToShortTimeString())</span>
-                                                horarioAtendimento = horario.HorarioAbertura.AddMinutes(30 + tempoEntreHorarios);
+                                                <span id="horaDiaFuncionario" class="pegaHoraFuncionario bg-danger active" data-target="#produtoModal" data-dia="@(data.ToShortDateString())">@(horarioAtendimento.ToShortTimeString())</span>
+                                                horarioAtendimento = horario.HorarioAbertura.AddMinutes(30 + i);
 
                                             }
                                             else
                                             {
-                                                if (((int)dataColuna1.DayOfWeek) == 0)
+                                                if (((int)data.DayOfWeek) == 0)
                                                 {
-                                                    <span id="horaDia" class="pegaHora active" data-dia="@(dataColuna1.ToShortDateString())">@(horarioAtendimento.ToShortTimeString())</span>
-                                                    horarioAtendimento = horario.HorarioAbertura.AddMinutes(30 + tempoEntreHorarios);
+                                                    <span id="horaDiaFuncionario" class="pegaHoraFuncionario active" data-dia="@(data.ToShortDateString())">@(horarioAtendimento.ToShortTimeString())</span>
+                                                    horarioAtendimento = horario.HorarioAbertura.AddMinutes(30 + i);
                                                 }
                                                 else
                                                 {
-                                                    if (dataColuna1 == dataHoje.Date && horarioAtendimento.TimeOfDay < dataHoje.TimeOfDay)
+                                                    if (data == dataT.Date && horarioAtendimento.TimeOfDay < dataT.TimeOfDay)
                                                     {
-                                                        <span id="horaDia" class="pegaHora active" data-dia="@(dataColuna1.ToShortDateString())">@(horarioAtendimento.ToShortTimeString())</span>
-                                                        horarioAtendimento = horario.HorarioAbertura.AddMinutes(30 + tempoEntreHorarios);
+                                                        <span id="horaDiaFuncionario" class="pegaHoraFuncionario active" data-dia="@(data.ToShortDateString())">@(horarioAtendimento.ToShortTimeString())</span>
+                                                        horarioAtendimento = horario.HorarioAbertura.AddMinutes(30 + i);
                                                     }
                                                     else
                                                     {
-                                                        <span id="horaDia" class="pegaHora" data-toggle="modal" data-target="#produtoModal" data-dia="@(dataColuna1.ToShortDateString())">@(horarioAtendimento.ToShortTimeString())</span>
-                                                        horarioAtendimento = horario.HorarioAbertura.AddMinutes(30 + tempoEntreHorarios);
+                                                        <span id="horaDiaFuncionario" class="pegaHoraFuncionario" data-toggle="modal" data-target="#produtoModal" data-dia="@(data.ToShortDateString())">@(horarioAtendimento.ToShortTimeString())</span>
+                                                        horarioAtendimento = horario.HorarioAbertura.AddMinutes(30 + i);
                                                     }
                                                 }
                                             }
@@ -106,8 +106,8 @@
                             </div>
                             <div class="single-date-hours">
                                 <div class="booking-day">
-                                    <h6>@(ViewBag.DiasDaSemana = (DiasDaSemana)((int)dataColuna2.DayOfWeek)) </h6>
-                                    <h6>@(dataColuna2.ToShortDateString())</h6>
+                                    <h6>@(diasSemana[((int)data2.DayOfWeek)]) </h6>
+                                    <h6>@(data2.ToShortDateString())</h6>
                                 </div>
                                 <div class="booking-hours d-flex flex-wrap">
                                     @foreach (var horario in Model)
@@ -115,14 +115,14 @@
                                         var tempoTrabalho = (horario.HorarioFechamento.Hour - horario.HorarioAbertura.Hour) * 60;
                                         DateTime horarioAtendimento = horario.HorarioAbertura;
 
-                                        for (var tempoEntreHorarios = 0; tempoEntreHorarios < tempoTrabalho; tempoEntreHorarios += 30)
+                                        for (var i = 0; i < tempoTrabalho; i += 30)
                                         {
                                             var cont = 0;
                                             bool pinta = false;
                                             foreach (var hora in ViewBag.Agenda)
                                             {
 
-                                                if (dataColuna2 == hora.Data && horarioAtendimento.TimeOfDay == hora.Horario.TimeOfDay)
+                                                if (data2 == hora.Data && horarioAtendimento.TimeOfDay == hora.Horario.TimeOfDay)
                                                 {
                                                     cont++;
                                                     if (cont == ViewBag.ContFun)
@@ -134,21 +134,21 @@
                                             }
                                             if (pinta)
                                             {
-                                                <span id="horaDia" class="pegaHora bg-danger active" data-target="#produtoModal" data-dia="@(dataColuna2.ToShortDateString())">@(horarioAtendimento.ToShortTimeString())</span>
-                                                horarioAtendimento = horario.HorarioAbertura.AddMinutes(30 + tempoEntreHorarios);
+                                                <span id="horaDiaFuncionario" class="pegaHoraFuncionario bg-danger active" data-target="#produtoModal" data-dia="@(data2.ToShortDateString())">@(horarioAtendimento.ToShortTimeString())</span>
+                                                horarioAtendimento = horario.HorarioAbertura.AddMinutes(30 + i);
 
                                             }
                                             else
                                             {
-                                                if (((int)dataColuna2.DayOfWeek) == 0)
+                                                if (((int)data2.DayOfWeek) == 0)
                                                 {
-                                                    <span id="horaDia" class="pegaHora active" data-dia="@(dataColuna2.ToShortDateString())">@(horarioAtendimento.ToShortTimeString())</span>
-                                                    horarioAtendimento = horario.HorarioAbertura.AddMinutes(30 + tempoEntreHorarios);
+                                                    <span id="horaDiaFuncionario" class="pegaHoraFuncionario active" data-dia="@(data2.ToShortDateString())">@(horarioAtendimento.ToShortTimeString())</span>
+                                                    horarioAtendimento = horario.HorarioAbertura.AddMinutes(30 + i);
                                                 }
                                                 else
                                                 {
-                                                    <span id="horaDia" class="pegaHora" data-toggle="modal" data-target="#produtoModal" data-dia="@(dataColuna2.ToShortDateString())">@(horarioAtendimento.ToShortTimeString())</span>
-                                                    horarioAtendimento = horario.HorarioAbertura.AddMinutes(30 + tempoEntreHorarios);
+                                                    <span id="horaDiaFuncionario" class="pegaHoraFuncionario" data-toggle="modal" data-target="#produtoModal" data-dia="@(data2.ToShortDateString())">@(horarioAtendimento.ToShortTimeString())</span>
+                                                    horarioAtendimento = horario.HorarioAbertura.AddMinutes(30 + i);
 
                                                 }
                                             }
@@ -159,22 +159,22 @@
 
                             <div class="single-date-hours">
                                 <div class="booking-day">
-                                    <h6>@(ViewBag.DiasDaSemana = (DiasDaSemana)((int)dataColuna3.DayOfWeek))</h6>
-                                    <h6>@(dataColuna3.ToShortDateString())</h6>
+                                    <h6>@(diasSemana[((int)data3.DayOfWeek)]) </h6>
+                                    <h6>@(data3.ToShortDateString())</h6>
                                 </div>
                                 <div class="booking-hours d-flex flex-wrap">
                                     @foreach (var horario in Model)
                                     {
                                         var tempoTrabalho = (horario.HorarioFechamento.Hour - horario.HorarioAbertura.Hour) * 60;
                                         DateTime horarioAtendimento = horario.HorarioAbertura;
-                                        for (var tempoEntreHorarios = 0; tempoEntreHorarios < tempoTrabalho; tempoEntreHorarios += 30)
+                                        for (var i = 0; i < tempoTrabalho; i += 30)
                                         {
                                             var cont = 0;
                                             bool pinta = false;
                                             foreach (var hora in ViewBag.Agenda)
                                             {
 
-                                                if (dataColuna3 == hora.Data && horarioAtendimento.TimeOfDay == hora.Horario.TimeOfDay)
+                                                if (data3 == hora.Data && horarioAtendimento.TimeOfDay == hora.Horario.TimeOfDay)
                                                 {
                                                     cont++;
                                                     if (cont == ViewBag.ContFun)
@@ -186,21 +186,21 @@
                                             }
                                             if (pinta)
                                             {
-                                                <span id="horaDia" class="pegaHora bg-danger active" data-target="#produtoModal" data-dia="@(dataColuna3.ToShortDateString())">@(horarioAtendimento.ToShortTimeString())</span>
-                                                horarioAtendimento = horario.HorarioAbertura.AddMinutes(30 + tempoEntreHorarios);
+                                                <span id="horaDiaFuncionario" class="pegaHoraFuncionario bg-danger active" data-target="#produtoModal" data-dia="@(data3.ToShortDateString())">@(horarioAtendimento.ToShortTimeString())</span>
+                                                horarioAtendimento = horario.HorarioAbertura.AddMinutes(30 + i);
 
                                             }
                                             else
                                             {
-                                                if (((int)dataColuna3.DayOfWeek) == 0)
+                                                if (((int)data3.DayOfWeek) == 0)
                                                 {
-                                                    <span id="horaDia" class="pegaHora active" data-dia="@(dataColuna3.ToShortDateString())">@(horarioAtendimento.ToShortTimeString())</span>
-                                                    horarioAtendimento = horario.HorarioAbertura.AddMinutes(30 + tempoEntreHorarios);
+                                                    <span id="horaDiaFuncionario" class="pegaHoraFuncionario active" data-dia="@(data3.ToShortDateString())">@(horarioAtendimento.ToShortTimeString())</span>
+                                                    horarioAtendimento = horario.HorarioAbertura.AddMinutes(30 + i);
                                                 }
                                                 else
                                                 {
-                                                    <span id="horaDia" class="pegaHora" data-toggle="modal" data-target="#produtoModal" data-dia="@(dataColuna3.ToShortDateString())">@(horarioAtendimento.ToShortTimeString())</span>
-                                                    horarioAtendimento = horario.HorarioAbertura.AddMinutes(30 + tempoEntreHorarios);
+                                                    <span id="horaDiaFuncionario" class="pegaHoraFuncionario" data-toggle="modal" data-target="#produtoModal" data-dia="@(data3.ToShortDateString())">@(horarioAtendimento.ToShortTimeString())</span>
+                                                    horarioAtendimento = horario.HorarioAbertura.AddMinutes(30 + i);
                                                 }
                                             }
                                         }
@@ -228,10 +228,10 @@
             <div class="modal-body produtoModal">
 
                 <label class="texto-label" for="HorarioAbertura">Horario:</label>
-                <input id="horaSelecionada" type="time" class="form-control" required disabled />
+                <input id="horaSelecionadaFuncionario" type="time" class="form-control" required disabled />
 
                 <label class="texto-label" for="HorarioFechamento">Data:</label>
-                <input id="data" type="text" class="form-control" required disabled />
+                <input id="dataFuncionario" type="text" class="form-control" required disabled />
 
                 <label class="texto-label" for="servico">Serviço:</label>
                 <select id="servico" name="agenda.ServicoId" class="form-control">
@@ -240,11 +240,8 @@
                         <option value="@servico.Id" selected="@servico.Id">@servico.Tipo</option>
                     }
                 </select>
-                @if (Session["ClienteLogado"] != null)
-                {
                     <label for="ClienteId">ClienteId:</label>
-                    <label id="clienteId" type="number" class="form-control" required disabled> @((Session["ClienteLogado"] as Cliente).Id)</label>
-                }
+                    <label id="clienteId" type="number" class="form-control" required disabled> @((Session["FuncionarioLogado"] as Funcionario).Id)</label>
                 <div class="input-group">
                     <div class="input-group-append" id="t">
                         <button class="btn btn-primary botao" type="button" onclick="AgendarHorario();" data-dismiss="modal">
@@ -257,60 +254,9 @@
     </div>
 </div>
 
+<script src="~/Content/js/Agenda.js"></script>
+
 <script>
     var btn = document.querySelector('.btn2');
                 btn.classList.add("active");
-    var DiasSemanas;
-    var data = new Date().toLocaleDateString();
-    for (DiasSemanas = 0; DiasSemanas < 30; DiasSemanas += 3) {
-        var teste = $(".diaTeste" + DiasSemanas).text();
-        console.log(teste);
-        if (teste == data) {
-            $("#ativar").addClass("active");
-        }
-    }
-
-
-    var pegaValClick;
-    $(".pegaHora").click(function () {
-        var horaDia = $(this).text();
-        $('#horaSelecionada').val(horaDia);
-
-        var dataDia = $(this).data("dia");
-        $('#data').val(dataDia);
-
-        pegaValClick = $(this);
-    });
-
-    function AgendarHorario() {
-        var horaSelecionada = $("#horaSelecionada").val();
-        var data = $("#data").val();
-        var servicoId = $('#servico').val();
-        var clienteId = $("#clienteId").text();
-
-        $.ajax({
-            type: 'POST',
-            dataType: 'json',
-            cache: false,
-            url: "@Url.Action("AgendarHorario", "Agenda")", // webmethod or web serivces URL
-            data: {
-                HoraSelecionada: horaSelecionada,
-                Data: data,
-                ServicoId: servicoId,
-                ClienteId: clienteId
-            },
-            complete:
-            function validar(jqXHR, resposta) {
-                if (jqXHR.responseJSON == true) {
-                    pegaValClick.addClass("bg-success");
-                    pegaValClick.removeAttr("data-toggle");
-                    alert("Sucesso ao agendar Horario");
-                } else {
-                    pegaValClick.addClass("bg-warning");
-                    alert("Falha ao Agendar Horario");
-                }
-            },
-        }
-        )
-    };
 </script>

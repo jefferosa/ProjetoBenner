@@ -41,7 +41,7 @@ namespace ProjetoBenner.DAO
                 return cont;
             }
         }
-
+        
         public IList<Agenda> ListarAgendamentos()
         {
             using (var context = new SalaoContext())
@@ -58,11 +58,37 @@ namespace ProjetoBenner.DAO
             }
         }
 
+        public void AtualizarAgendamento(Agenda agenda)
+        {
+            using (var context = new SalaoContext())
+            {
+                context.Agenda.Update(agenda);
+                context.SaveChanges();
+            }
+        }
+
+        public Agenda BuscarAgendamentoId(int? id)
+        {
+            using (var context = new SalaoContext())
+            {
+                return context.Agenda.Find(id);
+            }
+        }
+
         public void RemoverHorario(Agenda agenda)
         {
             using (var context = new SalaoContext())
             {
                 context.Agenda.Remove(agenda);
+                context.SaveChanges();
+            }
+        }
+
+        public void AvancaEstado(Agenda agenda)
+        {
+            using (var context = new SalaoContext())
+            {
+                context.Entry(agenda).State = EntityState.Modified;
                 context.SaveChanges();
             }
         }

@@ -23,13 +23,13 @@
     <div class="row">
 
         <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
+        <div class="col-xl-4 col-md-6 mb-4">
             <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Lucro (Mensal)</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">R$40,000</div>
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><h6 class="font-weight-bold text-primary text-uppercase">Lucro (Mensal)</h6></div>
+                            <div id="Lucro" class="h5 mb-0 font-weight-bold text-gray-800">R$@(ViewBag.LucroMensal.ToString("N2"))</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -40,22 +40,41 @@
         </div>
 
         <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
+        <div class="col-xl-4 col-md-6 mb-4">
             <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Horários Hoje</div>
-                            <div class="row no-gutters align-items-center">
-                                <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">10%</div>
-                                </div>
-                                <div class="col">
-                                    <div class="progress progress-sm mr-2">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width:10%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1"><h6 class="font-weight-bold text-success text-uppercase">Horários Hoje</h6></div>
+                            @foreach (var horario in ViewBag.Horarios)
+                            {
+                                var agendamentoDia = (horario.HorarioFechamento.Hour - horario.HorarioAbertura.Hour) * 2 * ViewBag.contFun;
+                                DateTime horarioAtendimento = horario.HorarioAbertura;
+                                DateTime dia = DateTime.Now;
+                                var cont = 0;
+                                var porcentagem = 0.0;
+
+                                foreach (var agendamento in ViewBag.Agendamentos)
+                                {
+                                    if (agendamento.Data.Date == dia.Date)
+                                    {
+                                        cont++;
+                                    }
+                                }
+
+                                porcentagem = (cont * 100) / agendamentoDia;
+
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col-auto">
+                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">@(Math.Round(porcentagem))%</div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="progress progress-sm mr-2">
+                                            <div class="progress-bar bg-success" role="progressbar" style="width:@(Math.Round(porcentagem))%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            }
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
@@ -66,12 +85,12 @@
         </div>
 
         <!-- Pending Requests Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
+        <div class="col-xl-4 col-md-6 mb-4">
             <div class="card border-left-warning shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Horários Agendados</div>
+                            <div class="font-weight-bold text-warning text-uppercase"><h6 class="font-weight-bold text-warning text-uppercase">Horários Agendados</h6></div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.Agenda</div>
                         </div>
                         <div class="col-auto">
@@ -88,11 +107,11 @@
     <div class="row">
 
         <!-- Area Chart -->
-        <div class="col-xl-7 col-lg-7">
+        <div class="col-xl-6 col-lg-7">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-success">Visão de lucros</h6>
+                    <h4 class="m-0 font-weight-bold text-warning">Visão de lucros</h4>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -104,11 +123,11 @@
         </div>
 
         <!-- Pie Chart -->
-        <div class="col-xl-5 col-lg-5">
+        <div class="col-xl-6 col-lg-5">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Agendamentos</h6>
+                    <h4 class="m-0 font-weight-bold text-primary">Agendamentos</h4>
 
                 </div>
                 <!-- Card Body -->
@@ -116,10 +135,11 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>Cliente</th>
-                                <th>Serviço</th>
-                                <th>Horario</th>
-                                <th>Data</th>
+                                <th><h5>Cliente</h5></th>
+                                <th><h5>Serviço</h5></th>
+                                <th><h5>Horario</h5></th>
+                                <th><h5>Data</h5></th>
+                                <th><h5>Estado</h5></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -146,6 +166,28 @@
 
                                     <td>@agendamento.Horario.ToShortTimeString()</td>
                                     <td>@agendamento.Data.ToShortDateString()</td>
+                                    @if (agendamento.Estado == "Finalizado")
+                                    {
+                                        <td class="Select bg-success" value="@agendamento.Id" data-dia="@agendamento.Data" data-valor="@agendamento.Servico.Valor">@agendamento.Estado</td>
+                                    }
+                                    else if (agendamento.Estado == "EmAtendimento")
+                                    {
+                                        <td class="Select bg-primary" value="@agendamento.Id" data-dia="@agendamento.Data">@agendamento.Estado</td>
+                                    }
+                                    else if (agendamento.Estado == "Atrasado")
+                                    {
+                                        <td class="Select bg-warning" value="@agendamento.Id" data-dia="@agendamento.Data">@agendamento.Estado</td>
+                                    }
+                                    else if (agendamento.Estado == "Cancelado")
+                                    {
+                                        <td class="Select bg-danger" value="@agendamento.Id" data-dia="@agendamento.Data">@agendamento.Estado</td>
+                                    }
+                                    else
+                                    {
+                                        <td class="Select" value="@agendamento.Id" data-dia="@agendamento.Data">@agendamento.Estado</td>
+                                    }
+
+
                                 </tr>
                             }
                         </tbody>
@@ -172,4 +214,250 @@
 <script>
     var btn = document.querySelector('.btn1');
     btn.classList.add("active");
+
+    var Estados = [{
+        value: 0,
+        title: "Agendado",
+    },
+    {
+        value: 1,
+        title: "Atrasado",
+    },
+    {
+        value: 2,
+        title: "EmAtendimento",
+    },
+    {
+        value: 3,
+        title: "Finalizado",
+    },
+    {
+        value: 4,
+        title: "Cancelado",
+    }];
+
+    var valorDoClick;
+    var Data;
+    var ValorServico;
+    $(".Select").dblclick(function () {
+        if ($('td > input').length > 0) {
+            return;
+        }
+
+        var conteudoOriginal = $(this).text();
+        var novoElemento = $('<select/>');
+        var agendamentoId = $(this).attr("value");
+        var conteudoNovo = "";
+
+        Data = $(this).data("dia");
+        ValorServico = $(this).data("valor");
+        valorDoClick = $(this);
+
+        $.each(Estados, function (a, b) {
+            var opt = document.createElement("option");
+            if (b.title == conteudoOriginal) {
+                opt.setAttribute('selected', 'selected');
+            }
+            opt.value = b.value;
+            opt.innerHTML = b.title;
+            novoElemento[0].appendChild(opt);
+        });
+        novoElemento.bind('change', function () {
+            conteudoOriginal = $(this.name + " option:selected").text();
+
+        });
+        $(this).html(novoElemento.bind('blur keydown', function (e) {
+            var keyCode = e.which;
+            conteudoNovo = $(this).val();
+
+            if (keyCode == 13 && conteudoNovo != '' && conteudoNovo != conteudoOriginal) {
+                var objeto = $(this);
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'json',
+                    cache: false,
+                    url: "@Url.Action("AtualizarEstado", "Home")", // webmethod or web serivces URL
+                    data: {
+                        id: agendamentoId,
+                        estado: conteudoNovo
+                    }, //added this comma here
+                    success: function (result) {
+                        objeto.parent().html(conteudoNovo);
+                        $('body').append(result);
+                    }
+                })
+            } else if (keyCode == 27 || e.type == 'blur') {
+                $(this).parent().html(conteudoOriginal);
+                AtualizaEstado(agendamentoId, conteudoOriginal);
+            }
+        }));
+        $(this).children().select();
+    });
+
+    function AtualizaEstado(agendamentoId, NovoEstado) {
+        var url = "@Url.Action("AtualizarEstado", "Home")";
+        $.post(url, { Id: agendamentoId, Estado: NovoEstado }, AtualizaLinha(NovoEstado, Data, ValorServico));
+        
+    }
+
+    function AtualizaLinha(NovoEstado, Data, ValorServico) {
+        
+
+        if (NovoEstado == "Finalizado") {
+            var Url = "@Url.Action("AdicionarEntrada", "LucroAgendamento")";
+            $.post(Url, { Data: Data, Valor: ValorServico });
+
+            $(valorDoClick).removeClass("bg-warning");
+            $(valorDoClick).removeClass("bg-primary");
+            $(valorDoClick).removeClass("bg-danger");
+            $(valorDoClick).addClass("bg-success");
+        }
+        else if (NovoEstado == "Atrasado") {
+            $(valorDoClick).removeClass("bg-success");
+            $(valorDoClick).removeClass("bg-primary");
+            $(valorDoClick).removeClass("bg-danger");
+            $(valorDoClick).addClass("bg-warning");
+        }
+        else if (NovoEstado == "EmAtendimento") {
+            $(valorDoClick).removeClass("bg-warning");
+            $(valorDoClick).removeClass("bg-success");
+            $(valorDoClick).removeClass("bg-danger");
+            $(valorDoClick).addClass("bg-primary");
+        }
+        else if (NovoEstado == "Cancelado") {
+            $(valorDoClick).removeClass("bg-warning");
+            $(valorDoClick).removeClass("bg-primary");
+            $(valorDoClick).removeClass("bg-success");
+            $(valorDoClick).addClass("bg-danger");
+        }
+        else {
+            $(valorDoClick).removeClass("bg-warning");
+            $(valorDoClick).removeClass("bg-primary");
+            $(valorDoClick).removeClass("bg-success");
+            $(valorDoClick).removeClass("bg-danger");
+        }
+    }
+
+
+    // Set new default font family and font color to mimic Bootstrap's default styling
+    Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+    Chart.defaults.global.defaultFontColor = '#858796';
+
+    function number_format(number, decimals, dec_point, thousands_sep) {
+        // *     example: number_format(1234.56, 2, ',', ' ');
+        // *     return: '1 234,56'
+        number = (number + '').replace(',', '').replace(' ', '');
+        var n = !isFinite(+number) ? 0 : +number,
+            prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+            sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
+            dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
+            s = '',
+            toFixedFix = function (n, prec) {
+                var k = Math.pow(10, prec);
+                return '' + Math.round(n * k) / k;
+            };
+        // Fix for IE parseFloat(0.55).toFixed(0) = 0;
+        s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
+        if (s[0].length > 3) {
+            s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
+        }
+        if ((s[1] || '').length < prec) {
+            s[1] = s[1] || '';
+            s[1] += new Array(prec - s[1].length + 1).join('0');
+        }
+        return s.join(dec);
+    }
+
+    // Area Chart Example
+    var ctx = document.getElementById("myAreaChart");
+    var teste = @ViewBag.LucroMensal;
+
+    var myLineChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ["Janeiro", "Fevereiro", "Marco", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+            datasets: [{
+                label: "Ganhos",
+                lineTension: 0.3,
+                backgroundColor: "rgba(188, 168, 88, 0.05)",
+                borderColor: "rgba(188, 168, 88, 1)",
+                pointRadius: 3,
+                pointBackgroundColor: "rgba(188, 168, 88, 1)",
+                pointBorderColor: "rgba(188, 168, 88, 1)",
+                pointHoverRadius: 3,
+                pointHoverBackgroundColor: "rgba(188, 168, 88, 1)",
+                pointHoverBorderColor: "rgba(188, 168, 88, 1)",
+                pointHitRadius: 10,
+                pointBorderWidth: 2,
+                data: [0, 0, 0, 0, 0, 0, 0, 350, teste, 0, 0, 0],
+            }],
+        },
+        options: {
+            maintainAspectRatio: false,
+            layout: {
+                padding: {
+                    left: 10,
+                    right: 25,
+                    top: 25,
+                    bottom: 0
+                }
+            },
+            scales: {
+                xAxes: [{
+                    time: {
+                        unit: 'date'
+                    },
+                    gridLines: {
+                        display: false,
+                        drawBorder: false
+                    },
+                    ticks: {
+                        maxTicksLimit: 7
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        maxTicksLimit: 5,
+                        padding: 10,
+                        // Include a dollar sign in the ticks
+                        callback: function (value, index, values) {
+                            return 'R$' + number_format(value);
+                        }
+                    },
+                    gridLines: {
+                        color: "rgb(188, 168, 88)",
+                        zeroLineColor: "rgb(188, 168, 88)",
+                        drawBorder: false,
+                        borderDash: [2],
+                        zeroLineBorderDash: [2]
+                    }
+                }],
+            },
+            legend: {
+                display: false
+            },
+            tooltips: {
+                backgroundColor: "rgb(255,255,255)",
+                bodyFontColor: "#858796",
+                titleMarginBottom: 10,
+                titleFontColor: '#6e707e',
+                titleFontSize: 14,
+                borderColor: '#dddfeb',
+                borderWidth: 1,
+                xPadding: 15,
+                yPadding: 15,
+                displayColors: false,
+                intersect: false,
+                mode: 'index',
+                caretPadding: 10,
+                callbacks: {
+                    label: function (tooltipItem, chart) {
+                        var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+                        return datasetLabel + ': R$' + number_format(tooltipItem.yLabel);
+                    }
+                }
+            }
+        }
+    });
+
 </script>
