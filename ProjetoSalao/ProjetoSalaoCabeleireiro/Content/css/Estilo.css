@@ -8,6 +8,10 @@ a:hover {
     font-size: 160%;
 }
 
+/*td {
+    border: 1px solid black;
+}*/
+
 .form {
     width: 100%;
     min-width: 30%;
@@ -22,6 +26,7 @@ a:hover {
 
 th {
     text-align: center;
+    border-bottom: 1px solid black;
 }
 
 .formulario {
@@ -63,37 +68,28 @@ th {
 
 #tb {
     left: 40%;
-    border: 3px solid white;
+    border: 1px solid black;
     border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.3);
     color: white;
-    max-width: 60%;
     text-align: center;
     margin: auto;
     margin-bottom: 10%;
+    max-width: 70%;
     top: 40%;
 }
 
-th {
-    border-left: 1px solid white;
-}
-
 .tb {
-    color: white;
+    color: black;
 }
 
 .tb-td {
-    font-size: 14px;
+    font-size: 100%;
     width: 20%;
     height: 5%;
-    max-width: 50%;
-    text-align: left;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 td {
-    border: 1px solid white;
     text-align: center;
     width: 10%;
     height: 5%;
@@ -175,7 +171,7 @@ td {
     color: white;
 }
 
-.cadastroModal, .cadastroFuncionarioModal, .adicionarImagemModal, .produtoModal {
+.cadastroModal, .cadastroFuncionarioModal, .adicionarImagemModal, .produtoModal, .atualizaModal {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -306,4 +302,13 @@ body {
 
 .row align-items-center {
     margin: auto;
+}
+
+#tabalaLegenda, #thLegenda, .theadProdutos {
+    border: 1px solid black;
+}
+
+.table th, .table td, .table thead th {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
 }

@@ -18,6 +18,7 @@ namespace ProjetoBenner.DAO
         public DbSet<Saida> Saidas { get; set; }
         public DbSet<HorarioAtendimento> Horarios { get; set; }
         public DbSet<LucroAgendamento> Lucros { get; set; }
+        public DbSet<InformacoesSalao> Dados { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -355,6 +355,8 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AgendaController.cs" />
+    <Compile Include="Controllers\InformacoesSalaoController.cs" />
+    <Compile Include="Controllers\LayoutController.cs" />
     <Compile Include="Controllers\LucroAgendamentoController.cs" />
     <Compile Include="Controllers\GaleriaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -365,6 +367,7 @@
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="DAO\AgendaDAO.cs" />
     <Compile Include="DAO\ClienteDAO.cs" />
+    <Compile Include="DAO\InformacoesSalaoDAO.cs" />
     <Compile Include="DAO\LucroAgendamentoDAO.cs" />
     <Compile Include="DAO\FuncionarioDAO.cs" />
     <Compile Include="DAO\GaleriaDAO.cs" />
@@ -373,6 +376,11 @@
     <Compile Include="Migrations\20190905203940_4.designer.cs">
       <DependentUpon>20190905203940_4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190906160649_5.cs" />
+    <Compile Include="Migrations\20190906160649_5.designer.cs">
+      <DependentUpon>20190906160649_5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InformacoesSalao.cs" />
     <Compile Include="Models\LucroAgendamento.cs" />
     <Compile Include="DAO\ProdutoDAO.cs" />
     <Compile Include="DAO\SalaoContext.cs" />
@@ -489,6 +497,8 @@
     <Content Include="Views\HorarioAtendimento\Index.cshtml" />
     <Content Include="Views\Agenda\IndexAgenda.cshtml" />
     <Content Include="Views\Agenda\IndexAgendaFuncionario.cshtml" />
+    <Content Include="Views\Shared\Layout.cshtml" />
+    <Content Include="Views\InformacoesSalao\IndexInformacoesSalao.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

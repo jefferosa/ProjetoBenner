@@ -43,7 +43,7 @@
                     </div>
                     <div class="col-7">
                         <div class="top-header-content text-right">
-                            <p><i class="fa fa-clock-o" aria-hidden="true"></i> Seg-Sab: 08:00 as 19:00 <span class="mx-2"></span> | <span class="mx-2"></span> <i class="fa fa-phone" aria-hidden="true"></i> Ligue-nos: (00)-00000-0000</p>
+                            <p class="horarios"><i class="fa fa-clock-o" aria-hidden="true"></i><span class="mx-2"></span> | <span class="mx-2"></span> <i class="fa fa-phone" aria-hidden="true"></i> Ligue-nos: (00)-00000-0000</p>
                         </div>
                     </div>
                 </div>
@@ -153,8 +153,7 @@
 
                         <!-- Open Times -->
                         <div class="open-time">
-                            <p>Segunda: Sexta-Feita: 08:00 - 19:00</p>
-                            <p>Sabado: 08:00 - 20:00</p>
+                            <p class="horarios"></p>
                         </div>
 
                         <!-- Social Info -->
@@ -176,9 +175,9 @@
 
                         <!-- Contact Address -->
                         <div class="contact-address">
-                            <p>Tel: (00) 00000-0000</p>
-                            <p>E-mail: email@gmail.com</p>
-                            <p>Endereço: Iris Watson, CEP 00000-000 Fusce Rd, NY</p>
+                            <p id="telefone"></p>
+                            <p id="email"></p>
+                            <p id="endereco"></p>
                         </div>
                     </div>
                 </div>
@@ -196,6 +195,31 @@
     <script src="~/Content/template-js/bootstrap.min.js"></script>
     <script src="~/Content/template-js/akame.bundle.js"></script>
     <script src="~/Content/template-js/default-assets/active.js"></script>
+
+    <script>
+        var url = "@Url.Action("ListarDados", "InformacoesSalao")";
+        $.post(url, { id : 1 }, preencheEndereco);
+        function preencheEndereco(resposta) {
+
+            $("#telefone").html("Telefone: "+resposta.Telefone);
+            $("#email").html("Email: "+resposta.Email);
+            $("#endereco").html("Endereço: " + resposta.Rua + ", " + resposta.Numero + ", " + resposta.Cidade);
+        };
+
+        var url = "@Url.Action("ListarHorarios", "HorarioAtendimento")";
+        $.post(url, { id: 2 }, preencheHorarios);
+
+        function preencheHorarios(resposta) {
+            var pattern = /Date\(([^)]+)\)/;
+            var results = pattern.exec(resposta.HorarioAbertura);
+            var results2 = pattern.exec(resposta.HorarioFechamento);
+            var HorarioA = new Date(parseFloat(results[1]));
+            var HorarioF = new Date(parseFloat(results2[1]));
+
+            console.log(resposta);
+            $(".horarios").html("Seg-Sab: " + HorarioA.toLocaleTimeString() + " as " + HorarioF.toLocaleTimeString());
+        };
+    </script>
 
 </body>
 </html>

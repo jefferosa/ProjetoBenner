@@ -44,11 +44,22 @@ namespace ProjetoBenner.Controllers
             }
         }
 
-        public ActionResult ListarHorarios()
+        public ActionResult ListarHorarios(int id)
         {
             HorarioAtendimentoDAO dao = new HorarioAtendimentoDAO();
-            IList<HorarioAtendimento> horarios = dao.ListarHorarioAtendimento();
-            return Json(horarios);
+            HorarioAtendimento resposta = dao.ListarHorarios();
+            return Json(resposta);
+        }
+
+        public ActionResult AtualizarHorario (DateTime HoraA, DateTime HoraB, int Id)
+        {
+            HorarioAtendimentoDAO dao = new HorarioAtendimentoDAO();
+            HorarioAtendimento horarios = dao.BuscarHorariosId(Id);
+            horarios.HorarioAbertura = HoraA;
+            horarios.HorarioFechamento = HoraB;
+            dao.AtualizarHorarioAtendimento(horarios);
+
+            return Json(true);
         }
     }
 }

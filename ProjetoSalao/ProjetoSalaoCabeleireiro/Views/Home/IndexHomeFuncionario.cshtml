@@ -172,19 +172,19 @@
                                     }
                                     else if (agendamento.Estado == "EmAtendimento")
                                     {
-                                        <td class="Select bg-primary" value="@agendamento.Id" data-dia="@agendamento.Data">@agendamento.Estado</td>
+                                        <td class="Select bg-primary" value="@agendamento.Id" data-dia="@agendamento.Data" data-valor="@agendamento.Servico.Valor">@agendamento.Estado</td>
                                     }
                                     else if (agendamento.Estado == "Atrasado")
                                     {
-                                        <td class="Select bg-warning" value="@agendamento.Id" data-dia="@agendamento.Data">@agendamento.Estado</td>
+                                        <td class="Select bg-warning" value="@agendamento.Id" data-dia="@agendamento.Data" data-valor="@agendamento.Servico.Valor">@agendamento.Estado</td>
                                     }
                                     else if (agendamento.Estado == "Cancelado")
                                     {
-                                        <td class="Select bg-danger" value="@agendamento.Id" data-dia="@agendamento.Data">@agendamento.Estado</td>
+                                        <td class="Select bg-danger" value="@agendamento.Id" data-dia="@agendamento.Data" data-valor="@agendamento.Servico.Valor">@agendamento.Estado</td>
                                     }
                                     else
                                     {
-                                        <td class="Select" value="@agendamento.Id" data-dia="@agendamento.Data">@agendamento.Estado</td>
+                                        <td class="Select" value="@agendamento.Id" data-dia="@agendamento.Data" data-valor="@agendamento.Servico.Valor">@agendamento.Estado</td>
                                     }
 
 
@@ -276,6 +276,7 @@
                     type: 'POST',
                     dataType: 'json',
                     cache: false,
+                    async: false,
                     url: "@Url.Action("AtualizarEstado", "Home")", // webmethod or web serivces URL
                     data: {
                         id: agendamentoId,
@@ -296,16 +297,20 @@
 
     function AtualizaEstado(agendamentoId, NovoEstado) {
         var url = "@Url.Action("AtualizarEstado", "Home")";
-        $.post(url, { Id: agendamentoId, Estado: NovoEstado }, AtualizaLinha(NovoEstado, Data, ValorServico));
+        $.post(url, { Id: agendamentoId, Estado: NovoEstado }, AtualizaLinha(NovoEstado));
         
     }
 
-    function AtualizaLinha(NovoEstado, Data, ValorServico) {
+    function AtualizaLinha(NovoEstado) {
         
 
         if (NovoEstado == "Finalizado") {
             var Url = "@Url.Action("AdicionarEntrada", "LucroAgendamento")";
-            $.post(Url, { Data: Data, Valor: ValorServico });
+            $.post(Url, { Data: Data, Valor: ValorServico }, MostraLucro);
+
+            function MostraLucro(LucroMensal) {
+                $("#Lucro").html("R$" + LucroMensal.ToString("N2"));
+            }
 
             $(valorDoClick).removeClass("bg-warning");
             $(valorDoClick).removeClass("bg-primary");

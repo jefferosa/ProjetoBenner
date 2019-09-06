@@ -64,5 +64,14 @@ namespace ProjetoBenner.Controllers
             
             return Json(true);
         }
+        
+        public ActionResult Layout()
+        {
+            HorarioAtendimentoDAO dao = new HorarioAtendimentoDAO();
+            var horarios = dao.ListarHorarioAtendimento();
+            ViewBag.HorarioAtendimento = horarios;
+
+            return View(horarios);
+        }
     }
 }

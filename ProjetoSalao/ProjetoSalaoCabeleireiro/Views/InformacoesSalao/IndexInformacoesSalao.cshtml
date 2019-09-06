@@ -1,0 +1,313 @@
+﻿
+@{
+    ViewBag.Title = "IndexInformacoesSalao";
+    Layout = "~/Views/Shared/_LayoutFuncionario.cshtml";
+}
+
+<!-- Breadcrumb Area Start -->
+<section class="breadcrumb-area section-padding-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb-content">
+                    <h2>Dados Do Salão</h2>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a class="link-inicio" href="~/Home/IndexHomeFuncionario"><i class="icon_house_alt"></i> Inicio</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Dados do Salao</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Area End -->
+
+<section class="welcome-area">
+    <div class="formulario">
+        <form class="form">
+            @foreach (var dado in ViewBag.Dados)
+            {
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label class="labelPerfil" for="cidade">Cidade:</label>
+                        <label class="form-control" id="Cidade" for="cidade">@dado.Cidade</label>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="labelPerfil" for="cep">CEP:</label>
+                        <label class="form-control" id="CEP" for="cep">@dado.CEP</label>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="labelPerfil" for="telefone">Rua:</label>
+                        <label class="form-control" id="Rua" for="rua">@dado.Rua</label>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="labelPerfil" for="email">Número:</label>
+                        <label class="form-control" id="Numero" for="numero">@dado.Numero</label>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label class="labelPerfil" for="cep">Telefone: </label>
+                        <label class="form-control" id="Telefone" for="telefone">@dado.Telefone</label>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="labelPerfil" for="email">Email: </label>
+                        <label class="form-control" for="email" id="Email">@dado.Email</label>
+                    </div>
+                </div>
+
+
+                if (dado == null)
+                {
+                    <button type="button" class="btn btn-lg btn-primary botao-edit" data-toggle="modal" data-target="#produtoModal" id="teste">
+                        Cadastrar Dados
+                    </button>
+                }
+                else
+                {
+                    <button type="button" class="btn btn-lg btn-primary botao-edit" data-toggle="modal" data-target="#produtoModal" id="teste" disabled>
+                        Cadastrar Dados
+                    </button>
+
+                    <button type="button" class="btn btn-lg btn-primary botao-edit" data-toggle="modal" data-target="#atualizaModal" id="pegaIdDados" data-id="@dado.Id">
+                        Atualizar Dados
+                    </button>
+                }
+            }
+
+        </form>
+    </div>
+</section>
+<!-- Modal -->
+<div class="modal fade produtoModal" id="produtoModal" tabindex="-1" role="dialog" aria-labelledby="produtoModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content produtoModal">
+            <div class="modal-header produtoModal">
+                <h5 class="modal-title" id="produtoModalLabel">Horarios</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body produtoModal">
+
+                <div class="form-row">
+                    <div>
+                        <label for="cep">CEP:</label>
+                        <input type="text" id="cep" size="60" maxlength="9" onblur="pesquisacep(this.value);" class="form-control" required />
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="Cidade">Cidade</label>
+                        <input id="cidade" class="form-control" required />
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="bairro">Bairro:</label>
+                        <input name="funcionario.Bairro" type="text" id="bairro" size="40" class="form-control" required />
+                    </div>
+
+                    <div class="form-group col-md-8">
+                        <label for="rua">Rua:</label>
+                        <input type="text" id="rua" size="60" class="form-control" required />
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <label for="numero">Número:</label>
+                        <input type="text" id="numero" size="10" class="form-control" required />
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="estado">Estado:</label>
+                        <input name="funcionario.UF" type="text" id="uf" size="1" class="form-control" required />
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="telefone">Telefone:</label>
+                        <input id="telefone" name="funcionario.Telefone" class="form-control" required />
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="email">Email:</label>
+                        <input id="email" type="email" class="form-control" required />
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <div class="input-group-append" id="t">
+                        <button class="btn btn-primary botao" type="button" onclick="CadastrarDados();" data-dismiss="modal">
+                            Cadastrar
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade atualizaModal" id="atualizaModal" tabindex="-1" role="dialog" aria-labelledby="atualizaModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content atualizaModal">
+            <div class="modal-header atualizaModal">
+                <h5 class="modal-title" id="atualizaModalLabel">Atualizar Horario de Atendimento</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body atualizaModal">
+                @foreach (var dados in ViewBag.Dados)
+                {
+                    <div class="form-row">
+                        <div>
+                            <label for="cep">CEP:</label>
+                            <input id="cepAtualiza" size="60" maxlength="9" onblur="pesquisacep(this.value);" class="form-control"  value="@dados.CEP" required />
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="Cidade">Cidade</label>
+                            <input id="cidadeAtualiza" class="form-control" value="@dados.Cidade" required />
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="bairro">Bairro:</label>
+                            <input id="bairroAtualiza" size="40" class="form-control" required />
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="rua">Rua:</label>
+                            <input id="ruaAtualiza" size="60" class="form-control" value="@dados.Rua" required />
+                        </div>
+
+                        <div class="form-group col-md-2">
+                            <label for="Numero">Número:</label>
+                            <input id="numeroAtualiza" size="10" class="form-control" value="@dados.Numero" required />
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="Estado">Estado:</label>
+                            <input id="uf" size="1" class="form-control" required />
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="Telefone">Telefone:</label>
+                            <input id="telefoneAtualiza" class="form-control" value="@dados.Telefone" required />
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="email">Email:</label>
+                            <input id="emailAtualiza" type="email" class="form-control" value="@dados.Email" required />
+                        </div>
+                    </div>
+                }
+
+
+                <div class="input-group">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary botao" type="button" onclick="Atualizar();" data-dismiss="modal">
+                            Atualizar
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    function CadastrarDados() {
+        var cidade = $("#cidade").val();
+        var cep = $("#cep").val();
+        var rua = $("#rua").val();
+        var numero = $("#numero").val();
+        var telefone = $("#telefone").val();
+        var email = $("#email").val();
+
+        var Dados = [
+            cidade,
+            cep,
+            rua,
+            numero,
+            telefone,
+            email
+        ];
+
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            cache: false,
+            url: "@Url.Action("CadastrarInformacoes", "InformacoesSalao")", // webmethod or web serivces URL
+            data: {
+                Dados: Dados,
+            },
+            complete:
+            function validar(jqXHR, resposta) {
+                if (jqXHR.responseJSON == true) {
+                    $("#Cidade").html(Dados[0]);
+                    $("#CEP").html(Dados[1]);
+                    $("#Rua").html(Dados[2]);
+                    $("#Numero").html(Dados[3]);
+                    $("#Telefone").html(Dados[4]);
+                    $("#Email").html(Dados[5]);
+
+                 } else {
+                    alert("Erro ao Cadastrar");
+                 }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert('Error - ' + errorThrown);
+            }
+        });
+
+
+    }
+    function Atualizar() {
+        var cidade = $("#cidadeAtualiza").val();
+        var cep = $("#cepAtualiza").val();
+        var rua = $("#ruaAtualiza").val();
+        var numero = $("#numeroAtualiza").val();
+        var telefone = $("#telefoneAtualiza").val();
+        var email = $("#emailAtualiza").val();
+        var IdDados = $("#pegaIdDados").data("id");
+
+            var Dados = [
+                cidade,
+                cep,
+                rua,
+                numero,
+                telefone,
+                email
+            ];
+
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            cache: false,
+            url: "@Url.Action("AtualizarDados", "InformacoesSalao")", // webmethod or web serivces URL
+            data: {
+                Dados,
+                Id: IdDados
+            },
+            complete:
+            function validar(jqXHR, resposta) {
+                if (jqXHR.responseJSON == true) {
+                    $("#Cidade").html(Dados[0]);
+                    $("#CEP").html(Dados[1]);
+                    $("#Rua").html(Dados[2]);
+                    $("#Numero").html(Dados[3]);
+                    $("#Telefone").html(Dados[4]);
+                    $("#Email").html(Dados[5]);
+                 } else {
+                    alert("Erro ao Cadastrar");
+                 }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert('Error - ' + errorThrown);
+            }
+        });
+
+
+    }
+
+</script>

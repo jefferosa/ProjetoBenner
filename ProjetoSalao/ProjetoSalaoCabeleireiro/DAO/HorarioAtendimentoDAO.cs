@@ -29,11 +29,29 @@ namespace ProjetoBenner.DAO
             }
         }
 
+        public HorarioAtendimento ListarHorarios()
+        {
+            using (var context = new SalaoContext())
+            {
+                return context.Horarios.First();
+            }
+        }
+
+        public HorarioAtendimento BuscarHorariosId(int id)
+        {
+            using (var context = new SalaoContext())
+            {
+                return context.Horarios
+                    .Where(u => u.Id == id)
+                    .FirstOrDefault();
+            }
+        }
+
         public void AtualizarHorarioAtendimento(HorarioAtendimento horarioAtendimento)
         {
             using (var context = new SalaoContext())
             {
-                context.Entry(horarioAtendimento).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                context.Horarios.Update(horarioAtendimento);
                 context.SaveChanges();
             }
         }
