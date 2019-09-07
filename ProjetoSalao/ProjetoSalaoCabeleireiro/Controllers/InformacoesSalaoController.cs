@@ -1,4 +1,5 @@
 ﻿using ProjetoBenner.DAO;
+using ProjetoBenner.Filtros;
 using ProjetoBenner.Models;
 using System;
 using System.Collections.Generic;
@@ -8,17 +9,19 @@ using System.Web.Mvc;
 
 namespace ProjetoBenner.Controllers
 {
+    
     public class InformacoesSalaoController : Controller
     {
-        // GET: HorarioAtendimento
+        [AutorizacaoFuncionario]
         public ActionResult IndexInformacoesSalao()
         {
             InformacoesSalaoDAO dao = new InformacoesSalaoDAO();
-            var dados = dao.Listar();
+            var dados = dao.ListarDados();
             ViewBag.Dados = dados;
             return View();
         }
 
+        [AutorizacaoFuncionario]
         [HttpPost]
         public ActionResult CadastrarInformacoes(string[] Dados)
         {
@@ -53,6 +56,7 @@ namespace ProjetoBenner.Controllers
             return Json(resposta);
         }
 
+        [AutorizacaoFuncionario]
         public ActionResult AtualizarDados(string[] Dados, int Id)
         {
             InformacoesSalaoDAO dao = new InformacoesSalaoDAO();

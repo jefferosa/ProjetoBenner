@@ -308,8 +308,10 @@
             var Url = "@Url.Action("AdicionarEntrada", "LucroAgendamento")";
             $.post(Url, { Data: Data, Valor: ValorServico }, MostraLucro);
 
-            function MostraLucro(LucroMensal) {
-                $("#Lucro").html("R$" + LucroMensal.ToString("N2"));
+            function MostraLucro(resposta) {
+                var recebeValor = resposta;
+                var novoValor = parseFloat(recebeValor.toFixed(2));
+                $("#Lucro").html("R$" + novoValor);
             }
 
             $(valorDoClick).removeClass("bg-warning");

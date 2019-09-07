@@ -26,6 +26,14 @@ namespace ProjetoBenner.DAO
             }
         }
 
+        public IList<InformacoesSalao> ListarDados()
+        {
+            using (var context = new SalaoContext())
+            {
+                return context.Dados.ToList();
+            }
+        }
+
         public InformacoesSalao BuscarInformacoesId(int id)
         {
             using (var context = new SalaoContext())

@@ -9,10 +9,11 @@ using System.Web.Mvc;
 
 namespace ProjetoBenner.Controllers
 {
-    [AutorizacaoFuncionario]
+    
     public class HorarioAtendimentoController : Controller
     {
         // GET: HorarioAtendimento
+        [AutorizacaoFuncionario]
         public ActionResult Index()
         {
             HorarioAtendimentoDAO dao = new HorarioAtendimentoDAO();
@@ -22,6 +23,7 @@ namespace ProjetoBenner.Controllers
         }
 
         [HttpPost]
+        [AutorizacaoFuncionario]
         public ActionResult AdicionarHorarioAtendimento(DateTime HoraA, DateTime HoraB)
         {
             HorarioAtendimento horario = new HorarioAtendimento();
@@ -51,6 +53,7 @@ namespace ProjetoBenner.Controllers
             return Json(resposta);
         }
 
+        [AutorizacaoFuncionario]
         public ActionResult AtualizarHorario (DateTime HoraA, DateTime HoraB, int Id)
         {
             HorarioAtendimentoDAO dao = new HorarioAtendimentoDAO();
