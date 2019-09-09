@@ -496,6 +496,7 @@
     <Content Include="Views\Agenda\IndexAgendaFuncionario.cshtml" />
     <Content Include="Views\Shared\Layout.cshtml" />
     <Content Include="Views\InformacoesSalao\IndexInformacoesSalao.cshtml" />
+    <Content Include="Views\Usuario\AgendamentosCliente.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

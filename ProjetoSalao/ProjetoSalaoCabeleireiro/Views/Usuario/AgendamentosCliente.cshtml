@@ -1,0 +1,216 @@
+﻿
+@{
+    ViewBag.Title = "AgendamentosCliente";
+    Layout = "~/Views/Shared/_LayoutCliente.cshtml";
+}
+
+<!-- Breadcrumb Area Start -->
+<section class="breadcrumb-area section-padding-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb-content">
+                    <h2>Meus Agendamentos</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Area End -->
+
+<section class="welcome-area">
+    <div>
+        <form class="aumentarForm">
+
+            <!-- Pie Chart -->
+            <div class="col-xl-10 col-lg-10">
+                <div class="card shadow mb-4">
+                    <!-- Card Header - Dropdown -->
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h4 class="m-0 font-weight-bold text-primary" center>Meus Agendamentos</h4>
+
+                    </div>
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <table id="AgendamentosTabela">
+                            <thead>
+                                <tr>
+                                    <th><h5>Serviço</h5></th>
+                                    <th><h5>Horario</h5></th>
+                                    <th><h5>Data</h5></th>
+                                    <th><h5>Estado</h5></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var agendamento in ViewBag.Agendamentos)
+                                {
+                                    var dia = DateTime.Today;
+                                    var hora = DateTime.Now;
+                                    if (agendamento.Data >= dia && agendamento.Horario.Hour >= hora.Hour)
+                                    {
+                                        <tr>
+                                            <td>@agendamento.Servico.Tipo</td>
+
+                                            <td>@agendamento.Horario.ToShortTimeString()</td>
+                                            <td>@agendamento.Data.ToShortDateString()</td>
+                                            @if (agendamento.Estado == "Finalizado")
+                                            {
+                                                <td class="Select bg-success" value="@agendamento.Id" data-dia="@agendamento.Data" data-valor="@agendamento.Servico.Valor">@agendamento.Estado</td>
+                                            }
+                                            else if (agendamento.Estado == "EmAtendimento")
+                                            {
+                                                <td class="Select bg-primary" value="@agendamento.Id" data-dia="@agendamento.Data" data-valor="@agendamento.Servico.Valor">@agendamento.Estado</td>
+                                            }
+                                            else if (agendamento.Estado == "Atrasado")
+                                            {
+                                                <td class="Select bg-warning" value="@agendamento.Id" data-dia="@agendamento.Data" data-valor="@agendamento.Servico.Valor">@agendamento.Estado</td>
+                                            }
+                                            else if (agendamento.Estado == "Cancelado")
+                                            {
+                                                <td class="Select bg-danger" value="@agendamento.Id" data-dia="@agendamento.Data" data-valor="@agendamento.Servico.Valor">@agendamento.Estado</td>
+                                            }
+                                            else
+                                            {
+                                                <td class="Select" value="@agendamento.Id" data-dia="@agendamento.Data" data-valor="@agendamento.Servico.Valor">@agendamento.Estado</td>
+                                            }
+
+
+                                        </tr>
+                                    }
+
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</section>
+
+<script>
+    var btn = document.querySelector('.btn1');
+    btn.classList.add("active");
+
+    var Estados = [{
+        value: 0,
+        title: "Agendado",
+    },
+    {
+        value: 1,
+        title: "Atrasado",
+    },
+    {
+        value: 2,
+        title: "Cancelado",
+    }];
+
+    var valorDoClick;
+    var Data;
+    var ValorServico;
+    $(".Select").dblclick(function () {
+        if ($('td > input').length > 0) {
+            return;
+        }
+
+        var conteudoOriginal = $(this).text();
+        var novoElemento = $('<select/>');
+        var agendamentoId = $(this).attr("value");
+        var conteudoNovo = "";
+
+        Data = $(this).data("dia");
+        ValorServico = $(this).data("valor");
+        valorDoClick = $(this);
+
+        $.each(Estados, function (a, b) {
+            var opt = document.createElement("option");
+            if (b.title == conteudoOriginal) {
+                opt.setAttribute('selected', 'selected');
+            }
+            opt.value = b.value;
+            opt.innerHTML = b.title;
+            novoElemento[0].appendChild(opt);
+        });
+        novoElemento.bind('change', function () {
+            conteudoOriginal = $(this.name + " option:selected").text();
+
+        });
+        $(this).html(novoElemento.bind('blur keydown', function (e) {
+            var keyCode = e.which;
+            conteudoNovo = $(this).val();
+
+            if (keyCode == 13 && conteudoNovo != '' && conteudoNovo != conteudoOriginal) {
+                var objeto = $(this);
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'json',
+                    cache: false,
+                    async: false,
+                    url: "@Url.Action("AtualizarEstado", "Home")", // webmethod or web serivces URL
+                    data: {
+                        id: agendamentoId,
+                        estado: conteudoNovo
+                    }, //added this comma here
+                    success: function (result) {
+                        objeto.parent().html(conteudoNovo);
+                        $('body').append(result);
+                    }
+                })
+            } else if (keyCode == 27 || e.type == 'blur') {
+                $(this).parent().html(conteudoOriginal);
+                AtualizaEstado(agendamentoId, conteudoOriginal);
+            }
+        }));
+        $(this).children().select();
+    });
+
+    function AtualizaEstado(agendamentoId, NovoEstado) {
+        var url = "@Url.Action("AtualizarEstado", "Home")";
+        $.post(url, { Id: agendamentoId, Estado: NovoEstado }, AtualizaLinha(NovoEstado));
+
+    }
+
+    function AtualizaLinha(NovoEstado) {
+
+
+        if (NovoEstado == "Finalizado") {
+            var Url = "@Url.Action("AdicionarEntrada", "LucroAgendamento")";
+            $.post(Url, { Data: Data, Valor: ValorServico }, MostraLucro);
+            function MostraLucro(resposta) {
+                var recebeValor = resposta;
+                var novoValor = parseFloat(recebeValor.toFixed(2));
+                $("#Lucro").html("R$" + novoValor+",00");
+            }
+
+            $(valorDoClick).removeClass("bg-warning");
+            $(valorDoClick).removeClass("bg-primary");
+            $(valorDoClick).removeClass("bg-danger");
+            $(valorDoClick).addClass("bg-success");
+        }
+        else if (NovoEstado == "Atrasado") {
+            $(valorDoClick).removeClass("bg-success");
+            $(valorDoClick).removeClass("bg-primary");
+            $(valorDoClick).removeClass("bg-danger");
+            $(valorDoClick).addClass("bg-warning");
+        }
+        else if (NovoEstado == "EmAtendimento") {
+            $(valorDoClick).removeClass("bg-warning");
+            $(valorDoClick).removeClass("bg-success");
+            $(valorDoClick).removeClass("bg-danger");
+            $(valorDoClick).addClass("bg-primary");
+        }
+        else if (NovoEstado == "Cancelado") {
+            $(valorDoClick).removeClass("bg-warning");
+            $(valorDoClick).removeClass("bg-primary");
+            $(valorDoClick).removeClass("bg-success");
+            $(valorDoClick).addClass("bg-danger");
+        }
+        else {
+            $(valorDoClick).removeClass("bg-warning");
+            $(valorDoClick).removeClass("bg-primary");
+            $(valorDoClick).removeClass("bg-success");
+            $(valorDoClick).removeClass("bg-danger");
+        }
+    }
+</script>

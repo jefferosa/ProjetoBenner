@@ -316,3 +316,8 @@ body {
 #AgendamentosTabela {
     width: 90%;
 }
+
+.aumentarForm {
+    width: 700px;
+    margin: auto;
+}

@@ -104,5 +104,15 @@ namespace ProjetoBenner.Controllers
 
             return Json(true);
         }
+
+        [AutorizacaoFilter]
+        public ActionResult AgendamentosCliente()
+        {
+            AgendaDAO daoAgenda = new AgendaDAO();
+            var agendamentos = daoAgenda.ListarAgendamentos();
+            ViewBag.Agendamentos = agendamentos;
+
+            return View();
+        }
     }
 }
