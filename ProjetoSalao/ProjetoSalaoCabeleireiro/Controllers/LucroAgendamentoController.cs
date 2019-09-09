@@ -21,13 +21,10 @@ namespace ProjetoBenner.Controllers
             lucroAgendamento.DataEntrada = Data;
             lucroAgendamento.ValorEntrada = Valor;
 
-            LucroAgendamentoDAO dao = new LucroAgendamentoDAO();
-            dao.AdicionarEntrada(lucroAgendamento);
-
-            LucroAgendamentoDAO lucro = new LucroAgendamentoDAO();
-            var LucrosLista = lucro.ListarEntradas();
-
-            var resposta = lucro.LucroMensal();
+            LucroAgendamentoDAO daoLucro = new LucroAgendamentoDAO();
+            daoLucro.AdicionarEntrada(lucroAgendamento);
+            
+            var resposta = daoLucro.LucroMensal();
 
             return Json(resposta);
         }

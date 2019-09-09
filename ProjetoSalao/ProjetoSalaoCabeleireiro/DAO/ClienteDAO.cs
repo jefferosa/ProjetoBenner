@@ -41,5 +41,14 @@ namespace ProjetoBenner.DAO
                 return context.Clientes.FirstOrDefault(u => u.Login == login && u.Senha == senha);
             }
         }
+
+        public void AtualizarCli(Cliente cliente)
+        {
+            using (var context = new SalaoContext())
+            {
+                context.Clientes.Update(cliente);
+                context.SaveChanges();
+            }
+        }
     }
 }

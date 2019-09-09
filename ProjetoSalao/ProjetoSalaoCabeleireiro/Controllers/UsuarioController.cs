@@ -1,4 +1,5 @@
 ﻿using ProjetoBenner.DAO;
+using ProjetoBenner.Filtros;
 using ProjetoBenner.Models;
 using System;
 using System.Collections.Generic;
@@ -25,19 +26,7 @@ namespace ProjetoBenner.Controllers
         {
             return View("PerfilFuncionario");
         }
-
-        public ActionResult FormularioCliente()
-        {
-            ViewBag.Cliente = new Cliente();
-            return View();
-        }
-
-        public ActionResult FormularioFuncionario()
-        {
-            ViewBag.Funcionario = new Funcionario();
-            return View();
-        }
-
+        
         [HttpPost]
         public ActionResult AdicionarCliente(Cliente cliente)
         {
@@ -47,8 +36,8 @@ namespace ProjetoBenner.Controllers
             }
             if (ModelState.IsValid)
             {
-                ClienteDAO dao = new ClienteDAO();
-                dao.AdicionarCliente(cliente);
+                ClienteDAO daoCliente = new ClienteDAO();
+                daoCliente.AdicionarCliente(cliente);
                 return RedirectToAction("IndexLogin", "Login");
             }
             else
@@ -66,8 +55,8 @@ namespace ProjetoBenner.Controllers
             }
             if (ModelState.IsValid)
             {
-                FuncionarioDAO dao = new FuncionarioDAO();
-                dao.AdicionarFuncionario(funcionario);
+                FuncionarioDAO daoFuncionario = new FuncionarioDAO();
+                daoFuncionario.AdicionarFuncionario(funcionario);
                 return RedirectToAction("IndexLogin", "Login");
             }
             else
@@ -75,6 +64,45 @@ namespace ProjetoBenner.Controllers
                 ViewBag.Funcionario = funcionario;
                 return RedirectToAction("IndexLogin", "Login");
             }
+        }
+
+        [AutorizacaoFuncionario]
+        public ActionResult AtualizarFuncionario(string[] Dados, int Id)
+        {
+            FuncionarioDAO daoFuncionario = new FuncionarioDAO();
+            Funcionario dados = daoFuncionario.BuscarFuncionarioId(Id);
+
+            dados.Nome = Dados[0];
+            dados.CPF = Dados[1];
+            dados.Telefone = Dados[2];
+            dados.Email = Dados[3];
+            dados.CEP = Dados[4];
+            dados.Cidade = Dados[5];
+            dados.Bairro = Dados[6];
+            dados.Rua = Dados[7];
+
+            daoFuncionario.AtualizarFun(dados);
+
+            return Json(true);
+        }
+
+        public ActionResult AtualizarCliente(string[] Dados, int Id)
+        {
+            ClienteDAO daoCliente = new ClienteDAO();
+            Cliente dados = daoCliente.BuscarClienteId(Id);
+
+            dados.Nome = Dados[0];
+            dados.CPF = Dados[1];
+            dados.Telefone = Dados[2];
+            dados.Email = Dados[3];
+            dados.CEP = Dados[4];
+            dados.Cidade = Dados[5];
+            dados.Bairro = Dados[6];
+            dados.Rua = Dados[7];
+
+            daoCliente.AtualizarCli(dados);
+
+            return Json(true);
         }
     }
 }

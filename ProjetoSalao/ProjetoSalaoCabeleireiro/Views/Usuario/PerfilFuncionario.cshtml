@@ -32,42 +32,46 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label class="labelPerfil" for="nome">Nome:</label>
-                        <label class="form-control" for="nome">@funcionario.Nome</label>
+                        <label class="form-control" for="nome" id="NomeFun">@funcionario.Nome</label>
                     </div>
                     <div class="form-group col-md-6">
                         <label class="labelPerfil" for="cpf">CPF:</label>
-                        <label class="form-control" for="cpf">@funcionario.CPF</label>
+                        <label class="form-control" for="cpf" id="CpfFun">@funcionario.CPF</label>
                     </div>
                     <div class="form-group col-md-6">
                         <label class="labelPerfil" for="telefone">Telefone:</label>
-                        <label class="form-control" for="telefone">@funcionario.Telefone</label>
+                        <label class="form-control" for="telefone" id="TelefoneFun">@funcionario.Telefone</label>
                     </div>
                     <div class="form-group col-md-6">
                         <label class="labelPerfil" for="email">Email:</label>
-                        <label class="form-control" for="email">@funcionario.Email</label>
+                        <label class="form-control" for="email" id="EmailFun">@funcionario.Email</label>
                     </div>
 
                     <div class="form-group col-md-6">
                         <label class="labelPerfil" for="cep">CEP: </label>
-                        <label class="form-control" for="cep">@funcionario.CEP</label>
+                        <label class="form-control" for="cep" id="CepFun">@funcionario.CEP</label>
                     </div>
                     <div class="form-group col-md-6">
                         <label class="labelPerfil" for="cidade">Cidade: </label>
-                        <label class="form-control" for="cidade">@funcionario.Cidade</label>
+                        <label class="form-control" for="cidade" id="CidadeFun">@funcionario.Cidade</label>
                     </div>
                     <div class="form-group col-md-6">
                         <label class="labelPerfil" for="bairro">Bairro: </label>
-                        <label class="form-control" for="bairro">@funcionario.Bairro</label>
+                        <label class="form-control" for="bairro" id="BairroFun">@funcionario.Bairro</label>
                     </div>
                     <div class="form-group col-md-6">
                         <label class="labelPerfil" for="rua">Rua: </label>
-                        <label class="form-control" for="rua">@funcionario.Rua</label>
+                        <label class="form-control" for="rua" id="RuaFun">@funcionario.Rua</label>
                     </div>
                     <div class="form-group col-md-6">
                         <label class="labelPerfil" for="numero">Numero: </label>
-                        <label class="form-control" for="numero">@funcionario.Numero</label>
+                        <label class="form-control" for="numero" id="NumeroFun">@funcionario.Numero</label>
                     </div>
                 </div>
+
+                <button type="button" class="btn btn-lg btn-primary botao-edit" data-toggle="modal" data-target="#atualizaModal" id="IdFuncionario" data-id="@funcionario.Id">
+                    Atualizar Dados
+                </button>
             }
 
             <span>@Html.ActionLink("Alterar Dados", "FormularioEndereco", "Endereco")</span>
@@ -76,7 +80,139 @@
 </section>
 <!-- Welcome Area End -->
 
+<div class="modal fade atualizaModal" id="atualizaModal" tabindex="-1" role="dialog" aria-labelledby="atualizaModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content atualizaModal">
+            <div class="modal-header atualizaModal">
+                <h5 class="modal-title" id="atualizaModalLabel">Atualizar Horario de Atendimento</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body atualizaModal">
+                @if (Session["FuncionarioLogado"] != null)
+                {
+                    var funcionario = Session["FuncionarioLogado"] as Funcionario;
+                    <div class="form-row">
+                        <div>
+                            <label for="cep">Nome:</label>
+                            <input id="nome" size="60" class="form-control" value="@funcionario.Nome" required />
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="CPF">CPF:</label>
+                            <input id="cpf" class="form-control" value="@funcionario.CPF" required />
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="Telefone">Telefone:</label>
+                            <input id="telefone" size="40" class="form-control" value="@funcionario.Telefone" required />
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="Email">Email:</label>
+                            <input id="email" size="60" class="form-control" value="@funcionario.Email" required />
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="CEP">CEP:</label>
+                            <input id="cep" size="10" class="form-control" value="@funcionario.CEP" required />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="Cidade">Cidade:</label>
+                            <input id="cidade" size="1" class="form-control" value="@funcionario.Cidade" required />
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="Bairro">Bairro:</label>
+                            <input id="bairro" class="form-control" value="@funcionario.Bairro" required />
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="Rua">Rua:</label>
+                            <input id="rua" class="form-control" value="@funcionario.Rua" required />
+                        </div>
+                        
+                        <div class="form-group col-md-6">
+                            <label for="Numero">Numero:</label>
+                            <input id="numero" class="form-control" value="@funcionario.Numero" required />
+                        </div>
+                    </div>
+                }
+
+
+                <div class="input-group">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary botao" type="button" onclick="Atualizar();" data-dismiss="modal">
+                            Atualizar
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
 <script>
     var btn = document.querySelector('.btn6');
     btn.classList.add("active");
+
+    function Atualizar() {
+        var nome = $("#nome").val();
+        var cpf = $("#cpf").val();
+        var telefone = $("#telefone").val();
+        var email = $("#email").val();
+        var cep = $("#cep").val();
+        var cidade = $("#cidade").val();
+        var bairro = $("#bairro").val();
+        var rua = $("#rua").val();
+        var numero = $("#numero").val();
+        var pegaId = $("#IdFuncionario").data("id");
+
+        var Dados = [
+            nome,
+            cpf,
+            telefone,
+            email,
+            cep,
+            cidade,
+            bairro,
+            rua,
+            numero
+        ];
+
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            cache: false,
+            url: "@Url.Action("AtualizarFuncionario", "Usuario")", // webmethod or web serivces URL
+            data: {
+                Dados,
+                Id: pegaId
+            },
+            complete:
+            function validar(jqXHR, resposta) {
+                if (jqXHR.responseJSON == true) {
+                    $("#NomeFun").html(Dados[0]);
+                    $("#CpfFun").html(Dados[1]);
+                    $("#TelefoneFun").html(Dados[2]);
+                    $("#EmailFun").html(Dados[3]);
+                    $("#CepFun").html(Dados[4]);
+                    $("#CidadeFun").html(Dados[5]);
+                    $("#BairroFun").html(Dados[6]);
+                    $("#RuaFun").html(Dados[7]);
+                    $("#NumeroFun").html(Dados[8]);
+                 } else {
+                    alert("Erro ao Cadastrar");
+                 }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert('Error - ' + errorThrown);
+            }
+        });
+
+
+    }
 </script>

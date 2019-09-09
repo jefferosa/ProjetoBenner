@@ -45,5 +45,23 @@ namespace ProjetoBenner.DAO
                 context.SaveChanges();
             }
         }
+
+        public void DecrementarQtd(Produto produto)
+        {
+            if(produto.Quantidade > 0)
+            {
+                produto.Quantidade--;
+            }
+            
+        }
+
+        public void AcrescentarQtd(Produto produto)
+        {
+            if(produto.Quantidade >= 0)
+            {
+                produto.Quantidade++;
+            }
+            
+        }
     }
 }

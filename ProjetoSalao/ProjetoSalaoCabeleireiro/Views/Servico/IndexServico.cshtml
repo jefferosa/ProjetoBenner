@@ -25,22 +25,22 @@
 <section class="welcome-area">
     <div id="tb">
         <h2 class="titulo-tabela">Serviços</h2>
-        <table class="table table-hover tb">
+        <table class="table table-hover tb tabelaEstilo">
 
             <thead class="theadProdutos">
                 <tr>
-                    <th>Id</th>
-                    <th>Tipo</th>
-                    <th>Valor</th>
+                    <th class="tabelaEstilo">Id</th>
+                    <th class="tabelaEstilo">Tipo de Serviço</th>
+                    <th class="tabelaEstilo">Valor</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var servico in ViewBag.Servico)
                 {
-                    <tr>
-                        <td>@servico.Id</td>
-                        <td class="tb-td">@servico.Tipo</td>
-                        <td class="tb-td">@servico.Valor.ToString("N2")</td>
+                    <tr id="PegaLinha" data-id="@servico.Id" data-tipo="@servico.Tipo" data-valor="@servico.Valor" data-toggle="modal" onclick="pegaValores();" data-target="#atualizaModal">
+                        <td class="tabelaEstilo">@servico.Id</td>
+                        <td class="tb-td tabelaEstilo" id="Tipo">@servico.Tipo</td>
+                        <td class="tb-td tabelaEstilo" id="Valor">@servico.Valor.ToString("N2")</td>
                     </tr>
                 }
             </tbody>
@@ -90,8 +90,85 @@
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade atualizaModal" id="atualizaModal" tabindex="-1" role="dialog" aria-labelledby="atualizaModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content atualizaModal">
+            <div class="modal-header atualizaModal">
+                <h5 class="modal-title" id="atualizaModalLabel">Produto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body atualizaModal">
+                <form action="/Servico/AdicionarServico" method="post">
+                    <div class="form-row">
+                        <div class="form-group col-md-7">
+                            <label class="texto-label" for="tipo">Tipo do Serviço</label>
+                            <input name="servico.Tipo" id="tipoServico" class="form-control" required />
+                        </div>
+                        <div class="form-group col-md-5">
+                            <label class="texto-label" for="valor">Valor do Serviço</label>
+                            <input name="servico.Valor" id="valorServico" type="number" class="form-control" required />
+                        </div>
+
+                    </div>
+                    <div class="input-group">
+                        <div class="input-group-append" id="t">
+                            <button class="btn btn-primary botao" type="button" onclick="AtualizarServico();" data-dismiss="modal">
+                                Salvar Serviço
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <script>
     var btn = document.querySelector('.btn5');
     btn.classList.add("active");
+
+    function pegaValores() {
+        var Valor = $("#PegaLinha").data("valor");
+        var Tipo = $("#PegaLinha").data("tipo");
+        console.log(Valor);
+        $('#tipoServico').val(Tipo);
+        $('#valorServico').val(Valor);
+
+    }
+
+    function AtualizarServico() {
+        var Tipo = $("#tipoServico").val();
+        var Valor = $("#valorServico").val();
+        var IdDados = $("#PegaLinha").data("id");
+
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            cache: false,
+            url: "@Url.Action("AtualizarServico", "Servico")", // webmethod or web serivces URL
+            data: {
+                tipo: Tipo,
+                valor: Valor,
+                Id: IdDados
+            },
+            complete:
+            function validar(jqXHR, resposta) {
+                if (jqXHR.responseJSON == true) {
+                    $("#Tipo").html(Tipo);
+                    $("#Valor").html(Valor);
+                 } else {
+                    alert("Erro ao Cadastrar");
+                 }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert('Error - ' + errorThrown);
+            }
+        });
+
+
+    }
 </script>

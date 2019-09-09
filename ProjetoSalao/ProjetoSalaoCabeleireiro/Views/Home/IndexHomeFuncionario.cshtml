@@ -48,7 +48,7 @@
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1"><h6 class="font-weight-bold text-success text-uppercase">Horários Hoje</h6></div>
                             @foreach (var horario in ViewBag.Horarios)
                             {
-                                var agendamentoDia = (horario.HorarioFechamento.Hour - horario.HorarioAbertura.Hour) * 2 * ViewBag.contFun;
+                                var agendamentoDia = (horario.HorarioFechamento.Hour - horario.HorarioAbertura.Hour) * 2 * ViewBag.contaFun;
                                 DateTime horarioAtendimento = horario.HorarioAbertura;
                                 DateTime dia = DateTime.Now;
                                 var cont = 0;
@@ -127,12 +127,12 @@
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h4 class="m-0 font-weight-bold text-primary">Agendamentos</h4>
+                    <h4 class="m-0 font-weight-bold text-primary">Agendamentos do Dia</h4>
 
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <table>
+                    <table id="AgendamentosTabela">
                         <thead>
                             <tr>
                                 <th><h5>Cliente</h5></th>
@@ -145,50 +145,55 @@
                         <tbody>
                             @foreach (var agendamento in ViewBag.Agendamentos)
                             {
-                                <tr>
-                                    @if (agendamento.Cliente != null)
-                                    {
-                                        <td>@agendamento.Cliente.Nome</td>
-                                    }
-                                    else
-                                    {
-                                        <td>Sem Cliente</td>
-                                    }
+                                var dia = DateTime.Today;
+                                if (agendamento.Data >= dia && agendamento.Data < dia.AddDays(1))
+                                {
+                                    <tr>
+                                        @if (agendamento.Cliente != null)
+                                        {
+                                            <td>@agendamento.Cliente.Nome</td>
+                                        }
+                                        else
+                                        {
+                                            <td>Sem Cliente</td>
+                                        }
 
-                                    @if (agendamento.Servico != null)
-                                    {
-                                        <td>@agendamento.Servico.Tipo</td>
-                                    }
-                                    else
-                                    {
-                                        <td>Sem serviço</td>
-                                    }
+                                        @if (agendamento.Servico != null)
+                                        {
+                                            <td>@agendamento.Servico.Tipo</td>
+                                        }
+                                        else
+                                        {
+                                            <td>Sem serviço</td>
+                                        }
 
-                                    <td>@agendamento.Horario.ToShortTimeString()</td>
-                                    <td>@agendamento.Data.ToShortDateString()</td>
-                                    @if (agendamento.Estado == "Finalizado")
-                                    {
-                                        <td class="Select bg-success" value="@agendamento.Id" data-dia="@agendamento.Data" data-valor="@agendamento.Servico.Valor">@agendamento.Estado</td>
-                                    }
-                                    else if (agendamento.Estado == "EmAtendimento")
-                                    {
-                                        <td class="Select bg-primary" value="@agendamento.Id" data-dia="@agendamento.Data" data-valor="@agendamento.Servico.Valor">@agendamento.Estado</td>
-                                    }
-                                    else if (agendamento.Estado == "Atrasado")
-                                    {
-                                        <td class="Select bg-warning" value="@agendamento.Id" data-dia="@agendamento.Data" data-valor="@agendamento.Servico.Valor">@agendamento.Estado</td>
-                                    }
-                                    else if (agendamento.Estado == "Cancelado")
-                                    {
-                                        <td class="Select bg-danger" value="@agendamento.Id" data-dia="@agendamento.Data" data-valor="@agendamento.Servico.Valor">@agendamento.Estado</td>
-                                    }
-                                    else
-                                    {
-                                        <td class="Select" value="@agendamento.Id" data-dia="@agendamento.Data" data-valor="@agendamento.Servico.Valor">@agendamento.Estado</td>
-                                    }
+                                        <td>@agendamento.Horario.ToShortTimeString()</td>
+                                        <td>@agendamento.Data.ToShortDateString()</td>
+                                        @if (agendamento.Estado == "Finalizado")
+                                        {
+                                            <td class="Select bg-success" value="@agendamento.Id" data-dia="@agendamento.Data" data-valor="@agendamento.Servico.Valor">@agendamento.Estado</td>
+                                        }
+                                        else if (agendamento.Estado == "EmAtendimento")
+                                        {
+                                            <td class="Select bg-primary" value="@agendamento.Id" data-dia="@agendamento.Data" data-valor="@agendamento.Servico.Valor">@agendamento.Estado</td>
+                                        }
+                                        else if (agendamento.Estado == "Atrasado")
+                                        {
+                                            <td class="Select bg-warning" value="@agendamento.Id" data-dia="@agendamento.Data" data-valor="@agendamento.Servico.Valor">@agendamento.Estado</td>
+                                        }
+                                        else if (agendamento.Estado == "Cancelado")
+                                        {
+                                            <td class="Select bg-danger" value="@agendamento.Id" data-dia="@agendamento.Data" data-valor="@agendamento.Servico.Valor">@agendamento.Estado</td>
+                                        }
+                                        else
+                                        {
+                                            <td class="Select" value="@agendamento.Id" data-dia="@agendamento.Data" data-valor="@agendamento.Servico.Valor">@agendamento.Estado</td>
+                                        }
 
 
-                                </tr>
+                                    </tr>
+                                }
+
                             }
                         </tbody>
                     </table>
@@ -307,11 +312,10 @@
         if (NovoEstado == "Finalizado") {
             var Url = "@Url.Action("AdicionarEntrada", "LucroAgendamento")";
             $.post(Url, { Data: Data, Valor: ValorServico }, MostraLucro);
-
             function MostraLucro(resposta) {
                 var recebeValor = resposta;
                 var novoValor = parseFloat(recebeValor.toFixed(2));
-                $("#Lucro").html("R$" + novoValor);
+                $("#Lucro").html("R$" + novoValor+",00");
             }
 
             $(valorDoClick).removeClass("bg-warning");

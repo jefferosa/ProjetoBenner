@@ -32,49 +32,185 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label class="labelPerfil" for="nome">Nome:</label>
-                        <label class="form-control" for="nome">@cliente.Nome</label>
+                        <label class="form-control" for="nome" id="NomeCli">@cliente.Nome</label>
                     </div>
                     <div class="form-group col-md-6">
                         <label class="labelPerfil" for="cpf">CPF:</label>
-                        <label class="form-control" for="cpf">@cliente.CPF</label>
+                        <label class="form-control" for="cpf" id="CpfCli">@cliente.CPF</label>
                     </div>
                     <div class="form-group col-md-6">
                         <label class="labelPerfil" for="telefone">Telefone:</label>
-                        <label class="form-control" for="telefone">@cliente.Telefone</label>
+                        <label class="form-control" for="telefone" id="TelefoneCli">@cliente.Telefone</label>
                     </div>
                     <div class="form-group col-md-6">
                         <label class="labelPerfil" for="email">Email:</label>
-                        <label class="form-control" for="email">@cliente.Email</label>
+                        <label class="form-control" for="email" id="EmailCli">@cliente.Email</label>
                     </div>
 
                     <div class="form-group col-md-6">
                         <label class="labelPerfil" for="cep">CEP: </label>
-                        <label class="form-control" for="cep">@cliente.CEP</label>
+                        <label class="form-control" for="cep" id="CepCli">@cliente.CEP</label>
                     </div>
                     <div class="form-group col-md-6">
                         <label class="labelPerfil" for="cidade">Cidade: </label>
-                        <label class="form-control" for="cidade">@cliente.Cidade</label>
+                        <label class="form-control" for="cidade" id="CidadeCli">@cliente.Cidade</label>
                     </div>
                     <div class="form-group col-md-6">
                         <label class="labelPerfil" for="bairro">Bairro: </label>
-                        <label class="form-control" for="bairro">@cliente.Bairro</label>
+                        <label class="form-control" for="bairro" id="BairroCli">@cliente.Bairro</label>
                     </div>
                     <div class="form-group col-md-6">
                         <label class="labelPerfil" for="rua">Rua: </label>
-                        <label class="form-control" for="rua">@cliente.Rua</label>
+                        <label class="form-control" for="rua" id="RuaCli">@cliente.Rua</label>
                     </div>
                     <div class="form-group col-md-6">
                         <label class="labelPerfil" for="numero">Numero: </label>
-                        <label class="form-control" for="numero">@cliente.Numero</label>
+                        <label class="form-control" for="numero"id="NumeroCli">@cliente.Numero</label>
                     </div>
                 </div>
+
+                <button type="button" class="btn btn-lg btn-primary botao-edit" data-toggle="modal" data-target="#atualizaModal" id="IdCliente" data-id="@cliente.Id">
+                    Atualizar Dados
+                </button>
             }
         </form>
     </div>
 </section>
 <!-- Welcome Area End -->
 
+<div class="modal fade atualizaModal" id="atualizaModal" tabindex="-1" role="dialog" aria-labelledby="atualizaModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content atualizaModal">
+            <div class="modal-header atualizaModal">
+                <h5 class="modal-title" id="atualizaModalLabel">Atualizar Horario de Atendimento</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body atualizaModal">
+                @if (Session["ClienteLogado"] != null)
+                {
+                    var cliente = Session["ClienteLogado"] as Cliente;
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="cep">Nome:</label>
+                            <input id="nomeCli" size="60" class="form-control" value="@cliente.Nome" required />
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="CPF">CPF:</label>
+                            <input id="cpfCli" class="form-control" value="@cliente.CPF" required />
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="Telefone">Telefone:</label>
+                            <input id="telefoneCli" size="40" class="form-control" value="@cliente.Telefone" required />
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="Email">Email:</label>
+                            <input id="emailCli" size="60" class="form-control" value="@cliente.Email" required />
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="CEP">CEP:</label>
+                            <input id="cepCli" size="10" class="form-control" value="@cliente.CEP" required />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="Cidade">Cidade:</label>
+                            <input id="cidadeCli" size="1" class="form-control" value="@cliente.Cidade" required />
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="Bairro">Bairro:</label>
+                            <input id="bairroCli" class="form-control" value="@cliente.Bairro" required />
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="Rua">Rua:</label>
+                            <input id="ruaCli" class="form-control" value="@cliente.Rua" required />
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="Numero">Numero:</label>
+                            <input id="numeroCli" class="form-control" value="@cliente.Numero" required />
+                        </div>
+                    </div>
+                }
+
+
+                <div class="input-group">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary botao" type="button" onclick="Atualizar();" data-dismiss="modal">
+                            Atualizar
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
 <script>
     var btn = document.querySelector('.btn4');
     btn.classList.add("active");
+
+        function Atualizar() {
+            var nome = $("#nomeCli").val();
+            var cpf = $("#cpfCli").val();
+            var telefone = $("#telefoneCli").val();
+            var email = $("#emailCli").val();
+            var cep = $("#cepCli").val();
+            var cidade = $("#cidadeCli").val();
+            var bairro = $("#bairroCli").val();
+            var rua = $("#ruaCli").val();
+            var numero = $("#numeroCli").val();
+            var pegaId = $("#IdCliente").data("id");
+
+        var Dados = [
+            nome,
+            cpf,
+            telefone,
+            email,
+            cep,
+            cidade,
+            bairro,
+            rua,
+            numero,
+        ];
+
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            cache: false,
+            url: "@Url.Action("AtualizarCliente", "Usuario")", // webmethod or web serivces URL
+            data: {
+                Dados,
+                Id: pegaId
+            },
+            complete:
+            function validar(jqXHR, resposta) {
+                if (jqXHR.responseJSON == true) {
+                    $("#NomeCli").html(Dados[0]);
+                    $("#CpfCli").html(Dados[1]);
+                    $("#TelefoneCli").html(Dados[2]);
+                    $("#EmailCli").html(Dados[3]);
+                    $("#CepCli").html(Dados[4]);
+                    $("#CidadeCli").html(Dados[5]);
+                    $("#BairroCli").html(Dados[6]);
+                    $("#RuaCli").html(Dados[7]);
+                    $("#NumeroCli").html(Dados[8]);
+                 } else {
+                    alert("Erro ao Cadastrar");
+                 }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert('Error - ' + errorThrown);
+            }
+        });
+
+
+    }
 </script>

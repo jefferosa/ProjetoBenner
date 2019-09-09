@@ -16,8 +16,8 @@ namespace ProjetoBenner.Controllers
         [AutorizacaoFuncionario]
         public ActionResult Index()
         {
-            HorarioAtendimentoDAO dao = new HorarioAtendimentoDAO();
-            IList<HorarioAtendimento> horarios = dao.ListarHorarioAtendimento();
+            HorarioAtendimentoDAO daoHorarioAtendimento = new HorarioAtendimentoDAO();
+            var horarios = daoHorarioAtendimento.ListarHorarioAtendimento();
             ViewBag.HorarioAtendimento = horarios;
             return View("Index");
         }
@@ -35,8 +35,8 @@ namespace ProjetoBenner.Controllers
             }
             if (ModelState.IsValid)
             {
-                HorarioAtendimentoDAO dao = new HorarioAtendimentoDAO();
-                string valida = (dao.AdicionarHorarioAtendimento(horario)) ? "Sim" : "Não";
+                HorarioAtendimentoDAO daoHorarioAtendimento = new HorarioAtendimentoDAO();
+                string valida = (daoHorarioAtendimento.AdicionarHorarioAtendimento(horario)) ? "Sim" : "Não";
                 return Json(valida);
             }
             else
@@ -48,19 +48,19 @@ namespace ProjetoBenner.Controllers
 
         public ActionResult ListarHorarios(int id)
         {
-            HorarioAtendimentoDAO dao = new HorarioAtendimentoDAO();
-            HorarioAtendimento resposta = dao.ListarHorarios();
+            HorarioAtendimentoDAO daoHorarioAtendimento = new HorarioAtendimentoDAO();
+            HorarioAtendimento resposta = daoHorarioAtendimento.ListarHorarios();
             return Json(resposta);
         }
 
         [AutorizacaoFuncionario]
         public ActionResult AtualizarHorario (DateTime HoraA, DateTime HoraB, int Id)
         {
-            HorarioAtendimentoDAO dao = new HorarioAtendimentoDAO();
-            HorarioAtendimento horarios = dao.BuscarHorariosId(Id);
+            HorarioAtendimentoDAO daoHorarioAtendimento = new HorarioAtendimentoDAO();
+            HorarioAtendimento horarios = daoHorarioAtendimento.BuscarHorariosId(Id);
             horarios.HorarioAbertura = HoraA;
             horarios.HorarioFechamento = HoraB;
-            dao.AtualizarHorarioAtendimento(horarios);
+            daoHorarioAtendimento.AtualizarHorarioAtendimento(horarios);
 
             return Json(true);
         }

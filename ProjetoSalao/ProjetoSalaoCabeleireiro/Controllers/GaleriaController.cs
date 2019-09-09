@@ -16,7 +16,7 @@ namespace ProjetoBenner.Controllers
         public ActionResult IndexGaleria()
         {
             GaleriaDAO dao = new GaleriaDAO();
-            IList<Galeria> imagens = dao.ListarImagens();
+            var imagens = dao.ListarImagens();
             ViewBag.Galeria = imagens;
             return View(imagens);
         }
@@ -26,7 +26,7 @@ namespace ProjetoBenner.Controllers
         public ActionResult GaleriaFuncionario()
         {
             GaleriaDAO dao = new GaleriaDAO();
-            IList<Galeria> imagens = dao.ListarImagens();
+            var imagens = dao.ListarImagens();
             ViewBag.Galeria = imagens;
             return View(imagens);
         }

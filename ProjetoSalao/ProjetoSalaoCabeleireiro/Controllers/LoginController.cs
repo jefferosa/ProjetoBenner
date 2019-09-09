@@ -24,7 +24,7 @@ namespace ProjetoBenner.Controllers
 
             if (cliente != null)
             {
-                Session.Timeout = 60;
+                Session.Timeout = 300;
                 Session["ClienteLogado"] = cliente;
                 return RedirectToAction("IndexHomeCliente", "Home");
             }

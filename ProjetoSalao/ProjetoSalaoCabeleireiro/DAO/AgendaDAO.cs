@@ -23,7 +23,7 @@ namespace ProjetoBenner.DAO
             return valida;
         }
 
-        public IList<HorarioAtendimento> Listar()
+        public IList<HorarioAtendimento> ListarHorarioAtendimento()
         {
             using (var context = new SalaoContext())
             {
@@ -56,6 +56,21 @@ namespace ProjetoBenner.DAO
             {
                 return context.Clientes.Find(id);
             }
+        }
+
+        public int ContaAgendamentos()
+        {
+            int cont = 0;
+
+            var agendamentos = ListarAgendamentos();
+            foreach(var lista in agendamentos)
+            {
+                if(lista.Estado != "Finalizado")
+                {
+                    cont++;
+                }
+            }
+            return cont;
         }
 
         public void AtualizarAgendamento(Agenda agenda)

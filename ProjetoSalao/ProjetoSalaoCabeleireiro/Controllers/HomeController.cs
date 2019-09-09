@@ -21,29 +21,23 @@ namespace ProjetoBenner.Controllers
         [AutorizacaoFuncionario]
         public ActionResult IndexHomeFuncionario()
         {
-            var db = new SalaoContext();
-            AgendaDAO dao = new AgendaDAO();
-            var agendamentos = dao.ListarAgendamentos();
+            AgendaDAO daoAgenda = new AgendaDAO();
 
+            var agendamentos = daoAgenda.ListarAgendamentos();
             ViewBag.Agendamentos = agendamentos;
 
-            AgendaDAO daoHor = new AgendaDAO();
-            var horarios = daoHor.Listar();
+            var horarios = daoAgenda.ListarHorarioAtendimento();
             ViewBag.Horarios = horarios;
+
+            var qtdAgendamentos = daoAgenda.ContaAgendamentos();
+            ViewBag.Agenda = qtdAgendamentos;
 
             FuncionarioDAO daoFuncionarios = new FuncionarioDAO();
             var funcionarios = daoFuncionarios.ListarFuncionarios();
-            ViewBag.contFun = funcionarios.Count();
+            ViewBag.contaFun = funcionarios.Count();
 
-            var lista = (IList<EstadoAtendimento>)Enum.GetValues(typeof(EstadoAtendimento));
-            ViewBag.ListaEstado = lista;
-
-            ViewBag.Agenda = agendamentos.Count();
-
-            LucroAgendamentoDAO lucro = new LucroAgendamentoDAO();
-            var LucrosLista = lucro.ListarEntradas();
-            
-            ViewBag.LucroMensal = lucro.LucroMensal();
+            LucroAgendamentoDAO Lucro = new LucroAgendamentoDAO();
+            ViewBag.LucroMensal = Lucro.LucroMensal();
 
             return View(agendamentos);
         }
@@ -53,7 +47,7 @@ namespace ProjetoBenner.Controllers
             AgendaDAO dao = new AgendaDAO();
             Agenda agendamento = dao.BuscarAgendamentoId(id);
             agendamento.Estado = estado;
-            if(estado == "Cancelado")
+            if (estado == "Cancelado")
             {
                 dao.RemoverHorario(agendamento);
             }
@@ -61,10 +55,10 @@ namespace ProjetoBenner.Controllers
             {
                 dao.AtualizarAgendamento(agendamento);
             }
-            
+
             return Json(true);
         }
-        
+
         public ActionResult Layout()
         {
             HorarioAtendimentoDAO dao = new HorarioAtendimentoDAO();

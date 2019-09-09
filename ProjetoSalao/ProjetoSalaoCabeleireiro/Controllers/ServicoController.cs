@@ -15,11 +15,10 @@ namespace ProjetoBenner.Controllers
         // GET: Servico
         public ActionResult IndexServico()
         {
-            ServicoDAO dao = new ServicoDAO();
-            IList<Servico> servicos = dao.ListaServicos();
-            
+            ServicoDAO daoServico = new ServicoDAO();
+            var servicos = daoServico.ListaServicos();
             ViewBag.Servico = servicos;
-            ViewBag.Servicos = new Servico();
+
             return View();
         }
 
@@ -38,16 +37,27 @@ namespace ProjetoBenner.Controllers
             }
             if (ModelState.IsValid)
             {
-                ServicoDAO dao = new ServicoDAO();
-                dao.AdicionarServico(servico);
+                ServicoDAO daoServico = new ServicoDAO();
+                daoServico.AdicionarServico(servico);
                 return RedirectToAction("IndexServico");
             }
             else
             {
                 ViewBag.Servico = servico;
-                return View("FormularioServico");
+                return View("IndexServico");
             }
-            
+        }
+
+        public ActionResult AtualizarServico(string tipo, double valor, int Id)
+        {
+            ServicoDAO daoServico = new ServicoDAO();
+            Servico servicos = daoServico.BuscarServicoId(Id);
+            servicos.Tipo = tipo;
+            servicos.Valor = valor;
+
+            daoServico.AtualizarServico(servicos);
+
+            return Json(true);
         }
     }
 }

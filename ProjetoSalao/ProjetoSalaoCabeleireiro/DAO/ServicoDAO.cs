@@ -35,7 +35,8 @@ namespace ProjetoBenner.DAO
         {
             using (var context = new SalaoContext())
             {
-
+                context.Servicos.Update(servico);
+                context.SaveChanges();
             }
         }
     }

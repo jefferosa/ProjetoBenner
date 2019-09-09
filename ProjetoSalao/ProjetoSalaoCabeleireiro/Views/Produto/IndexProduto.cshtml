@@ -25,26 +25,26 @@
 <section class="welcome-area">
     <div id="tb">
         <h2 class="titulo-tabela">Produtos em Estoque</h2>
-        <table class="table table-hover tb">
+        <table class="table table-hover tb tabelaEstilo">
 
-            <thead class="theadProdutos">
-                <tr>
-                    <th>Id</th>
-                    <th>Nome</th>
-                    <th>Quantidade</th>
-                    <th>Descricao</th>
-                    <th></th>
+            <thead class="theadProdutos tabelaEstilo">
+                <tr class="tabelaEstilo">
+                    <th class="tabelaEstilo">Id</th>
+                    <th class="tabelaEstilo">Nome</th>
+                    <th class="tabelaEstilo">Quantidade</th>
+                    <th class="tabelaEstilo">Descricao</th>
+                    <th class="tabelaEstilo"></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="tabelaEstilo">
                 @foreach (var produto in ViewBag.Produto)
                 {
-                    <tr>
-                        <td>@produto.Id</td>
-                        <td class="tb-td">@produto.Nome</td>
-                        <td id="quantidade@(produto.Id)">@produto.Quantidade</td>
-                        <td class="tb-td">@produto.Descricao</td>
-                        <td>
+                    <tr class="tabelaEstilo">
+                        <td class="tabelaEstilo">@produto.Id</td>
+                        <td class="tb-td tabelaEstilo">@produto.Nome</td>
+                        <td class="tabelaEstilo" id="quantidade@(produto.Id)">@produto.Quantidade</td>
+                        <td class="tb-td tabelaEstilo">@produto.Descricao</td>
+                        <td class="tabelaEstilo">
                             <a class="acrescenta" href="#" onclick="acrescenta(@produto.Id);">+</a><br />
                             <a class="decrementa" href="#" onclick="decrementa(@produto.Id);">-</a>
                         </td>    

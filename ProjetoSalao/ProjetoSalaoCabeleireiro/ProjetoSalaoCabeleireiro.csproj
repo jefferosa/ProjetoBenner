@@ -483,15 +483,12 @@
     <Content Include="Views\Login\IndexLogin.cshtml" />
     <Content Include="Views\Produto\IndexProduto.cshtml" />
     <Content Include="Views\Produto\FormularioProduto.cshtml" />
-    <Content Include="Views\Usuario\FormularioCliente.cshtml" />
     <Content Include="Views\Agenda\FormularioAgenda.cshtml" />
     <Content Include="Views\Servico\VisualizaServico.cshtml" />
     <Content Include="Views\Home\IndexHomeFuncionario.cshtml" />
-    <Content Include="Views\Usuario\FormularioFuncionario.cshtml" />
     <Content Include="Views\Usuario\PerfilCliente.cshtml" />
     <Content Include="Views\Usuario\PerfilFuncionario.cshtml" />
     <Content Include="Views\Galeria\IndexGaleria.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Galeria\GaleriaFuncionario.cshtml" />
     <Content Include="Views\Shared\_LayoutFuncionario.cshtml" />
     <Content Include="Views\HorarioAtendimento\Index.cshtml" />

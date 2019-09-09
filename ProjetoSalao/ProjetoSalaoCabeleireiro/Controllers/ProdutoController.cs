@@ -15,16 +15,10 @@ namespace ProjetoBenner.Controllers
         // GET: Produto
         public ActionResult IndexProduto()
         {
-            ProdutoDAO dao = new ProdutoDAO();
-            IList<Produto> produtos = dao.ListarProdutos();
+            ProdutoDAO daoProduto = new ProdutoDAO();
+            var produtos = daoProduto.ListarProdutos();
             ViewBag.Produto = produtos;
             return View("IndexProduto");
-        }
-
-        public ActionResult FormularioProduto()
-        {
-            ViewBag.Produto = new Produto();
-            return View();
         }
 
         [HttpPost]
@@ -36,8 +30,8 @@ namespace ProjetoBenner.Controllers
             }
             if (ModelState.IsValid)
             {
-                ProdutoDAO dao = new ProdutoDAO();
-                dao.AdicionarProduto(produto);
+                ProdutoDAO daoProduto = new ProdutoDAO();
+                daoProduto.AdicionarProduto(produto);
                 return RedirectToAction("IndexProduto");
             }
             else
@@ -49,19 +43,20 @@ namespace ProjetoBenner.Controllers
 
         public ActionResult DecrementarQtd(int id)
         {
-            ProdutoDAO dao = new ProdutoDAO();
-            Produto produto = dao.BuscarProdutoId(id);
-            produto.Quantidade--;
-            dao.AtualizarProdutos(produto);
+            ProdutoDAO daoProduto = new ProdutoDAO();
+            Produto produto = daoProduto.BuscarProdutoId(id);
+
+            daoProduto.DecrementarQtd(produto);
+            daoProduto.AtualizarProdutos(produto);
             return Json(produto);
         }
 
         public ActionResult AcrescentarQtd(int id)
         {
-            ProdutoDAO dao = new ProdutoDAO();
-            Produto produto = dao.BuscarProdutoId(id);
-            produto.Quantidade++;
-            dao.AtualizarProdutos(produto);
+            ProdutoDAO daoProduto = new ProdutoDAO();
+            Produto produto = daoProduto.BuscarProdutoId(id);
+            daoProduto.AcrescentarQtd(produto);
+            daoProduto.AtualizarProdutos(produto);
             return Json(produto);
         }
     }

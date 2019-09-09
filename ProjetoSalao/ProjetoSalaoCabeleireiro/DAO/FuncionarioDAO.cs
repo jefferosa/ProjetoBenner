@@ -40,5 +40,14 @@ namespace ProjetoBenner.DAO
                 return context.Funcionarios.FirstOrDefault(u => u.Login == login && u.Senha == senha);
             }
         }
+
+        public void AtualizarFun(Funcionario funcionario)
+        {
+            using (var context = new SalaoContext())
+            {
+                context.Funcionarios.Update(funcionario);
+                context.SaveChanges();
+            }
+        }
     }
 }

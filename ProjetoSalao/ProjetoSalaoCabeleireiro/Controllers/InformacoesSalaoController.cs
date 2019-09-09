@@ -15,8 +15,8 @@ namespace ProjetoBenner.Controllers
         [AutorizacaoFuncionario]
         public ActionResult IndexInformacoesSalao()
         {
-            InformacoesSalaoDAO dao = new InformacoesSalaoDAO();
-            var dados = dao.ListarDados();
+            InformacoesSalaoDAO daoInformacoesSalao = new InformacoesSalaoDAO();
+            var dados = daoInformacoesSalao.ListarDados();
             ViewBag.Dados = dados;
             return View();
         }
@@ -39,8 +39,8 @@ namespace ProjetoBenner.Controllers
             }
             if (ModelState.IsValid)
             {
-                InformacoesSalaoDAO dao = new InformacoesSalaoDAO();
-                dao.CadastrarInformacoes(dados);
+                InformacoesSalaoDAO daoInformacoesSalao = new InformacoesSalaoDAO();
+                daoInformacoesSalao.CadastrarInformacoes(dados);
                 return Json(true);
             }
             else
@@ -51,16 +51,16 @@ namespace ProjetoBenner.Controllers
 
         public ActionResult ListarDados(int id)
         {
-            InformacoesSalaoDAO dao = new InformacoesSalaoDAO();
-            InformacoesSalao resposta = dao.Listar();
+            InformacoesSalaoDAO daoInformacoesSalao = new InformacoesSalaoDAO();
+            InformacoesSalao resposta = daoInformacoesSalao.Listar();
             return Json(resposta);
         }
 
         [AutorizacaoFuncionario]
         public ActionResult AtualizarDados(string[] Dados, int Id)
         {
-            InformacoesSalaoDAO dao = new InformacoesSalaoDAO();
-            InformacoesSalao dados = dao.BuscarInformacoesId(Id);
+            InformacoesSalaoDAO daoInformacoesSalao = new InformacoesSalaoDAO();
+            InformacoesSalao dados = daoInformacoesSalao.BuscarInformacoesId(Id);
             dados.Cidade = Dados[0];
             dados.CEP = Dados[1];
             dados.Rua = Dados[2];
@@ -68,7 +68,7 @@ namespace ProjetoBenner.Controllers
             dados.Telefone = Dados[4];
             dados.Email = Dados[5];
 
-            dao.AtualizarInformacoes(dados);
+            daoInformacoesSalao.AtualizarInformacoes(dados);
 
             return Json(true);
         }
